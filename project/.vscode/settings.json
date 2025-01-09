@@ -1,0 +1,4 @@
+{
+    "cssvar.files": ["src/styles/**/*.css"],
+    "cssvar.extensions": ["css", "astro", "tsx", "ts"]
+}
