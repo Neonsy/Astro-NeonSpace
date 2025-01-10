@@ -1,18 +1,37 @@
-import eslintPluginAstro from "eslint-plugin-astro";
-import eslintPluginJsxA11y from "eslint-plugin-jsx-a11y";
-import eslintConfigPrettier from "eslint-config-prettier";
+import eslintPluginAstro from 'eslint-plugin-astro';
+import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import tsParser from '@typescript-eslint/parser';
+import astroParser from 'astro-eslint-parser';
 
 export default [
-  // add more generic rule sets here, such as:
-  // js.configs.recommended,
-  ...eslintPluginAstro.configs.recommended,
-  ...eslintPluginJsxA11y.configs.recommended,
-  {
-    rules: {
-      // override/add rules settings here, such as:
-      // "astro/no-set-html-directive": "error"
+    {
+        files: ['**/*.astro'],
+        plugins: {
+            astro: eslintPluginAstro,
+            'jsx-a11y': eslintPluginJsxA11y,
+        },
+        languageOptions: {
+            parser: astroParser,
+            parserOptions: {
+                parser: tsParser,
+                extraFileExtensions: ['.astro'],
+                sourceType: 'module',
+            },
+        },
+        rules: {
+            ...eslintPluginAstro.configs.recommended.rules,
+            ...eslintPluginJsxA11y.configs.recommended.rules,
+        },
     },
-  },
-  // This disables rules that conflict with Prettier
-  eslintConfigPrettier,
+    {
+        files: ['**/*.ts', '**/*.tsx'],
+        languageOptions: {
+            parser: tsParser,
+            parserOptions: {
+                sourceType: 'module',
+            },
+        },
+    },
+    eslintConfigPrettier,
 ];

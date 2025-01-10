@@ -1,0 +1,82 @@
+name: Deploy Preview
+on:
+    pull_request:
+        branches: Preview
+        types: [opened, reopened, synchronize]
+
+env:
+    VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+    VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+    VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Wait for Main CI/CD
+              uses: fountainhead/action-wait-for-check@v1.2.0
+              with:
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  checkName: integrity-check
+                  intervalSeconds: 30
+                  timeoutSeconds: 600
+                  ref: ${{ github.event.pull_request.head.sha }}
+
+            - uses: actions/checkout@v4
+
+            - name: Install pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: 'latest'
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version-file: '/project/.node-version'
+                  cache: 'pnpm'
+                  cache-dependency-path: 'project/pnpm-lock.yaml'
+
+            - name: Install Vercel CLI
+              run: pnpm add -g vercel@latest
+
+            - name: Pull Vercel Environment Information
+              run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+
+            - name: Build Project Artifacts
+              run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+
+            - name: Deploy Project Artifacts to Vercel
+              id: deploy
+              run: |
+                  echo "DEPLOY_URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
+
+            - name: Create Comment
+              uses: actions/github-script@v7
+              with:
+                  script: |
+                      const deployUrl = process.env.DEPLOY_URL;
+                      const inspectUrl = `https://vercel.com/${process.env.VERCEL_ORG_ID}/${process.env.VERCEL_PROJECT_ID}/deployments`;
+
+                      const body = `## 🚀 Vercel Preview Deployment
+
+                      ### Build Information
+                      > **Commit:** \`${context.sha.substring(0, 7)}\`
+
+                      ### Deployment Links
+                      | Type | Link |
+                      |:--|:--|
+                      | ✨ **Preview** | [See your changes in action!](${deployUrl}) |
+                      | 🔍 **Inspect** | [Peek under the hood](${inspectUrl}) |
+
+                      ---
+                      ### 💫 Deployed through GitHub Actions 😎`;
+
+                      await github.rest.issues.createComment({
+                        owner: context.repo.owner,
+                        repo: context.repo.repo,
+                        issue_number: context.issue.number,
+                        body: body
+                      });
+              env:
+                  DEPLOY_URL: ${{ steps.deploy.outputs.DEPLOY_URL }}
