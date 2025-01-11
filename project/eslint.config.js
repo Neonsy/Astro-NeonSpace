@@ -1,6 +1,8 @@
 import eslintPluginAstro from 'eslint-plugin-astro';
 import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y';
 import eslintConfigPrettier from 'eslint-config-prettier';
+import reactHooks from 'eslint-plugin-react-hooks';
+import reactRefresh from 'eslint-plugin-react-refresh';
 import tsParser from '@typescript-eslint/parser';
 import astroParser from 'astro-eslint-parser';
 
@@ -21,7 +23,6 @@ export default [
                 sourceType: 'module',
             },
             ecmaVersion: 2020,
-            globals: globals.browser,
         },
         rules: {
             ...eslintPluginAstro.configs.recommended.rules,
