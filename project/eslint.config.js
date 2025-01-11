@@ -10,6 +10,8 @@ export default [
         plugins: {
             astro: eslintPluginAstro,
             'jsx-a11y': eslintPluginJsxA11y,
+            'react-hooks': reactHooks,
+            'react-refresh': reactRefresh,
         },
         languageOptions: {
             parser: astroParser,
@@ -18,10 +20,14 @@ export default [
                 extraFileExtensions: ['.astro'],
                 sourceType: 'module',
             },
+            ecmaVersion: 2020,
+            globals: globals.browser,
         },
         rules: {
             ...eslintPluginAstro.configs.recommended.rules,
             ...eslintPluginJsxA11y.configs.recommended.rules,
+            ...reactHooks.configs.recommended.rules,
+            'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
         },
     },
     {
