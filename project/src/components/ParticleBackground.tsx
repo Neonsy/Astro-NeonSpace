@@ -15,7 +15,7 @@ export default function ParticleBackground({}) {
     }, []);
 
     const colors = ['#FFFF00', '#FF1493', '#00FFFF'],
-        particleCount = 55,
+        particleCount = 90,
         minSize = 1,
         maxSize = 3,
         speed = 2,
@@ -56,7 +56,7 @@ export default function ParticleBackground({}) {
                 number: {
                     density: {
                         enable: true,
-                        area: 800,
+                        area: 900,
                     },
                     value: particleCount,
                 },
@@ -79,6 +79,19 @@ export default function ParticleBackground({}) {
                 },
             },
             detectRetina: true,
+            responsive: [
+                {
+                    maxWidth: 900,
+                    mode: 'screen',
+                    options: {
+                        particles: {
+                            number: {
+                                value: 180,
+                            },
+                        },
+                    },
+                },
+            ],
         }),
         []
     );
