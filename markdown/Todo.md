@@ -10,4 +10,7 @@
 
 ## Backend
 
-TBD
+- Rich text editor, to make blog posts from the website
+- Authentication
+  - Github Account
+    - Allowing other users to suggest corrections

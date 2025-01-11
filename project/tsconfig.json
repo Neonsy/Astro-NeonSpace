@@ -11,11 +11,12 @@
             "@assets/*": ["src/assets/*"],
             "@layouts/*": ["src/layouts/*"],
             "@pages/*": ["src/pages/*"],
-            "@utils/*": ["src/utils/*"],
             "@types/*": ["src/types/*"],
             "@hooks/*": ["src/hooks/*"],
             "@lib/*": ["src/lib/*"],
             "@styles/*": ["src/styles/*"]
-        }
+        },
+        "jsx": "react-jsx",
+        "jsxImportSource": "react"
     }
 }

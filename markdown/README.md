@@ -1,48 +1,37 @@
-# Astro Starter Kit: Basics
+# [Welcome to the NeonSpace](https://astro-neonspace.vercel.app/)
 
-```sh
-npm create astro@latest -- --template basics
-```
+[![Main CI/CD](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/main-ci-cd.yml/badge.svg)](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/main-ci-cd.yml)
+[![Deploy Preview](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/deploy-preview.yml/badge.svg?branch=Preview)](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/deploy-preview.yml)
+[![Deploy Production](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/deploy-prod.yml/badge.svg)](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/deploy-prod.yml)
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+> [!NOTE]
+> This project is currently in the early stages of development and progress can be tracked [here](https://github.com/Neonsy/Astro-NeonSpace/tree/Dev).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Motivation 🎯
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+From exploring various frameworks to building my digital presence, NeonSpace represents my journey into modern web development.
+This project emerges from my desire to create not just a website, but a personal digital sanctuary where technology meets creativity.
 
-## 🚀 Project Structure
+### The Vision ✨
 
-Inside of your Astro project, you'll see the following folders and files:
+NeonSpace is designed to be more than just another portfolio website. It's a platform where I can:
+- Share my journey and showcase my work
+- Express thoughts through a blog
+- Create meaningful connections with fellow developers
+- Explore and push the boundaries of modern web technologies
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+### The Journey 🗺️
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+This project is built with Astro, chosen for its exceptional performance and flexibility.
+It represents my commitment to:
+- Mastering modern web development practices
+- Creating a space where I can freely share my passion for software development, AI, backend systems, and server technologies
+- Building a community-driven platform where knowledge sharing and corrections are encouraged, if you have a Github account
+- Maintaining a digital garden where ideas can grow and evolve
 
-## 🧞 Commands
+This isn't just about having a presence on the web - it's about creating an interactive space where technology enthusiasts can connect, learn, and grow together.
+Whether you're here to explore my portfolio, read my latest thoughts on tech trends, or engage in meaningful discussions, NeonSpace is designed to be a hub for all things technology.
 
-All commands are run from the root of the project, from a terminal:
+## Other
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+More information about the project can be found [here](/markdown)
