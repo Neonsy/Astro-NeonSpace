@@ -14,17 +14,6 @@ export default function ParticleBackground({}) {
         });
     }, []);
 
-    const colors = ['#FFFF00', '#FF1493', '#00FFFF'],
-        particleCount = 90,
-        minSize = 1,
-        maxSize = 3,
-        speed = 2,
-        moveSpeed = 0.5,
-        linkColor = '#ffffff',
-        linkDistance = 150,
-        linkOpacity = 0.1,
-        particleOpacity = 0.3;
-
     const particlesLoaded = async (container?: Container): Promise<void> => {
         console.log(container);
     };
@@ -32,15 +21,21 @@ export default function ParticleBackground({}) {
     const options: ISourceOptions = useMemo(
         () => ({
             fpsLimit: 120,
+            background: {
+                repeat: 'no-repeat',
+            },
+            fullScreen: {
+                zIndex: -1,
+            },
             particles: {
                 color: {
-                    value: colors,
+                    value: ['#FFFF00', '#FF1493', '#00FFFF'],
                 },
                 links: {
-                    color: linkColor,
-                    distance: linkDistance,
+                    color: '#ffffff',
+                    distance: 150,
                     enable: true,
-                    opacity: linkOpacity,
+                    opacity: 0.1,
                     width: 1,
                 },
                 move: {
@@ -50,7 +45,7 @@ export default function ParticleBackground({}) {
                         default: OutMode.bounce,
                     },
                     random: false,
-                    speed: moveSpeed,
+                    speed: 0.5,
                     straight: false,
                 },
                 number: {
@@ -58,20 +53,20 @@ export default function ParticleBackground({}) {
                         enable: true,
                         area: 900,
                     },
-                    value: particleCount,
+                    value: 90,
                 },
                 opacity: {
-                    value: particleOpacity,
+                    value: 0.3,
                 },
                 shape: {
                     type: 'circle',
                 },
                 size: {
-                    value: { min: minSize, max: maxSize },
+                    value: { min: 1, max: 3 },
                     animation: {
                         enable: true,
-                        speed: speed,
-                        minimumValue: minSize,
+                        speed: 2,
+                        minimumValue: 1,
                         sync: false,
                         startValue: 'min',
                         count: 0,
