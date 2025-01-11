@@ -28,6 +28,10 @@ export default {
                 '8xl': '6rem', // 96px
                 '9xl': '8rem', // 128px
             },
+            backgroundImage: {
+                'main-gradient':
+                    'linear-gradient(135deg, var(--gradient-bg-color-1) 0%, var(--gradient-bg-color-2) 35%, var(--gradient-bg-color-3) 65%, var(--gradient-bg-color-4) 100%)',
+            },
         },
     },
     plugins: [

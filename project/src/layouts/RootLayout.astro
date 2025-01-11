@@ -1,55 +1,27 @@
 ---
+import Head from '@components/Head.astro';
+
+import ParticleBackground from '@components/ParticleBackground.tsx';
+
 import '@styles/global.css';
 
 type Props = {
     children: any;
     title: string;
     description: string;
+    pageClass?: string;
 };
 
-const { title, description } = Astro.props;
-const siteName = 'NeonSpace';
-const siteUrl = 'https://neonspace.dev'; // Replace with your actual domain
+const { title, description, pageClass = '' } = Astro.props;
 ---
 
 <!doctype html>
 <html lang='en'>
-    <head>
-        <meta charset='UTF-8' />
-        <meta name='viewport' content='width=device-width, initial-scale=1.0' />
-
-        <!-- Favicon -->
-        <link rel='icon' type='image/webp' href='/favicon.webp' />
-
-        <!-- Primary Meta Tags -->
-        <title>{siteName} | {title}</title>
-        <meta name='title' content={`${siteName} | ${title}`} />
-        <meta name='description' content={description} />
-        <meta name='generator' content={Astro.generator} />
-
-        <!-- Open Graph / Facebook -->
-        <meta property='og:type' content='website' />
-        <meta property='og:url' content={siteUrl} />
-        <meta property='og:title' content={`${siteName} | ${title}`} />
-        <meta property='og:description' content={description} />
-        <meta property='og:image' content='/og-image.png' />
-
-        <!-- Twitter -->
-        <meta property='twitter:card' content='summary_large_image' />
-        <meta property='twitter:url' content={siteUrl} />
-        <meta property='twitter:title' content={`${siteName} | ${title}`} />
-        <meta property='twitter:description' content={description} />
-        <meta property='twitter:image' content='/og-image.png' />
-
-        <!-- Customize color -->
-        <meta name='theme-color' content='#6A5ACD' />
-
-        <!-- Additional Meta Tags -->
-        <meta name='robots' content='index, follow' />
-        <meta name='author' content='Timothy Enderson' />
-        <link rel='canonical' href={siteUrl} />
-    </head>
-    <body>
-        <slot />
+    <Head title={title} description={description} />
+    <body class='bg-main-gradient'>
+        <ParticleBackground client:load />
+        <main class={`${pageClass} min-h-screen`}>
+            <slot />
+        </main>
     </body>
 </html>
