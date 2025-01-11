@@ -30,7 +30,7 @@ export default {
             },
             backgroundImage: {
                 'main-gradient':
-                    'linear-gradient(135deg, var(--gradient-color-1) 0%, var(--gradient-color-2) 35%, var(--gradient-color-3) 65%, var(--gradient-color-4) 100%)',
+                    'linear-gradient(135deg, var(--gradient-bg-color-1) 0%, var(--gradient-bg-color-2) 35%, var(--gradient-bg-color-3) 65%, var(--gradient-bg-color-4) 100%)',
             },
         },
     },

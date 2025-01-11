@@ -4,9 +4,9 @@
 
 @layer base {
     :root {
-        --gradient-color-1: #140024;
-        --gradient-color-2: #2d0f55;
-        --gradient-color-3: #480862;
-        --gradient-color-4: #140024;
+        --gradient-bg-color-1: #140024;
+        --gradient-bg-color-2: #2d0f55;
+        --gradient-bg-color-3: #480862;
+        --gradient-bg-color-4: #140024;
     }
 }
