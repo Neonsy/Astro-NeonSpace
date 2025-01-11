@@ -8,4 +8,5 @@ import react from '@astrojs/react';
 // https://astro.build/config
 export default defineConfig({
     integrations: [tailwind(), react()],
+    site: 'https://astro-neonspace.vercel.app',
 });
