@@ -34,15 +34,15 @@ export default {
             },
             colors: {
                 logo: {
-                    "gradient-1": 'var(--logo-gradient-1)',
-                    "gradient-2": 'var(--logo-gradient-2)',
-                    "gradient-3": 'var(--logo-gradient-3)',
+                    'gradient-1': 'var(--logo-gradient-1)',
+                    'gradient-2': 'var(--logo-gradient-2)',
+                    'gradient-3': 'var(--logo-gradient-3)',
                 },
                 body: {
-                    "gradient-1": 'var(--gradient-bg-color-1)',
-                    "gradient-2": 'var(--gradient-bg-color-2)',
-                    "gradient-3": 'var(--gradient-bg-color-3)',
-                    "gradient-4": 'var(--gradient-bg-color-4)',
+                    'gradient-1': 'var(--gradient-bg-color-1)',
+                    'gradient-2': 'var(--gradient-bg-color-2)',
+                    'gradient-3': 'var(--gradient-bg-color-3)',
+                    'gradient-4': 'var(--gradient-bg-color-4)',
                 },
             },
         },
@@ -52,5 +52,13 @@ export default {
             checkSC144: false,
         }),
         forms,
+        plugin(function ({ addUtilities }) {
+            addUtilities({
+                '.body-gradient': {
+                    'background':
+                        'linear-gradient(to bottom right, var(--gradient-bg-color-1) 0%, var(--gradient-bg-color-2) 35%, var(--gradient-bg-color-3) 65%, var(--gradient-bg-color-4) 100%)',
+                },
+            });
+        }),
     ],
 } satisfies Config;

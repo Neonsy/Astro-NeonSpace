@@ -19,7 +19,7 @@ const { title, description, pageClass = '' } = Astro.props;
 <!doctype html>
 <html lang='en'>
     <Head title={title} description={description} />
-    <body class='from-body-gradient-1 via-body-gradient-2 to-body-gradient-4 bg-gradient-to-br'>
+    <body class='body-gradient'>
         <ParticleBackground client:load />
         <Container>
             <main class={`${pageClass} min-h-screen`}>

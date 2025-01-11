@@ -5,9 +5,9 @@
 :root {
     /* Body Vars */
     --gradient-bg-color-1: #140024;
-    --gradient-bg-color-2: #2d0f55;
-    --gradient-bg-color-3: #480862;
-    --gradient-bg-color-4: #140024;
+    --gradient-bg-color-2: #291162;
+    --gradient-bg-color-3: #290862;
+    --gradient-bg-color-4: #0e001a;
 
     /* Text Vars */
     --text-primary: 0deg 0% 99%;
