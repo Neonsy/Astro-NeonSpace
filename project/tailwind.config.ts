@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
 import fluid, { extract, screens, fontSize } from 'fluid-tailwind';
 import forms from '@tailwindcss/forms';
+import plugin from 'tailwindcss/plugin';
 
 export default {
     content: {
@@ -27,10 +28,22 @@ export default {
                 '7xl': '4.5rem', // 72px
                 '8xl': '6rem', // 96px
                 '9xl': '8rem', // 128px
+                '10xl': '10rem', // 160px
+                '11xl': '12rem', // 192px
+                '12xl': '14rem', // 224px
             },
-            backgroundImage: {
-                'main-gradient':
-                    'linear-gradient(135deg, var(--gradient-bg-color-1) 0%, var(--gradient-bg-color-2) 35%, var(--gradient-bg-color-3) 65%, var(--gradient-bg-color-4) 100%)',
+            colors: {
+                logo: {
+                    "gradient-1": 'var(--logo-gradient-1)',
+                    "gradient-2": 'var(--logo-gradient-2)',
+                    "gradient-3": 'var(--logo-gradient-3)',
+                },
+                body: {
+                    "gradient-1": 'var(--gradient-bg-color-1)',
+                    "gradient-2": 'var(--gradient-bg-color-2)',
+                    "gradient-3": 'var(--gradient-bg-color-3)',
+                    "gradient-4": 'var(--gradient-bg-color-4)',
+                },
             },
         },
     },

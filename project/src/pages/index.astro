@@ -1,11 +1,12 @@
 ---
-import Layout from '@layouts/RootLayout.astro';
-import WIP from '@components/WIP.tsx';
+import Layout from '@layouts/global/RootLayout.astro';
+
+import Hero from '@/components/Home/Sections/Hero';
 ---
 
 <Layout
     title='Home'
     description='Enter NeonSpace - A digital portfolio where Timothy Enderson weaves code into art, shares tech insights through blogging, and showcases innovative projects that push creative boundaries'
-    pageClass='flex items-center justify-center'>
-    <WIP />
+    pageClass='flex flex-col items-center justify-center'>
+    <Hero />
 </Layout>

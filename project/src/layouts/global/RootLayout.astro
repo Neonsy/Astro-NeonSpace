@@ -1,0 +1,30 @@
+---
+import Head from '@layouts/global/Head.astro';
+
+import ParticleBackground from '@/components/ParticleBackground';
+import Container from '@/components/Container';
+
+import '@styles/global.css';
+
+type Props = {
+    children: any;
+    title: string;
+    description: string;
+    pageClass?: string;
+};
+
+const { title, description, pageClass = '' } = Astro.props;
+---
+
+<!doctype html>
+<html lang='en'>
+    <Head title={title} description={description} />
+    <body class='from-body-gradient-1 via-body-gradient-2 to-body-gradient-4 bg-gradient-to-br'>
+        <ParticleBackground client:load />
+        <Container>
+            <main class={`${pageClass} min-h-screen`}>
+                <slot />
+            </main>
+        </Container>
+    </body>
+</html>

@@ -2,11 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-    :root {
-        --gradient-bg-color-1: #140024;
-        --gradient-bg-color-2: #2d0f55;
-        --gradient-bg-color-3: #480862;
-        --gradient-bg-color-4: #140024;
-    }
+:root {
+    /* Body Vars */
+    --gradient-bg-color-1: #140024;
+    --gradient-bg-color-2: #2d0f55;
+    --gradient-bg-color-3: #480862;
+    --gradient-bg-color-4: #140024;
+
+    /* Text Vars */
+    --text-primary: 0deg 0% 99%;
+    --text-secondary: 210deg 20% 75%;
+
+    /* Logo Text Gradient */
+    --logo-gradient-1: #1EE1FF;
+    --logo-gradient-2: #0080ff;
+    --logo-gradient-3: #F807FF;
+}
+
+:where(:not(svg, svg *)) {
+    color: hsl(var(--text-primary));
+}
+
+p {
+    color: hsl(var(--text-secondary));
 }
