@@ -55,8 +55,9 @@ export default {
         plugin(function ({ addUtilities }) {
             addUtilities({
                 '.body-gradient': {
-                    'background':
+                    background:
                         'linear-gradient(to bottom right, var(--gradient-bg-color-1) 0%, var(--gradient-bg-color-2) 35%, var(--gradient-bg-color-3) 65%, var(--gradient-bg-color-4) 100%)',
+                    'background-attachment': 'fixed',
                 },
             });
         }),

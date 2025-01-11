@@ -4,10 +4,10 @@
 
 :root {
     /* Body Vars */
-    --gradient-bg-color-1: #140024;
-    --gradient-bg-color-2: #291162;
-    --gradient-bg-color-3: #290862;
-    --gradient-bg-color-4: #0e001a;
+    --gradient-bg-color-1: #000931;
+    --gradient-bg-color-2: #150a2a;
+    --gradient-bg-color-3: #270a34;
+    --gradient-bg-color-4: #0A0A2A;
 
     /* Text Vars */
     --text-primary: 0deg 0% 99%;
