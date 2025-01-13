@@ -1,7 +1,9 @@
-import { useEffect, useMemo, useState } from 'react';
-import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { type Container, type ISourceOptions, MoveDirection, OutMode } from '@tsparticles/engine';
+import Particles, { initParticlesEngine } from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
+import { useEffect, useMemo, useState } from 'react';
+
+const devEnv = import.meta.env.DEV;
 
 export default function ParticleBackground({}) {
     const [init, setInit] = useState(false);
@@ -15,7 +17,9 @@ export default function ParticleBackground({}) {
     }, []);
 
     const particlesLoaded = async (container?: Container): Promise<void> => {
-        console.log(container);
+        if (devEnv) {
+            console.log(container);
+        }
     };
 
     const options: ISourceOptions = useMemo(

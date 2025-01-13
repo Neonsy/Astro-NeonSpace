@@ -1,10 +1,13 @@
 ---
-import Head from '@layouts/global/Head.astro';
+import QueryDevToolsWrapper from '@/components/QueryDevToolsWrapper';
 
+import Head from '@layouts/global/Head.astro';
 import ParticleBackground from '@/components/ParticleBackground';
 import Container from '@/components/Container';
 
 import '@styles/global.css';
+
+const devEnv = import.meta.env.DEV;
 
 type Props = {
     children: any;
@@ -13,7 +16,7 @@ type Props = {
     pageClass?: string;
 };
 
-const { title, description, pageClass = '' } = Astro.props;
+const { title, description, pageClass = '' } = Astro.props as Props;
 ---
 
 <!doctype html>
@@ -25,6 +28,7 @@ const { title, description, pageClass = '' } = Astro.props;
             <main class={`${pageClass} min-h-screen`}>
                 <slot />
             </main>
+            {devEnv && <QueryDevToolsWrapper client:load />}
         </Container>
     </body>
 </html>
