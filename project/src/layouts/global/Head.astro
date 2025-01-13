@@ -1,4 +1,6 @@
 ---
+import { ClientRouter } from 'astro:transitions';
+
 const { title, description } = Astro.props;
 const siteName = 'NeonSpace';
 const siteUrl = 'https://astro-neonspace.vercel.app/';
@@ -38,4 +40,7 @@ const siteUrl = 'https://astro-neonspace.vercel.app/';
     <meta name='robots' content='index, follow' />
     <meta name='author' content='Timothy Enderson' />
     <link rel='canonical' href={siteUrl} />
+
+    <!-- Client Router for View Transitions -->
+    <ClientRouter />
 </head>
