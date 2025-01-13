@@ -19,7 +19,7 @@
         "@tsparticles/react": "^3.0.0",
         "@tsparticles/slim": "^3.7.1",
         "@types/react": "^19.0.6",
-        "@types/react-dom": "^19.0.2",
+        "@types/react-dom": "^19.0.3",
         "astro": "^5.1.5",
         "motion": "^11.17.0",
         "react": "^19.0.0",
