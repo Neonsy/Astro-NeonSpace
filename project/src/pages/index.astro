@@ -3,12 +3,11 @@ import Layout from '@layouts/global/RootLayout.astro';
 
 import Hero from '@/components/Home/Sections/Hero';
 import Stats from '@/components/Home/Sections/Stats';
+
+const authToken = import.meta.env.GITHUB_AUTH_TOKEN;
 ---
 
-<Layout
-    title='Home'
-    description='Enter NeonSpace - A digital portfolio where Timothy Enderson weaves code into art, shares tech insights through blogging, and showcases innovative projects that push creative boundaries'
-    pageClass='flex flex-col items-center justify-center'>
+<Layout title='Home' pageClass='flex flex-col items-center justify-center'>
     <Hero client:load />
-    <Stats client:load />
+    <Stats client:load username='neonsy' authToken={authToken} />
 </Layout>
