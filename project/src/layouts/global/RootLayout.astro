@@ -3,7 +3,6 @@ import QueryDevToolsWrapper from '@/components/QueryDevToolsWrapper';
 
 import Head from '@layouts/global/Head.astro';
 import ParticleBackground from '@/components/ParticleBackground';
-import Container from '@/components/Container';
 
 import '@/global.css';
 
@@ -13,13 +12,11 @@ type Props = {
     children: any;
     title: string;
     description?: string;
-    pageClass?: string;
 };
 
 const {
     title,
     description = 'Enter NeonSpace - A digital portfolio where Timothy Enderson weaves code into art, shares tech insights through blogging, and showcases innovative projects that push creative boundaries',
-    pageClass = '',
 } = Astro.props as Props;
 ---
 
@@ -27,12 +24,14 @@ const {
 <html lang='en'>
     <Head title={title} description={description} />
     <body class='body-gradient'>
-        <ParticleBackground client:load transition:persist/>
-        <Container>
-            <main class={`${pageClass} min-h-dvh`}>
+        <ParticleBackground client:load transition:persist />
+        <div class='flex min-h-dvh flex-col'>
+            <!-- <Header/> -->
+            <main class='flex-grow'>
                 <slot />
             </main>
+            <!-- <Footer/> -->
             {devEnv && <QueryDevToolsWrapper client:load />}
-        </Container>
+        </div>
     </body>
 </html>
