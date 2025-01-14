@@ -17,7 +17,9 @@ const ReactCompilerConfig = {
 // https://astro.build/config
 export default defineConfig({
     integrations: [
-        tailwind(),
+        tailwind({
+            applyBaseStyles: false,
+        }),
         react({
             babel: {
                 plugins: [['babel-plugin-react-compiler', ReactCompilerConfig]],
