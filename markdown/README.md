@@ -5,7 +5,7 @@
 [![Deploy Production](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/deploy-prod.yml/badge.svg)](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/deploy-prod.yml)
 
 > [!NOTE]
-> This project is currently in the early stages of development and progress can be tracked [here](https://github.com/Neonsy/Astro-NeonSpace/tree/Dev).
+> This project is currently in the **early stages of development**. Progress can be tracked [here](https://github.com/Neonsy/Astro-NeonSpace/tree/Dev).
 
 ## Motivation 🎯
 
