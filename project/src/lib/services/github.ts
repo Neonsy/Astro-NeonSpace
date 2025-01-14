@@ -1,4 +1,5 @@
 import { Octokit } from '@octokit/rest';
+
 import type { GithubStats } from '@/types/githubStats';
 
 export async function fetchGithubStats(username: string, authToken: string): Promise<GithubStats> {
@@ -7,16 +8,16 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
     });
 
     try {
-        // Get user data
+        // Get user data (no pagination needed)
         const { data: userData } = await octokit.users.getByUsername({
             username,
         });
 
-        // Get repositories
-        const { data: repos } = await octokit.repos.listForUser({
+        // Get ALL repositories using pagination
+        const repos = await octokit.paginate(octokit.repos.listForUser, {
             username,
-            per_page: 100,
             sort: 'updated',
+            per_page: 100,
         });
 
         // Initialize stats object
@@ -43,44 +44,47 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
             repos
                 .filter((repo) => repo.name !== 'Neonsy')
                 .map(async (repo) => {
-                    const [pulls, issues, watchers] = await Promise.all([
-                        octokit.pulls.list({
-                            owner: username,
-                            repo: repo.name,
-                            state: 'all',
-                            per_page: 100,
-                        }),
-                        octokit.issues.listForRepo({
-                            owner: username,
-                            repo: repo.name,
-                            state: 'all',
-                            per_page: 100,
-                        }),
-                        octokit.activity.listWatchersForRepo({
-                            owner: username,
-                            repo: repo.name,
-                            per_page: 100,
-                        }),
-                    ]);
+                    // Get all pull requests using pagination
+                    const pulls = await octokit.paginate(octokit.pulls.list, {
+                        owner: username,
+                        repo: repo.name,
+                        state: 'all',
+                        per_page: 100,
+                    });
+
+                    // Get all issues using pagination
+                    const issues = await octokit.paginate(octokit.issues.listForRepo, {
+                        owner: username,
+                        repo: repo.name,
+                        state: 'all',
+                        per_page: 100,
+                    });
+
+                    // Get all watchers using pagination
+                    const watchers = await octokit.paginate(octokit.activity.listWatchersForRepo, {
+                        owner: username,
+                        repo: repo.name,
+                        per_page: 100,
+                    });
 
                     // Filter out the repo owner from watchers
-                    const watchersCount = watchers.data.filter((watcher) => {
+                    const watchersCount = watchers.filter((watcher) => {
                         return watcher.login.toLowerCase() !== username.toLowerCase();
                     }).length;
 
                     // Calculate recent activity score (last 4 weeks)
-                    const recentPRs = pulls.data.filter((pr) => new Date(pr.created_at).getTime() > Date.now() - 28 * 24 * 60 * 60 * 1000).length;
+                    const recentPRs = pulls.filter((pr) => new Date(pr.created_at).getTime() > Date.now() - 28 * 24 * 60 * 60 * 1000).length;
 
                     // Filter issues that aren't PRs and are recent
-                    const recentIssues = issues.data
+                    const recentIssues = issues
                         .filter((issue) => !('pull_request' in issue))
                         .filter((issue) => new Date(issue.created_at).getTime() > Date.now() - 28 * 24 * 60 * 60 * 1000).length;
 
                     // Get total issues (excluding PRs)
-                    const totalIssues = issues.data.filter((issue) => !('pull_request' in issue)).length;
+                    const totalIssues = issues.filter((issue) => !('pull_request' in issue)).length;
 
                     // Get total PRs
-                    const totalPRs = pulls.data.length;
+                    const totalPRs = pulls.length;
 
                     return {
                         name: repo.name,
@@ -138,16 +142,16 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
                 });
             }
 
-            // Get pull requests
-            const { data: pulls } = await octokit.pulls.list({
+            // Get ALL pull requests using pagination
+            const pulls = await octokit.paginate(octokit.pulls.list, {
                 owner: username,
                 repo: repo.name,
                 state: 'all',
                 per_page: 100,
             });
 
-            // Get issues (excluding PRs)
-            const { data: issues } = await octokit.issues.listForRepo({
+            // Get ALL issues using pagination
+            const issues = await octokit.paginate(octokit.issues.listForRepo, {
                 owner: username,
                 repo: repo.name,
                 state: 'all',
