@@ -29,7 +29,7 @@ const {
     <body class='body-gradient'>
         <ParticleBackground client:load transition:persist/>
         <Container>
-            <main class={`${pageClass} min-h-screen`}>
+            <main class={`${pageClass} min-h-dvh`}>
                 <slot />
             </main>
             {devEnv && <QueryDevToolsWrapper client:load />}

@@ -4,19 +4,24 @@
 
 :root {
     /* Body Vars */
-    --gradient-bg-color-1: #000931;
-    --gradient-bg-color-2: #150a2a;
-    --gradient-bg-color-3: #270a34;
-    --gradient-bg-color-4: #0A0A2A;
+    --gradient-bg-color-1: 231deg 100% 10%;
+    --gradient-bg-color-2: 264deg 62% 10%;
+    --gradient-bg-color-3: 315deg 62% 12%;
+    --gradient-bg-color-4: 240deg 62% 10%;
 
     /* Text Vars */
     --text-primary: 0deg 0% 99%;
     --text-secondary: 210deg 20% 75%;
 
     /* Logo Text Gradient */
-    --logo-gradient-1: #1EE1FF;
-    --logo-gradient-2: #0084ff;
-    --logo-gradient-3: #F807FF;
+    --logo-gradient-1: 190deg 100% 56%;
+    --logo-gradient-2: 210deg 100% 50%;
+    --logo-gradient-3: 300deg 100% 51%;
+
+    /* Github Stats */
+    --github-stats-bg: 264deg 80% 50%;
+    --github-stats-text: 264deg 80% 90%;
+    --github-stats-icon: 180deg 100% 50%;
 }
 
 :where(:not(svg, svg *)) {

@@ -1,104 +1,43 @@
 import { useGithubStats } from '@/hooks/useGithubStats';
 
+import { RiGitRepositoryFill } from 'react-icons/ri';
+
 type GithubStatsProps = {
     username: string;
-    authToken: string;
+    authToken: ImportMetaEnv['GITHUB_FETCH_TOKEN'];
 };
 
 export default function Stats({ username, authToken }: GithubStatsProps) {
-    const { data: stats, isLoading, isError, error, refetch } = useGithubStats(username, authToken);
+    const { data: stats, isLoading, isError } = useGithubStats(username, authToken);
 
-    if (isLoading) {
-        // return <GithubStatsLoader />;
-        return <div>Loading...</div>;
-    }
-
-    if (isError) {
-        return (
-            <div className='github-stats-error'>
-                <h3>Error loading GitHub stats</h3>
-                <p>{error instanceof Error ? error.message : 'Unknown error occurred'}</p>
-                <button onClick={() => refetch()} className='retry-button'>
-                    Retry
-                </button>
-            </div>
-        );
-    }
-
-    if (!stats) {
-        return null;
-    }
+    if (isLoading) return <></>;
+    if (isError) return <></>;
 
     return (
-        <div className='github-stats'>
-            <h2>GitHub Statistics for {username}</h2>
-
-            {/* Repository Stats */}
-            {stats.repositories.public}
-            {stats.repositories.private}
-            {stats.repositories.total}
-
-            {/* Social Stats */}
-            {stats.social.stars}
-            {stats.social.followers}
-
-            {/* Pull Request Stats */}
-            {stats.pullRequests.open}
-            {stats.pullRequests.closed}
-            {stats.pullRequests.merged}
-
-            {/* Issue Stats */}
-            {stats.issues.open}
-            {stats.issues.closed}
-            {stats.issues.total}
-
-            {/* Popular Repos */}
-            {stats.popularRepos.map((repo) => (
-                <div key={repo.name}>
-                    {repo.name}
-                    {repo.url}
-                    {repo.description}
-                    {repo.primaryLanguage}
-                    {repo.stars}
-                    {repo.forks}
-                    {repo.watchers}
-                    {repo.totalPRs}
-                    {repo.totalIssues}
-                    {repo.urls.stars}
-                    {repo.urls.forks}
-                    {repo.urls.watchers}
-                    {repo.urls.pulls}
-                    {repo.urls.issues}
+        <section className='flex flex-col items-center justify-center'>
+            <div className='bg-github-stats-bg/5 border-github-stats-bg/30 hover:shadow-github-stats-bg/30 flex flex-col gap-6 rounded-2xl border p-8 shadow-[0_0_15px_rgba(0,0,0,0.2)] backdrop-blur-lg transition-shadow duration-300'>
+                <RiGitRepositoryFill className='text-github-stats-icon text-5xl drop-shadow-[0_0_8px_hsl(var(--github-stats-icon))]' />
+                <div className='flex flex-col gap-4'>
+                    <p className='flex items-center gap-x-4 text-2xl'>
+                        <span className='text-github-stats-text text-3xl font-bold drop-shadow-[0_0_5px_hsl(var(--github-stats-bg))]'>
+                            {stats?.repositories.public}
+                        </span>
+                        <span className='opacity-80'>Public Repositories</span>
+                    </p>
+                    <p className='flex items-center gap-x-4 text-2xl'>
+                        <span className='text-github-stats-text text-3xl font-bold drop-shadow-[0_0_5px_hsl(var(--github-stats-bg))]'>
+                            {stats?.repositories.private}
+                        </span>
+                        <span className='opacity-80'>Private Repositories</span>
+                    </p>
+                    <p className='flex items-center gap-x-4 text-2xl'>
+                        <span className='text-github-stats-text text-3xl font-bold drop-shadow-[0_0_5px_hsl(var(--github-stats-bg))]'>
+                            {stats?.repositories.total}
+                        </span>
+                        <span className='opacity-80'>Total Repositories</span>
+                    </p>
                 </div>
-            ))}
-
-            {/* Active Repos */}
-            {stats.activeRepos.map((repo) => (
-                <div key={repo.name}>
-                    {repo.name}
-                    {repo.url}
-                    {repo.description}
-                    {repo.primaryLanguage}
-                    {repo.stars}
-                    {repo.forks}
-                    {repo.watchers}
-                    {repo.totalPRs}
-                    {repo.totalIssues}
-                    {repo.urls.stars}
-                    {repo.urls.forks}
-                    {repo.urls.watchers}
-                    {repo.urls.pulls}
-                    {repo.urls.issues}
-                </div>
-            ))}
-
-            {/* Languages */}
-            {Object.entries(stats.languages).map(([language, percentage]) => (
-                <div key={language}>
-                    {language}
-                    {percentage}
-                </div>
-            ))}
-        </div>
+            </div>
+        </section>
     );
 }

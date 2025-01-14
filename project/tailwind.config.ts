@@ -34,15 +34,20 @@ export default {
             },
             colors: {
                 logo: {
-                    'gradient-1': 'var(--logo-gradient-1)',
-                    'gradient-2': 'var(--logo-gradient-2)',
-                    'gradient-3': 'var(--logo-gradient-3)',
+                    'gradient-1': 'hsl(var(--logo-gradient-1) / <alpha-value>)',
+                    'gradient-2': 'hsl(var(--logo-gradient-2) / <alpha-value>)',
+                    'gradient-3': 'hsl(var(--logo-gradient-3) / <alpha-value>)',
                 },
                 body: {
-                    'gradient-1': 'var(--gradient-bg-color-1)',
-                    'gradient-2': 'var(--gradient-bg-color-2)',
-                    'gradient-3': 'var(--gradient-bg-color-3)',
-                    'gradient-4': 'var(--gradient-bg-color-4)',
+                    'gradient-1': 'hsl(var(--gradient-bg-color-1) / <alpha-value>)',
+                    'gradient-2': 'hsl(var(--gradient-bg-color-2) / <alpha-value>)',
+                    'gradient-3': 'hsl(var(--gradient-bg-color-3) / <alpha-value>)',
+                    'gradient-4': 'hsl(var(--gradient-bg-color-4) / <alpha-value>)',
+                },
+                github: {
+                    'stats-bg': 'hsl(var(--github-stats-bg) / <alpha-value>)',
+                    'stats-icon': 'hsl(var(--github-stats-icon) / <alpha-value>)',
+                    'stats-text': 'hsl(var(--github-stats-text) / <alpha-value>)',
                 },
             },
         },
@@ -56,10 +61,11 @@ export default {
             addUtilities({
                 '.body-gradient': {
                     background:
-                        'linear-gradient(to bottom right, var(--gradient-bg-color-1) 0%, var(--gradient-bg-color-2) 35%, var(--gradient-bg-color-3) 65%, var(--gradient-bg-color-4) 100%)',
+                        'linear-gradient(to bottom right, hsl(var(--gradient-bg-color-1)) 0%, hsl(var(--gradient-bg-color-2)) 35%, hsl(var(--gradient-bg-color-3)) 65%, hsl(var(--gradient-bg-color-4)) 100%)',
                     'background-attachment': 'fixed',
                 },
             });
         }),
     ],
+    safelist: ['grid-cols-1', 'grid-cols-2', 'grid-cols-3', 'grid-cols-4', 'grid-cols-5'],
 } satisfies Config;

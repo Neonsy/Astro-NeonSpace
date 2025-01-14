@@ -7,7 +7,7 @@ export default function Hero() {
     const y = useTransform(scrollYProgress, [0, 0.5], [0, -500]);
 
     return (
-        <section>
+        <section className='min-h-dvh flex flex-col items-center justify-center'>
             {/* <motion.div style={{ opacity, y }} className='pointer-events-none absolute inset-0'>
                 <div className='absolute left-0 top-0 h-full w-full bg-gradient-to-br from-[#1a1b4b] to-[#4b1b66] opacity-30' />
             </motion.div> */}
