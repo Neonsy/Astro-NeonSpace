@@ -1,3 +1,14 @@
+export interface Repository {
+    name: string;
+    url: string;
+    description: string;
+    stars: number;
+    forks: number;
+    watchers: number;
+    totalPRs: number;
+    totalIssues: number;
+}
+
 export interface GithubStats {
     userInfo: {
         username: string;
@@ -10,25 +21,12 @@ export interface GithubStats {
         stars: number;
         followers: number;
     };
-    popularRepos: Array<{
-        name: string;
-        url: string;
-        description: string;
-        stars: number;
-        forks: number;
-        watchers: number;
-        totalPRs: number;
-        totalIssues: number;
-    }>;
-    activeRepos: Array<{
-        name: string;
-        url: string;
-        description: string;
-        stars: number;
-        forks: number;
-        watchers: number;
-        totalPRs: number;
-        totalIssues: number;
-    }>;
+    popularRepos: Repository[];
+    activeRepos: Repository[];
     languages: Record<string, number>;
+}
+
+export interface GithubStatsProps {
+    username: string;
+    authToken: string;
 }

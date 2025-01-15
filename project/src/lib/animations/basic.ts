@@ -3,6 +3,6 @@ export const fadeInUpConfig = {
     whileInView: { opacity: 1, y: 0 },
     viewport: { once: true },
     transition: {
-        duration: 0.15,
+        duration: 0.3,
     },
 };
