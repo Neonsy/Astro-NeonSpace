@@ -5,10 +5,6 @@ export type GithubStats = {
         description: string | null;
         avatarUrl: string;
     };
-    commits: {
-        total: number;
-        lastYear: number;
-    };
     repositories: {
         public: number;
         private: number;
@@ -19,6 +15,7 @@ export type GithubStats = {
         followers: number;
     };
     pullRequests: {
+        total: number;
         merged: number;
         open: number;
         closed: number;

@@ -2,19 +2,6 @@ import { Octokit } from '@octokit/rest';
 
 import type { GithubStats } from '@/types/githubStats';
 
-async function getCommitStats(octokit: Octokit, owner: string, repo: string): Promise<{ data: { total: number }[] } | null> {
-    const stats = await octokit.repos.getCommitActivityStats({
-        owner,
-        repo,
-    });
-
-    if (stats.data && Array.isArray(stats.data)) {
-        return stats as { data: { total: number }[] };
-    }
-
-    return null;
-}
-
 export async function fetchGithubStats(username: string, authToken: string): Promise<GithubStats> {
     const octokit = new Octokit({
         auth: authToken,
@@ -41,7 +28,6 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
                 description: userData.bio,
                 avatarUrl: userData.avatar_url,
             },
-            commits: { total: 0, lastYear: 0 },
             repositories: {
                 public: userData.public_repos,
                 private: userData.total_private_repos || 0,
@@ -51,7 +37,7 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
                 stars: 0,
                 followers: userData.followers,
             },
-            pullRequests: { merged: 0, open: 0, closed: 0 },
+            pullRequests: { total: 0, merged: 0, open: 0, closed: 0 },
             issues: { total: 0, open: 0, closed: 0 },
             popularRepos: [],
             activeRepos: [],
@@ -182,35 +168,13 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
             stats.pullRequests.open += pulls.filter((pr) => pr.state === 'open').length;
             stats.pullRequests.closed += pulls.filter((pr) => pr.state === 'closed' && !pr.merged_at).length;
             stats.pullRequests.merged += pulls.filter((pr) => pr.merged_at).length;
+            stats.pullRequests.total = stats.pullRequests.open + stats.pullRequests.closed + stats.pullRequests.merged;
 
             stats.issues.open += actualIssues.filter((issue) => issue.state === 'open').length;
             stats.issues.closed += actualIssues.filter((issue) => issue.state === 'closed').length;
             stats.issues.total = stats.issues.open + stats.issues.closed;
 
             stats.social.stars += repo.stargazers_count ?? 0;
-
-            try {
-                // Get commit statistics for the repository
-                const commitStats = await getCommitStats(octokit, username, repo.name);
-
-                if (commitStats && Array.isArray(commitStats.data)) {
-                    // Add up all commits from the last year (52 weeks)
-                    stats.commits.lastYear += commitStats.data.reduce((sum, week) => sum + (week.total || 0), 0);
-                }
-
-                // Get total commits
-                const participation = await octokit.repos.getParticipationStats({
-                    owner: username,
-                    repo: repo.name,
-                });
-
-                if (participation.data && participation.data.owner && Array.isArray(participation.data.owner)) {
-                    stats.commits.total += participation.data.owner.reduce((sum, count) => sum + (count || 0), 0);
-                }
-            } catch (error) {
-                console.warn(`Failed to fetch commit stats for ${repo.name}:`, error);
-                // Continue with other repos even if one fails
-            }
         }
 
         const languageTotal = Object.values(stats.languages).reduce((sum, value) => sum + value, 0);
