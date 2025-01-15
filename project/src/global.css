@@ -5,13 +5,15 @@
 :root {
     /* Body Vars */
     --gradient-bg-color-1: 231deg 100% 10%;
-    --gradient-bg-color-2: 264deg 62% 10%;
-    --gradient-bg-color-3: 315deg 62% 12%;
+    --gradient-bg-color-2: 256deg 62% 10%;
+    --gradient-bg-color-3: 243deg 62% 9%;
     --gradient-bg-color-4: 240deg 62% 10%;
 
     /* Text Vars */
     --text-primary: 0deg 0% 99%;
     --text-secondary: 210deg 20% 75%;
+
+    --text-inverted: 0deg 0% 9%;
 
     /* Logo Text Gradient */
     --logo-gradient-1: 190deg 100% 56%;

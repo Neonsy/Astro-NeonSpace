@@ -33,6 +33,11 @@ export default {
                 '12xl': '14rem', // 224px
             },
             colors: {
+                text: {
+                    primary: 'hsl(var(--text-primary) / <alpha-value>)',
+                    secondary: 'hsl(var(--text-secondary) / <alpha-value>)',
+                    inverted: 'hsl(var(--text-inverted) / <alpha-value>)',
+                },
                 logo: {
                     'gradient-1': 'hsl(var(--logo-gradient-1) / <alpha-value>)',
                     'gradient-2': 'hsl(var(--logo-gradient-2) / <alpha-value>)',
