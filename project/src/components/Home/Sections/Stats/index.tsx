@@ -1,12 +1,19 @@
 import { motion } from 'motion/react';
-
 import { fadeInUpConfig } from '@/lib/animations/basic';
-
 import { useGithubStats } from '@/hooks/useGithubStats';
-import { FaCodePullRequest } from 'react-icons/fa6';
-import { RiGitRepositoryFill } from 'react-icons/ri';
-import { TiSocialGithub } from 'react-icons/ti';
-import { VscIssues } from 'react-icons/vsc';
+import { FaCodePullRequest, FaCodeFork, FaStar, FaEye, FaCode } from 'react-icons/fa6';
+import { VscIssues, VscRepo, VscGithubAlt } from 'react-icons/vsc';
+
+type Repository = {
+    name: string;
+    url: string;
+    description: string;
+    stars: number;
+    forks: number;
+    watchers: number;
+    totalPRs: number;
+    totalIssues: number;
+};
 
 type GithubStatsProps = {
     username: string;
@@ -21,123 +28,184 @@ export default function Stats({ username, authToken }: GithubStatsProps) {
     if (!stats) return null;
 
     return (
-        <section id='explore' className='flex flex-col items-center justify-center px-4 py-20 sm:px-6 lg:px-8'>
-            {/* User Info Card */}
+        <section id='explore' className='py-20'>
+            <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
+                <motion.h2
+                    {...fadeInUpConfig}
+                    className='mb-12 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-center text-3xl font-bold text-transparent'>
+                    Developer Profile
+                </motion.h2>
 
-            <motion.h2
-                {...fadeInUpConfig}
-                transition={{ ...fadeInUpConfig.transition, delay: 0.05 }}
-                className='mb-12 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-center text-3xl font-bold text-transparent'>
-                Developer Profile
-            </motion.h2>
-            <div className='relative mb-12 overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-8 backdrop-blur-lg'>
-                <motion.div
-                    {...fadeInUpConfig}
-                    transition={{ ...fadeInUpConfig.transition, delay: 0.05 }}
-                    className='flex flex-col items-center gap-6 sm:flex-row sm:items-start'>
-                    <a href={`https://github.com/${stats.userInfo.username}`} target='_blank' rel='noopener noreferrer' className='block'>
-                        <img
-                            src={stats.userInfo.avatarUrl}
-                            alt={stats.userInfo.username}
-                            className='h-24 w-24 rounded-full ring-2 ring-purple-500/20 transition-transform hover:scale-105'
-                        />
-                    </a>
-                    <div className='flex flex-col items-center sm:items-start'>
-                        <a
-                            href={`https://github.com/${stats.userInfo.username}`}
-                            target='_blank'
-                            rel='noopener noreferrer'
-                            className='bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-2xl font-bold text-transparent transition-opacity hover:opacity-80'>
-                            {stats.userInfo.username}
-                        </a>
-                        <p className='mt-1 text-sm capitalize text-gray-400'>
-                            Joined{' '}
-                            {new Date(stats.userInfo.joinedAt).toLocaleDateString('en-US', {
-                                month: 'long',
-                                year: 'numeric',
-                            })}
-                        </p>
-                        {stats.userInfo.description && (
-                            <p className='mt-4 max-w-2xl text-center text-gray-300 sm:text-left'>{stats.userInfo.description}</p>
-                        )}
-                    </div>
-                </motion.div>
-            </div>
-            <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
-                {/* Repositories Card */}
-                <motion.div
-                    {...fadeInUpConfig}
-                    transition={{ ...fadeInUpConfig.transition, delay: 0.05 }}
-                    className='relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-lg transition-all duration-200 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]'>
-                    <div className='mb-4 inline-block rounded-lg bg-gradient-to-br from-purple-500/20 to-blue-500/20 p-3'>
-                        <RiGitRepositoryFill className='h-6 w-6 text-blue-400' />
-                    </div>
-                    <div>
-                        <h3 className='mb-1 text-sm font-medium text-gray-400'>Repositories</h3>
-                        <p className='bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-2xl font-bold text-transparent'>
-                            {stats.repositories.total}
-                        </p>
-                        <p className='mt-1 text-sm capitalize text-gray-500'>
-                            {stats.repositories.public} public / {stats.repositories.private} private
-                        </p>
-                    </div>
-                </motion.div>
-
-                {/* Social Card */}
-                <motion.div
-                    {...fadeInUpConfig}
-                    transition={{ ...fadeInUpConfig.transition, delay: 0.1 }}
-                    className='relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-lg transition-all duration-200 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]'>
-                    <div className='mb-4 inline-block rounded-lg bg-gradient-to-br from-purple-500/20 to-blue-500/20 p-3'>
-                        <TiSocialGithub className='h-6 w-6 text-blue-400' />
-                    </div>
-                    <div>
-                        <h3 className='mb-1 text-sm font-medium text-gray-400'>Social</h3>
-                        <p className='bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-2xl font-bold text-transparent'>
-                            {stats.social.followers}
-                        </p>
-                        <p className='mt-1 text-sm capitalize text-gray-500'>{stats.social.stars} repository stars</p>
+                {/* Profile Card */}
+                <motion.div {...fadeInUpConfig} className='mb-8'>
+                    <div className='relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-lg'>
+                        <div className='flex flex-col items-center sm:flex-row sm:items-start sm:gap-6'>
+                            <a href={`https://github.com/${stats.userInfo.username}`} target='_blank' rel='noopener noreferrer'>
+                                <img
+                                    src={stats.userInfo.avatarUrl}
+                                    alt={stats.userInfo.username}
+                                    className='h-32 w-32 rounded-full ring-2 ring-purple-500/20 transition-transform hover:scale-105'
+                                />
+                            </a>
+                            <div className='mt-4 flex flex-1 flex-col items-center sm:items-start'>
+                                <div className='flex items-center gap-4'>
+                                    <a
+                                        href={`https://github.com/${stats.userInfo.username}`}
+                                        target='_blank'
+                                        rel='noopener noreferrer'
+                                        className='flex items-center gap-2 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-2xl font-bold text-transparent transition-opacity hover:opacity-80'>
+                                        <VscGithubAlt className='text-text-primary h-6 w-6' />
+                                        {stats.userInfo.username}
+                                    </a>
+                                    <div className='flex items-center gap-4 text-sm text-gray-400'>
+                                        <a
+                                            href={`https://github.com/${stats.userInfo.username}?tab=repositories`}
+                                            target='_blank'
+                                            rel='noopener noreferrer'
+                                            className='flex items-center gap-1 hover:text-gray-300'>
+                                            <VscRepo className='h-4 w-4' />
+                                            {stats.repositories}
+                                        </a>
+                                        <a
+                                            href={`https://github.com/${stats.userInfo.username}?tab=stars`}
+                                            target='_blank'
+                                            rel='noopener noreferrer'
+                                            className='flex items-center gap-1 hover:text-gray-300'>
+                                            <FaStar className='h-4 w-4' />
+                                            {stats.social.stars}
+                                        </a>
+                                        <a
+                                            href={`https://github.com/${stats.userInfo.username}?tab=followers`}
+                                            target='_blank'
+                                            rel='noopener noreferrer'
+                                            className='flex items-center gap-1 hover:text-gray-300'>
+                                            <VscGithubAlt className='h-4 w-4' />
+                                            {stats.social.followers}
+                                        </a>
+                                    </div>
+                                </div>
+                                <p className='mt-2 text-sm text-gray-400'>
+                                    Joined{' '}
+                                    {new Date(stats.userInfo.joinedAt).toLocaleDateString('en-US', {
+                                        month: 'long',
+                                        year: 'numeric',
+                                    })}
+                                </p>
+                                {stats.userInfo.description && <p className='mt-2 text-gray-300'>{stats.userInfo.description}</p>}
+                            </div>
+                        </div>
                     </div>
                 </motion.div>
 
-                {/* Pull Requests Card */}
-                <motion.div
-                    {...fadeInUpConfig}
-                    transition={{ ...fadeInUpConfig.transition, delay: 0.1 }}
-                    className='relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-lg transition-all duration-200 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]'>
-                    <div className='mb-4 inline-block rounded-lg bg-gradient-to-br from-purple-500/20 to-blue-500/20 p-3'>
-                        <FaCodePullRequest className='h-6 w-6 text-blue-400' />
-                    </div>
-                    <div>
-                        <h3 className='mb-1 text-sm font-medium text-gray-400'>Pull Requests</h3>
-                        <p className='bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-2xl font-bold text-transparent'>
-                            {stats.pullRequests.total}
-                        </p>
-                        <p className='mt-1 text-sm capitalize text-gray-500'>
-                            {stats.pullRequests.merged} merged / {stats.pullRequests.open} open / {stats.pullRequests.closed} closed
-                        </p>
+                {/* Languages Section */}
+                <motion.div {...fadeInUpConfig} className='mb-12'>
+                    <h3 className='mb-6 text-xl font-semibold text-gray-200'>Languages</h3>
+                    <div className='grid gap-3 sm:grid-cols-2'>
+                        {Object.entries(stats.languages)
+                            .sort(([, a], [, b]) => b - a)
+                            .map(([language, percentage]) => (
+                                <LanguageBar key={language} language={language} percentage={percentage} />
+                            ))}
                     </div>
                 </motion.div>
 
-                {/* Issues Card */}
-                <motion.div
-                    {...fadeInUpConfig}
-                    transition={{ ...fadeInUpConfig.transition, delay: 0.15 }}
-                    className='relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-lg transition-all duration-200 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]'>
-                    <div className='mb-4 inline-block rounded-lg bg-gradient-to-br from-purple-500/20 to-blue-500/20 p-3'>
-                        <VscIssues className='h-6 w-6 text-blue-400' />
-                    </div>
-                    <div>
-                        <h3 className='mb-1 text-sm font-medium text-gray-400'>Issues</h3>
-                        <p className='bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-2xl font-bold text-transparent'>
-                            {stats.issues.total}
-                        </p>
-                        <p className='mt-1 text-sm capitalize text-gray-500'>
-                            {stats.issues.open} open / {stats.issues.closed} closed
-                        </p>
-                    </div>
-                </motion.div>
+                {/* Repository Sections */}
+                <div className='space-y-12'>
+                    {/* Popular Repositories */}
+                    <RepoSection title='Popular Repositories' repos={stats.popularRepos} username={stats.userInfo.username} />
+
+                    {/* Active Repositories */}
+                    <RepoSection title='Active Repositories' repos={stats.activeRepos} username={stats.userInfo.username} />
+                </div>
             </div>
         </section>
+    );
+}
+
+type RepoSectionProps = {
+    title: string;
+    repos: Repository[];
+    username: string;
+};
+
+function RepoSection({ title, repos }: RepoSectionProps) {
+    return (
+        <motion.div {...fadeInUpConfig}>
+            <h3 className='mb-6 text-xl font-semibold text-gray-200'>{title}</h3>
+            <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
+                {repos.map((repo) => (
+                    <div
+                        key={repo.name}
+                        className='group relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-lg transition-all duration-200 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]'>
+                        <h4 className='flex items-center gap-2 font-medium text-gray-200'>
+                            <FaCode className='h-4 w-4 text-blue-400' />
+                            <a href={repo.url} target='_blank' rel='noopener noreferrer' className='hover:text-blue-400'>
+                                {repo.name}
+                            </a>
+                        </h4>
+                        <p className='mt-2 line-clamp-2 text-sm text-gray-400'>{repo.description}</p>
+                        <div className='mt-4 flex items-center gap-4 text-sm text-gray-400'>
+                            <a
+                                href={`${repo.url}/stargazers`}
+                                target='_blank'
+                                rel='noopener noreferrer'
+                                className='flex items-center gap-1 hover:text-gray-300'>
+                                <FaStar className='h-4 w-4' />
+                                {repo.stars}
+                            </a>
+                            <a
+                                href={`${repo.url}/network/members`}
+                                target='_blank'
+                                rel='noopener noreferrer'
+                                className='flex items-center gap-1 hover:text-gray-300'>
+                                <FaCodeFork className='h-4 w-4' />
+                                {repo.forks}
+                            </a>
+                            <a
+                                href={`${repo.url}/watchers`}
+                                target='_blank'
+                                rel='noopener noreferrer'
+                                className='flex items-center gap-1 hover:text-gray-300'>
+                                <FaEye className='h-4 w-4' />
+                                {repo.watchers}
+                            </a>
+                            <a
+                                href={`${repo.url}/pulls`}
+                                target='_blank'
+                                rel='noopener noreferrer'
+                                className='flex items-center gap-1 hover:text-gray-300'>
+                                <FaCodePullRequest className='h-4 w-4' />
+                                {repo.totalPRs}
+                            </a>
+                            <a
+                                href={`${repo.url}/issues`}
+                                target='_blank'
+                                rel='noopener noreferrer'
+                                className='flex items-center gap-1 hover:text-gray-300'>
+                                <VscIssues className='h-4 w-4' />
+                                {repo.totalIssues}
+                            </a>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </motion.div>
+    );
+}
+
+function LanguageBar({ language, percentage }: { language: string; percentage: number }) {
+    return (
+        <div className='flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.03] p-4 backdrop-blur-lg'>
+            <span className='w-24 text-sm font-medium text-gray-200'>{language}</span>
+            <div className='w-[200px] flex-none'>
+                <div className='h-2 w-full overflow-hidden rounded-full bg-white/[0.03]'>
+                    <div
+                        className='h-full rounded-full bg-gradient-to-r from-purple-500/50 to-blue-500/50 backdrop-blur-lg'
+                        style={{ width: `${percentage}%` }}
+                    />
+                </div>
+            </div>
+            <span className='w-16 text-right text-sm text-gray-400'>{percentage.toFixed(1)}%</span>
+        </div>
     );
 }
