@@ -16,8 +16,8 @@ export default function Stats({ username, authToken }: GithubStatsProps) {
 
     return (
         <section id='explore' className='py-20'>
-            <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
-                <h2 className='mb-12 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-center text-3xl font-bold text-transparent'>
+            <div className='mx-auto px-4 sm:px-6 lg:max-w-7xl lg:px-8 flex flex-col gap-y-12'>
+                <h2 className='bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-center text-3xl font-bold text-transparent'>
                     Developer Profile
                 </h2>
 
