@@ -4,6 +4,8 @@ import QueryDevToolsWrapper from '@/components/QueryDevToolsWrapper';
 import Head from '@layouts/global/Head.astro';
 import ParticleBackground from '@/components/ParticleBackground';
 
+import Header from '@/components/Header';
+
 import '@/global.css';
 
 const devEnv = import.meta.env.DEV;
@@ -26,7 +28,7 @@ const {
     <body class='body-gradient'>
         <ParticleBackground client:load transition:persist />
         <div class='flex min-h-dvh flex-col'>
-            <!-- <Header/> -->
+            <Header />
             <main class='flex-grow'>
                 <slot />
             </main>

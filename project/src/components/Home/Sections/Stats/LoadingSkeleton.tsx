@@ -1,7 +1,3 @@
-import { motion } from 'motion/react';
-
-import { fadeInUpConfig } from '@/lib/animations/basic';
-
 type LoadingSkeletonProps = {
     repoSection: string[];
 };
@@ -10,11 +6,9 @@ export default function LoadingSkeleton({ repoSection }: LoadingSkeletonProps) {
     return (
         <section id='explore' className='py-20'>
             <div className='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8'>
-                <motion.h2
-                    {...fadeInUpConfig}
-                    className='mb-12 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-center text-3xl font-bold text-transparent'>
+                <h2 className='mb-12 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-center text-3xl font-bold text-transparent'>
                     Developer Profile
-                </motion.h2>
+                </h2>
 
                 {/* Profile Card Skeleton */}
                 <div className='mb-8 rounded-xl border border-white/10 bg-white/[0.03] p-6'>
