@@ -33,3 +33,7 @@
 p {
     color: hsl(var(--text-secondary));
 }
+
+html {
+    scroll-behavior: smooth;
+}

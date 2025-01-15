@@ -18,11 +18,7 @@ export default function Hero() {
                         href='#explore'
                         {...fadeInUpConfig}
                         transition={{ ...fadeInUpConfig.transition }}
-                        className='rounded-3xl border border-white/15 bg-logo-gradient-3/30 px-12 py-3 text-lg font-bold backdrop-blur-sm transition-all hover:border-white/20 hover:bg-logo-gradient-3/50'
-                        onClick={(e) => {
-                            e.preventDefault();
-                            document.querySelector('#explore')?.scrollIntoView({ behavior: 'smooth' });
-                        }}>
+                        className='rounded-3xl border border-white/15 bg-logo-gradient-3/30 px-12 py-3 text-lg font-bold backdrop-blur-sm transition-all hover:border-white/20 hover:bg-logo-gradient-3/50'>
                         Explore
                     </motion.a>
                     <motion.a
