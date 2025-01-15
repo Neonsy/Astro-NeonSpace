@@ -2,6 +2,19 @@ import { Octokit } from '@octokit/rest';
 
 import type { GithubStats } from '@/types/githubStats';
 
+async function getCommitStats(octokit: Octokit, owner: string, repo: string): Promise<{ data: { total: number }[] } | null> {
+    const stats = await octokit.repos.getCommitActivityStats({
+        owner,
+        repo,
+    });
+
+    if (stats.data && Array.isArray(stats.data)) {
+        return stats as { data: { total: number }[] };
+    }
+
+    return null;
+}
+
 export async function fetchGithubStats(username: string, authToken: string): Promise<GithubStats> {
     const octokit = new Octokit({
         auth: authToken,
@@ -22,6 +35,12 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
 
         // Initialize stats object
         const stats: GithubStats = {
+            userInfo: {
+                username: userData.login,
+                joinedAt: userData.created_at,
+                description: userData.bio,
+                avatarUrl: userData.avatar_url,
+            },
             commits: { total: 0, lastYear: 0 },
             repositories: {
                 public: userData.public_repos,
@@ -169,6 +188,29 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
             stats.issues.total = stats.issues.open + stats.issues.closed;
 
             stats.social.stars += repo.stargazers_count ?? 0;
+
+            try {
+                // Get commit statistics for the repository
+                const commitStats = await getCommitStats(octokit, username, repo.name);
+
+                if (commitStats && Array.isArray(commitStats.data)) {
+                    // Add up all commits from the last year (52 weeks)
+                    stats.commits.lastYear += commitStats.data.reduce((sum, week) => sum + (week.total || 0), 0);
+                }
+
+                // Get total commits
+                const participation = await octokit.repos.getParticipationStats({
+                    owner: username,
+                    repo: repo.name,
+                });
+
+                if (participation.data && participation.data.owner && Array.isArray(participation.data.owner)) {
+                    stats.commits.total += participation.data.owner.reduce((sum, count) => sum + (count || 0), 0);
+                }
+            } catch (error) {
+                console.warn(`Failed to fetch commit stats for ${repo.name}:`, error);
+                // Continue with other repos even if one fails
+            }
         }
 
         const languageTotal = Object.values(stats.languages).reduce((sum, value) => sum + value, 0);

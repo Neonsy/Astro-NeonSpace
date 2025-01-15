@@ -1,4 +1,10 @@
 export type GithubStats = {
+    userInfo: {
+        username: string;
+        joinedAt: string;
+        description: string | null;
+        avatarUrl: string;
+    };
     commits: {
         total: number;
         lastYear: number;
