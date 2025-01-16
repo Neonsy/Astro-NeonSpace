@@ -93,8 +93,6 @@ jobs:
         runs-on: ubuntu-latest
         needs: [restrict-pr, label-pr]
         if: ${{ always() && (needs.restrict-pr.result == 'success' || needs.restrict-pr.result == 'skipped') && (needs.label-pr.result == 'success' || needs.label-pr.result == 'skipped') }}
-        outputs:
-            has_changes: ${{ steps.check_changes.outputs.has_changes }}
 
         permissions:
             contents: write
@@ -221,8 +219,6 @@ jobs:
 
     start-prod-build:
         runs-on: ubuntu-latest
-        needs: integrity-check
-        if: needs.integrity-check.outputs.has_changes == 'false'
         steps:
             - name: Start production build
               run: |
