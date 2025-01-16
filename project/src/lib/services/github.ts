@@ -97,13 +97,13 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
 
         // Update overall stats
         for (const repo of repos.filter((r) => r.name !== 'Neonsy')) {
-            // Get language statistics
-            if (repo.language) {
-                const { data: languages } = await octokit.repos.listLanguages({
-                    owner: username,
-                    repo: repo.name,
-                });
+            // Get language statistics for all repos
+            const { data: languages } = await octokit.repos.listLanguages({
+                owner: username,
+                repo: repo.name,
+            });
 
+            if (Object.keys(languages).length > 0) {
                 const total = Object.values(languages).reduce((sum, value) => sum + value, 0);
                 Object.entries(languages).forEach(([lang, bytes]) => {
                     stats.languages[lang] = (stats.languages[lang] || 0) + (bytes / total) * 100;
@@ -113,10 +113,25 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
             stats.social.stars += repo.stargazers_count ?? 0;
         }
 
+        // Calculate total before rounding
         const languageTotal = Object.values(stats.languages).reduce((sum, value) => sum + value, 0);
-        Object.keys(stats.languages).forEach((lang) => {
-            stats.languages[lang] = Number(((stats.languages[lang] / languageTotal) * 100).toFixed(2));
-        });
+        
+        // Sort languages by percentage (descending) and round them
+        const sortedLanguages: Record<string, number> = {};
+        Object.entries(stats.languages)
+            .sort(([, a], [, b]) => b - a)
+            .forEach(([lang, percentage], index, array) => {
+                // For all entries except the last one, round to 1 decimal place
+                if (index < array.length - 1) {
+                    sortedLanguages[lang] = Number((percentage / languageTotal * 100).toFixed(1));
+                } else {
+                    // For the last (smallest) percentage, calculate it to make total exactly 100%
+                    const currentTotal = Object.values(sortedLanguages).reduce((sum, val) => sum + val, 0);
+                    sortedLanguages[lang] = Number((100 - currentTotal).toFixed(1));
+                }
+            });
+        
+        stats.languages = sortedLanguages;
 
         return stats;
     } catch (error) {
