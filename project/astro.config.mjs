@@ -26,4 +26,5 @@ export default defineConfig({
     ],
     site: 'https://astro-neonspace.vercel.app',
     adapter: vercel(),
+    output: 'server',
 });

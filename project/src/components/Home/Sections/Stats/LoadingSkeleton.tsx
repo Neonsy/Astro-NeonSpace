@@ -1,8 +1,4 @@
-type LoadingSkeletonProps = {
-    repoSection: string[];
-};
-
-export default function LoadingSkeleton({ repoSection }: LoadingSkeletonProps) {
+export default function LoadingSkeleton() {
     return (
         <section id='explore' className='py-20'>
             <div className='mx-auto flex flex-col gap-y-12 px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
@@ -50,7 +46,7 @@ export default function LoadingSkeleton({ repoSection }: LoadingSkeletonProps) {
                 </div>
 
                 {/* Repositories Skeleton - Updated sizing */}
-                {repoSection.map((title, sectionIndex) => (
+                {["Popular Repositories", "Active Repositories"].map((title, sectionIndex) => (
                     <div key={sectionIndex} className='flex flex-col gap-y-4'>
                         <h3 className='text-xl font-semibold text-text-primary'>{title}</h3>
                         <div className='grid grid-cols-1 gap-4 lg:grid-cols-3'>

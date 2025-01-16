@@ -1,16 +1,19 @@
 ---
+export const prerender = true;
+
 import Layout from '@layouts/global/RootLayout.astro';
 import Container from '@/components/Container';
 
 import Hero from '@/components/Home/Sections/Hero';
-import Stats from '@/components/Home/Sections/Stats';
-
-const authToken = import.meta.env.GITHUB_TOKEN;
+import Stats from '@/components/Home/Sections/Stats/index.astro';
+import LoadingSkeleton from '@/components/Home/Sections/Stats/LoadingSkeleton';
 ---
 
 <Layout title='Home'>
     <Container>
         <Hero client:load />
-        <Stats client:load username='neonsy' authToken={authToken} />
+        <Stats server:defer>
+            <LoadingSkeleton slot="fallback" />
+        </Stats>
     </Container>
 </Layout>
