@@ -4,6 +4,11 @@ on:
         branches: Preview
         types: [opened, reopened, synchronize]
 
+# Add concurrency group to cancel in-progress runs
+concurrency:
+    group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+    cancel-in-progress: true
+
 env:
     VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
     VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
@@ -15,15 +20,21 @@ jobs:
 
         steps:
             - name: Wait for Main CI/CD
+              id: wait-for-ci-cd
               uses: fountainhead/action-wait-for-check@v1.2.0
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
-                  checkName: integrity-check
+                  checkName: start-prod-build
                   intervalSeconds: 30
                   timeoutSeconds: 600
                   ref: ${{ github.event.pull_request.head.sha }}
 
-            - uses: actions/checkout@v4
+            - name: Check if integrity check is successful
+              if: steps.wait-for-ci-cd.outputs.conclusion == 'failure'
+              run: exit 1
+
+            - name: Checkout
+              uses: actions/checkout@v4
 
             - name: Install pnpm
               uses: pnpm/action-setup@v4

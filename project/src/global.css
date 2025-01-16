@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    /* Body Vars */
+    --gradient-bg-color-1: 231deg 100% 6%;
+    --gradient-bg-color-2: 256deg 62% 12%;
+    --gradient-bg-color-3: 243deg 62% 9%;
+    --gradient-bg-color-4: 240deg 62% 3%;
+
+    /* Text Vars */
+    --text-primary: 0deg 0% 99%;
+    --text-secondary: 210deg 20% 75%;
+
+    --text-inverted: 0deg 0% 9%;
+
+    /* Logo Text Gradient */
+    --logo-gradient-1: 190deg 100% 56%;
+    --logo-gradient-2: 210deg 100% 50%;
+    --logo-gradient-3: 300deg 100% 51%;
+
+    /* Github Stats */
+    --github-stats-bg: 264deg 80% 50%;
+    --github-stats-text: 264deg 80% 90%;
+    --github-stats-icon: 180deg 100% 45%;
+}
+
+:where(:not(svg, svg *)) {
+    color: hsl(var(--text-primary));
+}
+
+p {
+    color: hsl(var(--text-secondary));
+}
+
+html {
+    scroll-behavior: smooth;
+}
