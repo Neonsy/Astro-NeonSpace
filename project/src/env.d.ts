@@ -1,3 +1,3 @@
 interface ImportMetaEnv {
-  readonly GITHUB_FETCH_TOKEN: string;
+    readonly GITHUB_TOKEN: string;
 }

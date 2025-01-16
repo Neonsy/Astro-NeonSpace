@@ -17,7 +17,7 @@ export default function ProfileCard({ stats }: ProfileCardProps) {
     return (
         <motion.div {...fadeInUpConfig}>
             <div className='rounded-xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-lg transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]'>
-                <div className='flex flex-col items-center justify-center md:flex-row  sm:gap-6'>
+                <div className='flex flex-col items-center justify-center sm:gap-6 md:flex-row'>
                     <Link href={`https://github.com/${stats.userInfo.username}`} external>
                         <img
                             src={stats.userInfo.avatarUrl}
@@ -26,7 +26,7 @@ export default function ProfileCard({ stats }: ProfileCardProps) {
                         />
                     </Link>
                     <div className='mt-4 flex flex-1 flex-col items-center sm:items-start'>
-                        <div className='flex items-center gap-4'>
+                        <div className='flex flex-col sm:flex-row items-center gap-4'>
                             <Link
                                 href={`https://github.com/${stats.userInfo.username}`}
                                 external
