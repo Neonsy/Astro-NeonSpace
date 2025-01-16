@@ -50,7 +50,7 @@ export default function MobileNav({ currentPath, navItems }: Props) {
                         className='absolute left-0 right-0 top-full w-full bg-text-inverted shadow-lg'>
                         <div className='flex flex-col'>
                             {/* Main Navigation Links */}
-                            <ul className='flex flex-col items-center ~px-6/8 gap-y-2 ~py-4/6'>
+                            <ul className='flex flex-col items-center gap-y-2 ~px-6/8 ~py-4/6'>
                                 {navItems.map(({ href, label, delay }) => (
                                     <motion.li
                                         key={href}

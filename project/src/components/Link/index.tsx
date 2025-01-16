@@ -8,7 +8,7 @@ interface LinkProps extends React.ComponentProps<'a'> {
     hasMotion?: boolean;
     className?: string;
     motionProps?: MotionProps;
-};
+}
 
 export default function Link({ children, href, external = false, hasMotion = false, className = '', motionProps = {} }: LinkProps) {
     const externalProps = external ? { target: '_blank', rel: 'noopener noreferrer' } : {};

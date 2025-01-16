@@ -1,4 +1,4 @@
-import type { NavItem } from "@/types/navItems";
+import type { NavItem } from '@/types/navItems';
 
 export const NAV_ITEMS: ReadonlyArray<NavItem> = [
     { href: '/', label: 'Home', delay: 0.1 },
