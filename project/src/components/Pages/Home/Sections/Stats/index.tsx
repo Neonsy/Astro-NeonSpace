@@ -1,6 +1,6 @@
-import LanguageSection from '@/components/Home/Sections/Stats/LanguageSection';
-import ProfileCard from '@/components/Home/Sections/Stats/ProfileCard';
-import RepoSection from '@/components/Home/Sections/Stats/RepoSection';
+import LanguageSection from '@/components/Pages/Home/Sections/Stats/LanguageSection';
+import ProfileCard from '@/components/Pages/Home/Sections/Stats/ProfileCard';
+import RepoSection from '@/components/Pages/Home/Sections/Stats/RepoSection';
 
 import type { GithubStats } from '@/types/githubStats';
 
