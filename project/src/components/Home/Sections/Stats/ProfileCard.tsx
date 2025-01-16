@@ -26,7 +26,7 @@ export default function ProfileCard({ stats }: ProfileCardProps) {
                         />
                     </Link>
                     <div className='mt-4 flex flex-1 flex-col items-center sm:items-start'>
-                        <div className='flex flex-col sm:flex-row items-center gap-4'>
+                        <div className='flex flex-col items-center gap-4 sm:flex-row'>
                             <Link
                                 href={`https://github.com/${stats.userInfo.username}`}
                                 external

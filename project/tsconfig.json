@@ -11,7 +11,7 @@
             "@assets/*": ["src/assets/*"],
             "@layouts/*": ["src/layouts/*"],
             "@pages/*": ["src/pages/*"],
-            "@lib/*": ["src/lib/*"],
+            "@lib/*": ["src/lib/*"]
         },
         "jsx": "react-jsx",
         "jsxImportSource": "react"

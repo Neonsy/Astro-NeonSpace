@@ -36,7 +36,9 @@ export default function LoadingSkeleton() {
                     <h3 className='text-xl font-semibold text-text-primary'>Languages</h3>
                     <div className='grid grid-cols-1 gap-3 lg:grid-cols-2'>
                         {[...Array(6)].map((_, i) => (
-                            <div key={i} className='flex items-center rounded-lg border border-white/10 bg-white/[0.03] p-4 backdrop-blur-lg justify-between'>
+                            <div
+                                key={i}
+                                className='flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.03] p-4 backdrop-blur-lg'>
                                 <div className='h-4 w-12 animate-pulse rounded bg-white/10' />
                                 <div className='h-2 w-36 animate-pulse rounded-full bg-white/10' />
                                 <div className='h-4 w-6 animate-pulse rounded bg-white/10' />
@@ -46,7 +48,7 @@ export default function LoadingSkeleton() {
                 </div>
 
                 {/* Repositories Skeleton - Updated sizing */}
-                {["Popular Repositories", "Active Repositories"].map((title, sectionIndex) => (
+                {['Popular Repositories', 'Active Repositories'].map((title, sectionIndex) => (
                     <div key={sectionIndex} className='flex flex-col gap-y-4'>
                         <h3 className='text-xl font-semibold text-text-primary'>{title}</h3>
                         <div className='grid grid-cols-1 gap-4 lg:grid-cols-3'>
