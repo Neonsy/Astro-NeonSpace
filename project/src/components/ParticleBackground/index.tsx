@@ -24,7 +24,7 @@ export default function ParticleBackground({}) {
 
     const options: ISourceOptions = useMemo(
         () => ({
-            fpsLimit: 60,
+            fpsLimit: 120,
             background: {
                 repeat: 'no-repeat',
             },
@@ -80,12 +80,12 @@ export default function ParticleBackground({}) {
             detectRetina: true,
             responsive: [
                 {
-                    maxWidth: 900,
+                    maxWidth: 768,
                     mode: 'screen',
                     options: {
                         particles: {
                             number: {
-                                value: 120,
+                                value: 0,
                             },
                         },
                     },

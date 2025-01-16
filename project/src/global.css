@@ -9,6 +9,12 @@
     --gradient-bg-color-3: 243deg 62% 9%;
     --gradient-bg-color-4: 240deg 62% 3%;
 
+    /* Header vars */
+    --header-primary: 222deg 55% 3%;
+
+    /* Footer vars */
+    --footer-primary: 270deg 55% 3%;
+
     /* Text Vars */
     --text-primary: 0deg 0% 99%;
     --text-secondary: 210deg 20% 75%;

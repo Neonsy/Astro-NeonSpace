@@ -49,6 +49,12 @@ export default {
                     'gradient-3': 'hsl(var(--gradient-bg-color-3) / <alpha-value>)',
                     'gradient-4': 'hsl(var(--gradient-bg-color-4) / <alpha-value>)',
                 },
+                header: {
+                    'primary': 'hsl(var(--header-primary) / <alpha-value>)',
+                },
+                footer: {
+                    'primary': 'hsl(var(--footer-primary) / <alpha-value>)',
+                },
                 github: {
                     'stats-bg': 'hsl(var(--github-stats-bg) / <alpha-value>)',
                     'stats-icon': 'hsl(var(--github-stats-icon) / <alpha-value>)',
