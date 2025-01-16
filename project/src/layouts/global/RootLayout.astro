@@ -2,7 +2,7 @@
 import Head from '@layouts/global/Head.astro';
 import ParticleBackground from '@/components/ParticleBackground';
 
-import Header from '@/components/Header';
+import Header from '@/components/Header/index.astro';
 
 import '@/global.css';
 
@@ -25,7 +25,7 @@ const {
         <ParticleBackground client:load transition:persist />
         <div class='flex min-h-dvh flex-col'>
             <Header />
-            <main class='flex-grow'>
+            <main class='flex-grow' transition:persist>
                 <slot />
             </main>
         </div>
