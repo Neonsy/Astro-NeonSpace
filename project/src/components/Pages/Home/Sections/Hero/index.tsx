@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 
-import { fadeInUpConfig } from '@/lib/animations/basic';
+import { fadeInUpConfig } from '@/lib/animations/simple';
 
 import { AiOutlineRocket } from 'react-icons/ai';
 
@@ -20,7 +20,7 @@ export default function Hero() {
                         Where Digital Artistry Intersects With The Cosmos, Creating Experiences Beyond This Reality
                     </motion.p>
                 </div>
-                <div className='flex flex-col items-center gap-4 md:flex-row'>
+                <div className='mt-4 flex flex-col items-center gap-4 md:flex-row'>
                     <Link
                         href='/contact'
                         hasMotion
@@ -38,7 +38,7 @@ export default function Hero() {
                 </div>
             </div>
             <Link href='#explore' className=''>
-                <AiOutlineRocket className='~text-5xl/9xl animate-bounce text-white backdrop-blur-sm ~p-1/3 rounded-full border border-white/15' />
+                <AiOutlineRocket className='animate-bounce rounded-full border border-white/15 text-white backdrop-blur-sm ~text-5xl/9xl ~p-1/3' />
             </Link>
         </section>
     );

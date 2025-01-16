@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 
-import { fadeInUpConfig } from '@/lib/animations/basic';
+import { fadeInUpConfig } from '@/lib/animations/simple';
 
 import { FaCode, FaCodeFork, FaCodePullRequest, FaEye, FaStar } from 'react-icons/fa6';
 import { VscIssues } from 'react-icons/vsc';

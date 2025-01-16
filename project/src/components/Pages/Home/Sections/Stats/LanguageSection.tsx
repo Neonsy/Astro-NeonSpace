@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 
-import { fadeInUpConfig } from '@/lib/animations/basic';
+import { fadeInUpConfig } from '@/lib/animations/simple';
 
 type LanguageSectionProps = {
     languages: Record<string, number>;
