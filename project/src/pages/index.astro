@@ -11,7 +11,7 @@ import LoadingSkeleton from '@/components/Home/Sections/Stats/LoadingSkeleton';
 
 <Layout title='Home'>
     <Container>
-            <Hero client:load />
+        <Hero client:load />
         <Stats server:defer>
             <LoadingSkeleton slot='fallback' />
         </Stats>
