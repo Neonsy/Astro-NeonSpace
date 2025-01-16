@@ -216,3 +216,11 @@ jobs:
                   git push origin "HEAD:${{ github.head_ref }}"
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    start-prod-build:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Start production build
+              run: |
+                  echo "This job exists as a signal to trigger the production deployment workflow."
+                  echo "It is part of the orchestration flow between different GitHub workflows."

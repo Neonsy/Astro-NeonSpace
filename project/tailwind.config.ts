@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
 import fluid, { extract, screens, fontSize } from 'fluid-tailwind';
 import forms from '@tailwindcss/forms';
+import plugin from 'tailwindcss/plugin';
 
 export default {
     content: {
@@ -27,10 +28,32 @@ export default {
                 '7xl': '4.5rem', // 72px
                 '8xl': '6rem', // 96px
                 '9xl': '8rem', // 128px
+                '10xl': '10rem', // 160px
+                '11xl': '12rem', // 192px
+                '12xl': '14rem', // 224px
             },
-            backgroundImage: {
-                'main-gradient':
-                    'linear-gradient(135deg, var(--gradient-bg-color-1) 0%, var(--gradient-bg-color-2) 35%, var(--gradient-bg-color-3) 65%, var(--gradient-bg-color-4) 100%)',
+            colors: {
+                text: {
+                    primary: 'hsl(var(--text-primary) / <alpha-value>)',
+                    secondary: 'hsl(var(--text-secondary) / <alpha-value>)',
+                    inverted: 'hsl(var(--text-inverted) / <alpha-value>)',
+                },
+                logo: {
+                    'gradient-1': 'hsl(var(--logo-gradient-1) / <alpha-value>)',
+                    'gradient-2': 'hsl(var(--logo-gradient-2) / <alpha-value>)',
+                    'gradient-3': 'hsl(var(--logo-gradient-3) / <alpha-value>)',
+                },
+                body: {
+                    'gradient-1': 'hsl(var(--gradient-bg-color-1) / <alpha-value>)',
+                    'gradient-2': 'hsl(var(--gradient-bg-color-2) / <alpha-value>)',
+                    'gradient-3': 'hsl(var(--gradient-bg-color-3) / <alpha-value>)',
+                    'gradient-4': 'hsl(var(--gradient-bg-color-4) / <alpha-value>)',
+                },
+                github: {
+                    'stats-bg': 'hsl(var(--github-stats-bg) / <alpha-value>)',
+                    'stats-icon': 'hsl(var(--github-stats-icon) / <alpha-value>)',
+                    'stats-text': 'hsl(var(--github-stats-text) / <alpha-value>)',
+                },
             },
         },
     },
@@ -39,5 +62,15 @@ export default {
             checkSC144: false,
         }),
         forms,
+        plugin(function ({ addUtilities }) {
+            addUtilities({
+                '.body-gradient': {
+                    background:
+                        'linear-gradient(to bottom right, hsl(var(--gradient-bg-color-1)) 0%, hsl(var(--gradient-bg-color-2)) 35%, hsl(var(--gradient-bg-color-3)) 65%, hsl(var(--gradient-bg-color-4)) 100%)',
+                    'background-attachment': 'fixed',
+                },
+            });
+        }),
     ],
+    safelist: ['grid-cols-1', 'grid-cols-2', 'grid-cols-3', 'grid-cols-4', 'grid-cols-5'],
 } satisfies Config;

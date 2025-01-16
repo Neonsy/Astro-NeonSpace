@@ -1,0 +1,33 @@
+---
+import Head from '@layouts/global/Head.astro';
+import ParticleBackground from '@/components/ParticleBackground';
+
+import Header from '@/components/Header/index.astro';
+
+import '@/global.css';
+
+type Props = {
+    children: any;
+    title: string;
+    description?: string;
+};
+
+const {
+    title,
+    description = 'Enter NeonSpace - A digital portfolio where Timothy Enderson weaves code into art, shares tech insights through blogging, and showcases innovative projects that push creative boundaries',
+} = Astro.props as Props;
+---
+
+<!doctype html>
+<html lang='en'>
+    <Head title={title} description={description} />
+    <body class='body-gradient'>
+        <ParticleBackground client:load transition:persist />
+        <div class='flex min-h-dvh flex-col'>
+            <Header />
+            <main class='flex-grow' transition:persist>
+                <slot />
+            </main>
+        </div>
+    </body>
+</html>

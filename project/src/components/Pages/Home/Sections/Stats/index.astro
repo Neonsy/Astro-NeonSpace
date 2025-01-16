@@ -1,0 +1,12 @@
+---
+import { fetchGithubStats } from '@lib/services/github';
+
+import Stats from '@/components/Pages/Home/Sections/Stats';
+
+// Set Cache-Control headers
+Astro.response.headers.set('Cache-Control', 'public, max-age=86400, stale-while-revalidate=604800');
+
+const stats = await fetchGithubStats('neonsy', import.meta.env.GITHUB_TOKEN);
+---
+
+<Stats stats={stats} client:load />

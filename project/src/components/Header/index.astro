@@ -1,0 +1,7 @@
+---
+import Header from '@/components/Header';
+
+const pathname = new URL(Astro.request.url).pathname;
+---
+
+<Header transition:persist currentPath={pathname} client:load />
