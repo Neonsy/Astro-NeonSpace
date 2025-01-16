@@ -1,8 +1,11 @@
 import { motion } from 'motion/react';
-import { FaGithub } from 'react-icons/fa6';
+
 import Link from '@/components/Link';
+
+import { FaGithub } from 'react-icons/fa6';
 import { fadeInThenBounceConfig, fadeInUpConfig, slideInLeftConfig } from '@/lib/animations/simple';
-import type { NavItem } from './navItems';
+
+import type { NavItem } from '@/types/navItems';
 
 type Props = {
     currentPath: string;
@@ -25,7 +28,7 @@ function NavItem({ href, label, delay, currentPath }: ItemProps) {
 
 export default function DesktopNav({ currentPath, navItems }: Props) {
     return (
-        <nav className='hidden items-center justify-between ~px-10/4 ~py-2/3 md:flex'>
+        <nav className='hidden items-center justify-between ~px-10/4 ~py-2/3 lg:flex'>
             {/* Logo */}
             <div>
                 <Link

@@ -1,6 +1,7 @@
-import { NAV_ITEMS } from './navItems';
-import DesktopNav from './DesktopNav';
-import MobileNav from './MobileNav';
+import { NAV_ITEMS } from '@/lib/nav/items';
+
+import DesktopNav from '@/components/Header/Nav/DesktopNav';
+import MobileNav from '@/components/Header/Nav/MobileNav';
 
 type Props = {
     currentPath: string;

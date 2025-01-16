@@ -1,10 +1,14 @@
-import { motion, AnimatePresence } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
+
+import { fadeInUpConfig, slideInRightConfig } from '@/lib/animations/simple';
+
+import { useState } from 'react';
 import { FaGithub } from 'react-icons/fa6';
 import { IoClose, IoMenu } from 'react-icons/io5';
-import { useState } from 'react';
+
 import Link from '@/components/Link';
-import { fadeInThenBounceConfig, fadeInUpConfig, slideInRightConfig } from '@/lib/animations/simple';
-import type { NavItem } from './navItems';
+
+import type { NavItem } from '@/types/navItems';
 
 type Props = {
     currentPath: string;
@@ -15,7 +19,7 @@ export default function MobileNav({ currentPath, navItems }: Props) {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <nav className='md:hidden'>
+        <nav className='lg:hidden'>
             {/* Mobile Header */}
             <div className='flex items-center justify-between ~px-6/8 ~py-2/3'>
                 <Link
@@ -43,10 +47,10 @@ export default function MobileNav({ currentPath, navItems }: Props) {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className='absolute left-0 right-0 top-full w-full bg-text-inverted/5 shadow-lg backdrop-blur-xl'>
+                        className='absolute left-0 right-0 top-full w-full bg-text-inverted shadow-lg'>
                         <div className='flex flex-col'>
                             {/* Main Navigation Links */}
-                            <ul className='flex flex-col items-center ~px-6/8 ~py-4/6'>
+                            <ul className='flex flex-col items-center ~px-6/8 gap-y-2 ~py-4/6'>
                                 {navItems.map(({ href, label, delay }) => (
                                     <motion.li
                                         key={href}
@@ -69,7 +73,7 @@ export default function MobileNav({ currentPath, navItems }: Props) {
                             {/* Repository Link */}
                             <div className='flex justify-center ~py-4/6'>
                                 <Link href='https://github.com/neonsy/Astro-NeonSpace' external className='flex items-center gap-2'>
-                                    <FaGithub className='~text-xl/2xl' />
+                                    <FaGithub className='~text-2xl/5xl' />
                                 </Link>
                             </div>
                         </div>

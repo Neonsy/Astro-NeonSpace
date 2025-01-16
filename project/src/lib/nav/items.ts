@@ -1,8 +1,4 @@
-export type NavItem = {
-    href: string;
-    label: string;
-    delay: number;
-};
+import type { NavItem } from "@/types/navItems";
 
 export const NAV_ITEMS: ReadonlyArray<NavItem> = [
     { href: '/', label: 'Home', delay: 0.1 },
