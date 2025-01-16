@@ -24,8 +24,8 @@ const {
     <body class='body-gradient'>
         <ParticleBackground client:load transition:persist />
         <div class='flex min-h-dvh flex-col'>
-            <Header client:load />
-            <main class='flex-grow'>
+            <Header client:load transition:persist />
+            <main class='flex-grow' transition:persist>
                 <slot />
             </main>
         </div>

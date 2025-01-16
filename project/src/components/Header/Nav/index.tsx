@@ -6,7 +6,7 @@ import Link from '@/components/Link';
 
 export default function Nav() {
     return (
-        <nav>
+        <nav className='flex items-center justify-between ~px-10/4 ~py-2/3'>
             <div>
                 <Link
                     href='/'
