@@ -197,7 +197,7 @@ jobs:
                   fi
 
             - name: Commit and push changes
-              if: steps.check_changes.outputs.has_changes == 'true'
+              if: steps.check_changes.outputs.has_formatting_changes == 'true'
               run: |
                   git config --global user.name 'github-actions[bot]'
                   git config --global user.email 'github-actions[bot]@users.noreply.github.com'
