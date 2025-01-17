@@ -95,7 +95,8 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
         // Get recently active repositories (by activity score)
         stats.activeRepos = repoDetails.sort((a, b) => b.activityScore - a.activityScore).slice(0, 3);
 
-        // Update overall stats
+        // Update overall stats and collect language data
+        const totalLanguages: Record<string, number> = {};
         for (const repo of repos.filter((r) => r.name !== 'Neonsy')) {
             // Get language statistics for all repos
             const { data: languages } = await octokit.repos.listLanguages({
@@ -103,34 +104,32 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
                 repo: repo.name,
             });
 
-            if (Object.keys(languages).length > 0) {
-                const total = Object.values(languages).reduce((sum, value) => sum + value, 0);
-                Object.entries(languages).forEach(([lang, bytes]) => {
-                    stats.languages[lang] = (stats.languages[lang] || 0) + (bytes / total) * 100;
-                });
-            }
+            // Sum up raw byte counts for each language across all repos
+            Object.entries(languages).forEach(([lang, bytes]) => {
+                totalLanguages[lang] = (totalLanguages[lang] || 0) + bytes;
+            });
 
             stats.social.stars += repo.stargazers_count ?? 0;
         }
 
-        // Calculate total before rounding
-        const languageTotal = Object.values(stats.languages).reduce((sum, value) => sum + value, 0);
-        
-        // Sort languages by percentage (descending) and round them
+        // Calculate percentages from total bytes
+        const totalBytes = Object.values(totalLanguages).reduce((sum, bytes) => sum + bytes, 0);
+
+        // Sort languages by bytes (descending) and calculate percentages
         const sortedLanguages: Record<string, number> = {};
-        Object.entries(stats.languages)
+        Object.entries(totalLanguages)
             .sort(([, a], [, b]) => b - a)
-            .forEach(([lang, percentage], index, array) => {
+            .forEach(([lang, bytes], index, array) => {
                 // For all entries except the last one, round to 1 decimal place
                 if (index < array.length - 1) {
-                    sortedLanguages[lang] = Number((percentage / languageTotal * 100).toFixed(1));
+                    sortedLanguages[lang] = Number(((bytes / totalBytes) * 100).toFixed(1));
                 } else {
                     // For the last (smallest) percentage, calculate it to make total exactly 100%
                     const currentTotal = Object.values(sortedLanguages).reduce((sum, val) => sum + val, 0);
                     sortedLanguages[lang] = Number((100 - currentTotal).toFixed(1));
                 }
             });
-        
+
         stats.languages = sortedLanguages;
 
         return stats;
