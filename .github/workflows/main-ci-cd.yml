@@ -222,13 +222,8 @@ jobs:
     start-prod-build:
         runs-on: ubuntu-latest
         needs: integrity-check
-        if: always() && needs.integrity-check.result == 'success' && needs.integrity-check.outputs.has_formatting_changes == 'false'
+        if: needs.integrity-check.result == 'success' && needs.integrity-check.outputs.has_formatting_changes == 'false'
         steps:
-            - name: Debug output values
-              run: |
-                  echo "Integrity check result: ${{ needs.integrity-check.result }}"
-                  echo "Has formatting changes: ${{ needs.integrity-check.outputs.has_formatting_changes }}"
-
             - name: Start production build
               run: |
                   echo "This job exists as a signal to trigger the production deployment workflow."
