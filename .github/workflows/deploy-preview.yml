@@ -4,9 +4,8 @@ on:
         branches: Preview
         types: [opened, reopened, synchronize]
 
-# Add concurrency group to cancel in-progress runs
 concurrency:
-    group: preview-deploy-${{ github.event.pull_request.number || github.ref }}
+    group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
     cancel-in-progress: true
 
 env:
@@ -68,9 +67,8 @@ jobs:
                       const body = `## 🚀 Vercel Preview Deployment
 
                       ### Build Information
-### Build Information
-> **Status:** ✅ Success
-> **Commit:** \`${context.payload.pull_request.head.sha.substring(0, 7)}\`
+                      > **Status:** ✅ Success
+                      > **Commit:** \`${context.payload.pull_request.head.sha.substring(0, 7)}\`
 
                       ### Deployment Links
                       | Type | Link |
