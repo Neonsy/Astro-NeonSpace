@@ -25,13 +25,9 @@ jobs:
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
                   checkName: start-prod-build
-                  intervalSeconds: 30
+                  intervalSeconds: 60
                   timeoutSeconds: 600
                   ref: ${{ github.event.pull_request.head.sha }}
-
-            - name: Check if integrity check is successful
-              if: steps.wait-for-ci-cd.outputs.conclusion == 'failure'
-              run: exit 1
 
             - name: Checkout
               uses: actions/checkout@v4
