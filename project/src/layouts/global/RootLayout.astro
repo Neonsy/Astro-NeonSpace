@@ -23,9 +23,9 @@ const {
 <!doctype html>
 <html lang='en'>
     <Head title={title} description={description} />
-    <body class='body-gradient'>
+    <body class='body-bg'>
         <ParticleBackground client:media='(min-width: 1024px)' transition:persist />
-        <div class='flex min-h-screen flex-col'>
+        <div class='flex min-h-svh flex-col'>
             <Header client:load transition:persist currentPath={pathname} />
             <main class='flex-grow'>
                 <slot />
