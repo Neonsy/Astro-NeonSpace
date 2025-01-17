@@ -16,7 +16,7 @@ type ProfileCardProps = {
 export default function ProfileCard({ stats }: ProfileCardProps) {
     return (
         <motion.div {...fadeInUpConfig}>
-            <div className='rounded-xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 will-change-transform hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05] hover:will-change-auto lg:backdrop-blur-sm'>
+            <div className='card-padded'>
                 <motion.div
                     {...fadeInUpConfig}
                     transition={{ ...fadeInUpConfig.transition, delay: 0.1 }}

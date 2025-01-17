@@ -8,7 +8,7 @@ import Link from '@/components/Link';
 
 export default function Hero() {
     return (
-        <section className='flex min-h-svh flex-col items-center justify-around ~sm/md:~px-10/4'>
+        <section className='flex min-h-[90svh] flex-col items-center justify-around ~sm/md:~px-10/4'>
             <div className='flex select-none flex-col items-center justify-center gap-y-6'>
                 <div className='flex flex-col items-center justify-center gap-y-6'>
                     <motion.h1
@@ -25,7 +25,7 @@ export default function Hero() {
                         href='/contact'
                         hasMotion
                         motionProps={{ ...fadeInConfig, transition: { ...fadeInUpConfig.transition, delay: 0.1 } }}
-                        className='will-change:backdrop-blur-sm rounded-3xl border border-white/15 bg-gradient-to-r from-logo-gradient-1/15 via-logo-gradient-2/15 to-logo-gradient-3/15 font-bold transition-all ~text-base/lg ~px-8/12 ~py-2/3 hover:border-white/20 hover:from-logo-gradient-1/50 hover:via-logo-gradient-2/50 hover:to-logo-gradient-3/50'>
+                        className='rounded-3xl border border-white/15 bg-gradient-to-r from-logo-gradient-1/15 via-logo-gradient-2/15 to-logo-gradient-3/15 font-bold transition-all ~text-base/lg ~px-8/12 ~py-2/3 hover:border-white/20 hover:from-logo-gradient-1/50 hover:via-logo-gradient-2/50 hover:to-logo-gradient-3/50'>
                         Start a Project
                     </Link>
                     <Link

@@ -31,7 +31,7 @@ export default function LanguageSection({ languages }: LanguageSectionProps) {
 
 function LanguageBar({ language, percentage }: { language: string; percentage: number }) {
     return (
-        <div className='grid grid-cols-[0.72fr_1fr_0.1fr] items-center rounded-lg border border-white/10 bg-white/[0.03] p-4 transition-all duration-200 will-change-transform hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05] hover:will-change-auto sm:grid-cols-[0.6fr_1fr_0.1fr] md:grid-cols-[0.2fr_1fr_0.1fr] lg:grid-cols-[0.3fr_1fr_0.1fr] xl:grid-cols-[0.2fr_1fr_0.1fr]'>
+        <div className='grid grid-cols-[0.72fr_1fr_0.1fr] items-center rounded-lg border border-white/10 bg-white/[0.03] p-4 transition-all duration-200 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05] sm:grid-cols-[0.6fr_1fr_0.1fr] md:grid-cols-[0.2fr_1fr_0.1fr] lg:grid-cols-[0.3fr_1fr_0.1fr] xl:grid-cols-[0.2fr_1fr_0.1fr]'>
             <span className='text-sm font-medium text-text-secondary'>{language}</span>
             <div className='h-2 w-full rounded-full bg-white/[0.03]'>
                 <motion.div
