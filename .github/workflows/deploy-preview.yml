@@ -5,9 +5,9 @@ on:
         types: [opened, reopened, synchronize]
 
 # Add concurrency group to cancel in-progress runs
-concurrency:
-    group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
-    cancel-in-progress: true
+concurrency: 
+  group: ${{ github.head_ref }}
+  cancel-in-progress: true
 
 env:
     VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -25,7 +25,7 @@ jobs:
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
                   checkName: start-prod-build
-                  intervalSeconds: 60
+                  intervalSeconds: 30
                   timeoutSeconds: 600
                   ref: ${{ github.event.pull_request.head.sha }}
 
