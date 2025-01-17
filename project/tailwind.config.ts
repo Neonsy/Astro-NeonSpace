@@ -72,18 +72,18 @@ export default {
             addUtilities({
                 '.body-gradient': {
                     position: 'relative',
-                    background:
-                        'linear-gradient(to bottom right, hsl(var(--gradient-bg-color-1)) 0%, hsl(var(--gradient-bg-color-2)) 35%, hsl(var(--gradient-bg-color-3)) 65%, hsl(var(--gradient-bg-color-4)) 100%)',
                     '&::before': {
                         content: '""',
+                        position: 'fixed',
                         top: '0',
                         left: '0',
-                        'background-attachment': 'fixed',
-                        'background-size': 'cover',
-                        'background-position': 'center',
-                        'background-repeat': 'no-repeat',
-                        'background-blend-mode': 'overlay',
-                        'min-height': '100dvh',
+                        width: '100dvw',
+                        height: '100dvh',
+                        background:
+                            'linear-gradient(to bottom right, hsl(var(--gradient-bg-color-1)) 0%, hsl(var(--gradient-bg-color-2)) 35%, hsl(var(--gradient-bg-color-3)) 65%, hsl(var(--gradient-bg-color-4)) 100%)',
+                        backgroundPosition: 'center',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat',
                         zIndex: '-50',
                     },
                 },
