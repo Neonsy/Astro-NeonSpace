@@ -1,0 +1,13 @@
+---
+export const prerender = true;
+
+import Layout from '@layouts/global/RootLayout.astro';
+import Container from '@/components/Container';
+---
+
+<Layout title='404'>
+    <Container className='flex flex-col items-center justify-center h-[81vh]'>
+        <h1 class="~text-5xl/9xl">404</h1>
+        <p class="~text-3xl/9xl">Page not found</p>
+    </Container>
+</Layout>
