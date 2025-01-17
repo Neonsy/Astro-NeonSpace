@@ -78,19 +78,6 @@ export default function ParticleBackground({}) {
                 },
             },
             detectRetina: true,
-            responsive: [
-                {
-                    maxWidth: 768,
-                    mode: 'screen',
-                    options: {
-                        particles: {
-                            number: {
-                                value: 0,
-                            },
-                        },
-                    },
-                },
-            ],
         }),
         []
     );
