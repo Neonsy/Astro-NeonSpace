@@ -2,9 +2,11 @@
 import Head from '@layouts/global/Head.astro';
 import ParticleBackground from '@/components/ParticleBackground';
 
-import Header from '@/components/Header/index.astro';
+import Header from '@/components/Header';
 
 import '@/global.css';
+
+const pathname = new URL(Astro.request.url).pathname;
 
 type Props = {
     children: any;
@@ -21,10 +23,10 @@ const {
 <!doctype html>
 <html lang='en'>
     <Head title={title} description={description} />
-    <body class='body-gradient'>
+    <body class="body-gradient">
         <ParticleBackground client:media='(min-width: 1024px)' transition:persist />
-        <div class='flex min-h-dvh flex-col'>
-            <Header />
+        <div class='flex min-h-screen flex-col'>
+            <Header client:load transition:persist currentPath={pathname} />
             <main class='flex-grow' transition:persist>
                 <slot />
             </main>

@@ -24,7 +24,7 @@ export default function ParticleBackground({}) {
 
     const options: ISourceOptions = useMemo(
         () => ({
-            fpsLimit: 120,
+            fpsLimit: 60,
             background: {
                 repeat: 'no-repeat',
             },
