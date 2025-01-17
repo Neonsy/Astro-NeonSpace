@@ -95,7 +95,8 @@ export default function MobileNav({ currentPath, navItems }: Props) {
                                     href='https://github.com/neonsy/Astro-NeonSpace'
                                     external
                                     className='flex items-center gap-2'
-                                    aria-label='Visit the code repository'>
+                                    aria-label='Visit Astro-NeonSpace repository on GitHub'
+                                    title='View source code on GitHub'>
                                     <FaGithub className='~text-2xl/5xl' />
                                 </Link>
                             </motion.div>

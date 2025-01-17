@@ -79,16 +79,12 @@ export default {
                         width: '100vw',
                         height: '100lvh',
                         position: 'fixed',
-                        background:
-                            'linear-gradient(to bottom right, hsl(var(--gradient-bg-color-1)) 0%, hsl(var(--gradient-bg-color-2)) 35%, hsl(var(--gradient-bg-color-3)) 65%, hsl(var(--gradient-bg-color-4)) 100%)',
+                        background: 'url(/body-backdrop.webp)',
                         'background-size': 'cover',
                         'background-position': 'center',
                         'background-repeat': 'no-repeat',
                         zIndex: '-50',
                     },
-                },
-                '.body-bg-mobile': {
-                    background: 'hsl(var(--gradient-bg-color-3))',
                 },
             });
         }),
