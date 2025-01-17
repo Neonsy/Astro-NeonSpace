@@ -68,7 +68,9 @@ jobs:
                       const body = `## 🚀 Vercel Preview Deployment
 
                       ### Build Information
-                      > **Commit:** \`${context.payload.pull_request.head.sha.substring(0, 7)}\`
+### Build Information
+> **Status:** ✅ Success
+> **Commit:** \`${context.payload.pull_request.head.sha.substring(0, 7)}\`
 
                       ### Deployment Links
                       | Type | Link |
