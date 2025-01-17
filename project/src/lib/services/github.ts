@@ -41,7 +41,7 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
 
         // Batch fetch languages for all repos in parallel
         const languagePromises = filteredRepos.map((repo) =>
-                octokit.repos.listLanguages({
+            octokit.repos.listLanguages({
                 owner: username,
                 repo: repo.name,
             })
