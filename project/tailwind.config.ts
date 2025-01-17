@@ -69,7 +69,25 @@ export default {
         }),
         forms,
         plugin(function ({ addUtilities }) {
-            addUtilities({});
+            addUtilities({
+                '.body-gradient': {
+                    position: 'relative',
+                    background:
+                        'linear-gradient(to bottom right, hsl(var(--gradient-bg-color-1)) 0%, hsl(var(--gradient-bg-color-2)) 35%, hsl(var(--gradient-bg-color-3)) 65%, hsl(var(--gradient-bg-color-4)) 100%)',
+                    '&::before': {
+                        content: '""',
+                        top: '0',
+                        left: '0',
+                        'background-attachment': 'fixed',
+                        'background-size': 'cover',
+                        'background-position': 'center',
+                        'background-repeat': 'no-repeat',
+                        'background-blend-mode': 'overlay',
+                        'min-height': '100dvh',
+                        zIndex: '-50',
+                    },
+                },
+            });
         }),
     ],
     safelist: ['grid-cols-1', 'grid-cols-2', 'grid-cols-3', 'grid-cols-4', 'grid-cols-5'],
