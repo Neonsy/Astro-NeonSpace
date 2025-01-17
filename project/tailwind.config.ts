@@ -77,7 +77,7 @@ export default {
                         top: '0',
                         left: '0',
                         width: '100vw',
-                        height: '100vh',
+                        height: '100svh',
                         position: 'fixed',
                         background:
                             'linear-gradient(to bottom right, hsl(var(--gradient-bg-color-1)) 0%, hsl(var(--gradient-bg-color-2)) 35%, hsl(var(--gradient-bg-color-3)) 65%, hsl(var(--gradient-bg-color-4)) 100%)',

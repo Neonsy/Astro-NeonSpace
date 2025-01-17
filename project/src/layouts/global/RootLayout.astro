@@ -27,7 +27,7 @@ const {
         <ParticleBackground client:media='(min-width: 1024px)' transition:persist />
         <div class='flex min-h-screen flex-col'>
             <Header client:load transition:persist currentPath={pathname} />
-            <main class='flex-grow'>
+            <main class='flex-grow min-h-svh'>
                 <slot />
             </main>
         </div>
