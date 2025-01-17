@@ -70,7 +70,7 @@ export default {
         forms,
         plugin(function ({ addUtilities }) {
             addUtilities({
-                '.body-gradient': {
+                '.body-bg': {
                     position: 'relative',
                     '&::before': {
                         content: '""',
@@ -86,6 +86,9 @@ export default {
                         'background-repeat': 'no-repeat',
                         zIndex: '-50',
                     },
+                },
+                '.body-bg-mobile': {
+                    background: 'hsl(var(--gradient-bg-color-3))',
                 },
             });
         }),
