@@ -14,7 +14,7 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
             octokit.paginate(octokit.repos.listForUser, {
                 username,
                 sort: 'updated',
-                per_page: 100,
+                per_page: 90,
             }),
         ]);
 
@@ -59,13 +59,13 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
                         owner: username,
                         repo: repo.name,
                         state: 'all',
-                        per_page: 100,
+                        per_page: 45,
                     }),
                     octokit.paginate(octokit.issues.listForRepo, {
                         owner: username,
                         repo: repo.name,
                         state: 'all',
-                        per_page: 100,
+                        per_page: 45,
                     }),
                 ]);
 
