@@ -77,14 +77,15 @@ export default {
                         position: 'fixed',
                         top: '0',
                         left: '0',
-                        width: '100dvw',
-                        height: '100dvh',
+                        width: '100vw',
+                        height: '105dvh',
                         background:
                             'linear-gradient(to bottom right, hsl(var(--gradient-bg-color-1)) 0%, hsl(var(--gradient-bg-color-2)) 35%, hsl(var(--gradient-bg-color-3)) 65%, hsl(var(--gradient-bg-color-4)) 100%)',
                         backgroundPosition: 'center',
                         backgroundSize: 'cover',
                         backgroundRepeat: 'no-repeat',
                         zIndex: '-50',
+                        transform: 'translateY(-2.5%)',
                     },
                 },
             });
