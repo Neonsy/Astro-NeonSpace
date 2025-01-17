@@ -8,17 +8,15 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
     });
 
     try {
-        // Get user data (no pagination needed)
-        const { data: userData } = await octokit.users.getByUsername({
-            username,
-        });
-
-        // Get ALL repositories using pagination
-        const repos = await octokit.paginate(octokit.repos.listForUser, {
-            username,
-            sort: 'updated',
-            per_page: 100,
-        });
+        // Parallel fetch of user data and repositories
+        const [{ data: userData }, repos] = await Promise.all([
+            octokit.users.getByUsername({ username }),
+            octokit.paginate(octokit.repos.listForUser, {
+                username,
+                sort: 'updated',
+                per_page: 90,
+            }),
+        ]);
 
         // Initialize stats object
         const stats: GithubStats = {
@@ -38,79 +36,79 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
             languages: {},
         };
 
-        // Process each repository
-        const repoDetails = await Promise.all(
-            repos
-                .filter((repo) => repo.name !== 'Neonsy')
-                .map(async (repo) => {
-                    const [pulls, issues] = await Promise.all([
-                        octokit.paginate(octokit.pulls.list, {
-                            owner: username,
-                            repo: repo.name,
-                            state: 'all',
-                            per_page: 100,
-                        }),
-                        octokit.paginate(octokit.issues.listForRepo, {
-                            owner: username,
-                            repo: repo.name,
-                            state: 'all',
-                            per_page: 100,
-                        }),
-                    ]);
+        // Filter out Neonsy repo once
+        const filteredRepos = repos.filter((repo) => repo.name !== 'Neonsy');
 
-                    const filteredIssues = issues.filter((issue) => !('pull_request' in issue));
-
-                    return {
-                        name: repo.name,
-                        url: repo.html_url,
-                        description: repo.description || '',
-                        stars: repo.stargazers_count ?? 0,
-                        forks: repo.forks_count ?? 0,
-                        watchers: repo.subscribers_count ?? 0,
-                        totalPRs: pulls.length,
-                        totalIssues: filteredIssues.length,
-                        activityScore:
-                            pulls.filter((pr) => new Date(pr.created_at).getTime() > Date.now() - 28 * 24 * 60 * 60 * 1000).length +
-                            filteredIssues.filter((issue) => new Date(issue.created_at).getTime() > Date.now() - 28 * 24 * 60 * 60 * 1000).length,
-                    };
-                })
-        );
-
-        // Get popular repositories (by composite score)
-        stats.popularRepos = repoDetails
-            .sort((a, b) => {
-                // Compare stars first
-                if (a.stars !== b.stars) return b.stars - a.stars;
-                // If stars are equal, compare forks
-                if (a.forks !== b.forks) return b.forks - a.forks;
-                // If forks are equal, compare watchers
-                if (a.watchers !== b.watchers) return b.watchers - a.watchers;
-                // If watchers are equal, compare PRs
-                if (a.totalPRs !== b.totalPRs) return b.totalPRs - a.totalPRs;
-                // If PRs are equal, compare issues
-                return b.totalIssues - a.totalIssues;
-            })
-            .slice(0, 3);
-
-        // Get recently active repositories (by activity score)
-        stats.activeRepos = repoDetails.sort((a, b) => b.activityScore - a.activityScore).slice(0, 3);
-
-        // Update overall stats and collect language data
-        const totalLanguages: Record<string, number> = {};
-        for (const repo of repos.filter((r) => r.name !== 'Neonsy')) {
-            // Get language statistics for all repos
-            const { data: languages } = await octokit.repos.listLanguages({
+        // Batch fetch languages for all repos in parallel
+        const languagePromises = filteredRepos.map((repo) =>
+            octokit.repos.listLanguages({
                 owner: username,
                 repo: repo.name,
+            })
+        );
+
+        // Process repositories in batches to avoid rate limiting
+        const BATCH_SIZE = 5; // Adjust based on rate limits
+        const repoDetails = [];
+
+        for (let i = 0; i < filteredRepos.length; i += BATCH_SIZE) {
+            const batch = filteredRepos.slice(i, i + BATCH_SIZE);
+            const batchPromises = batch.map(async (repo) => {
+                const [pulls, issues] = await Promise.all([
+                    octokit.paginate(octokit.pulls.list, {
+                        owner: username,
+                        repo: repo.name,
+                        state: 'all',
+                        per_page: 45,
+                    }),
+                    octokit.paginate(octokit.issues.listForRepo, {
+                        owner: username,
+                        repo: repo.name,
+                        state: 'all',
+                        per_page: 45,
+                    }),
+                ]);
+
+                const filteredIssues = issues.filter((issue) => !('pull_request' in issue));
+
+                return {
+                    name: repo.name,
+                    url: repo.html_url,
+                    description: repo.description || '',
+                    stars: repo.stargazers_count ?? 0,
+                    forks: repo.forks_count ?? 0,
+                    watchers: repo.subscribers_count ?? 0,
+                    totalPRs: pulls.length,
+                    totalIssues: filteredIssues.length,
+                    activityScore:
+                        pulls.filter((pr) => new Date(pr.created_at).getTime() > Date.now() - 28 * 24 * 60 * 60 * 1000).length +
+                        filteredIssues.filter((issue) => new Date(issue.created_at).getTime() > Date.now() - 28 * 24 * 60 * 60 * 1000).length,
+                };
             });
 
-            // Sum up raw byte counts for each language across all repos
+            // Process batch
+            const batchResults = await Promise.all(batchPromises);
+            repoDetails.push(...batchResults);
+
+            // Optional: Add small delay between batches to help with rate limiting
+            if (i + BATCH_SIZE < filteredRepos.length) {
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+            }
+        }
+
+        // Process all language data in parallel
+        const languageResponses = await Promise.all(languagePromises);
+        const totalLanguages: Record<string, number> = {};
+
+        // Calculate total stars and process languages
+        filteredRepos.forEach((repo, index) => {
+            stats.social.stars += repo.stargazers_count ?? 0;
+
+            const languages = languageResponses[index].data;
             Object.entries(languages).forEach(([lang, bytes]) => {
                 totalLanguages[lang] = (totalLanguages[lang] || 0) + bytes;
             });
-
-            stats.social.stars += repo.stargazers_count ?? 0;
-        }
+        });
 
         // Calculate percentages from total bytes
         const totalBytes = Object.values(totalLanguages).reduce((sum, bytes) => sum + bytes, 0);
@@ -132,6 +130,24 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
 
         stats.languages = sortedLanguages;
 
+        // Get popular repositories (by composite score)
+        stats.popularRepos = [...repoDetails]
+            .sort((a, b) => {
+                // Compare stars first
+                if (a.stars !== b.stars) return b.stars - a.stars;
+                // If stars are equal, compare forks
+                if (a.forks !== b.forks) return b.forks - a.forks;
+                // If watchers are equal, compare watchers
+                if (a.watchers !== b.watchers) return b.watchers - a.watchers;
+                // If watchers are equal, compare PRs
+                if (a.totalPRs !== b.totalPRs) return b.totalPRs - a.totalPRs;
+                // If PRs are equal, compare issues
+                return b.totalIssues - a.totalIssues;
+            })
+            .slice(0, 3);
+
+        // Get recently active repositories (by activity score)
+        stats.activeRepos = [...repoDetails].sort((a, b) => b.activityScore - a.activityScore).slice(0, 3);
         return stats;
     } catch (error) {
         console.error('Error fetching GitHub stats:', error);
