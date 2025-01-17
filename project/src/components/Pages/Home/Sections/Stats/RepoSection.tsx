@@ -25,7 +25,7 @@ export default function RepoSection({ title, repos }: RepoSectionProps) {
                         key={repo.name}
                         {...fadeInUpConfig}
                         transition={{ ...fadeInUpConfig.transition, delay: 0.1 }}
-                        className='card-padded group flex flex-col gap-y-6'>
+                        className='group card-padded flex flex-col gap-y-6'>
                         <h4 className='flex items-center gap-2 font-medium text-text-primary ~text-base/3xl'>
                             <FaCode className='h-4 w-4 text-blue-400' />
                             <Link href={repo.url} external>
