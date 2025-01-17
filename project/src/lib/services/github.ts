@@ -53,9 +53,13 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
             );
 
             // Process batch
-            const batchResults = await Promise.all(batchPromises);
-            languageResponses.push(...batchResults);
-
+            try {
+                const batchResults = await Promise.all(batchPromises);
+                languageResponses.push(...batchResults);
+            } catch (error) {
+                console.error(`Failed to fetch languages for batch starting at index ${i}:`, error);
+                // Continue with partial data
+            }
             // Add small delay between batches to help with rate limiting
             if (i + LANGUAGE_BATCH_SIZE < filteredRepos.length) {
                 await new Promise((resolve) => setTimeout(resolve, 1000));
