@@ -49,6 +49,12 @@ export default {
                     'gradient-3': 'hsl(var(--gradient-bg-color-3) / <alpha-value>)',
                     'gradient-4': 'hsl(var(--gradient-bg-color-4) / <alpha-value>)',
                 },
+                header: {
+                    primary: 'hsl(var(--header-primary) / <alpha-value>)',
+                },
+                footer: {
+                    primary: 'hsl(var(--footer-primary) / <alpha-value>)',
+                },
                 github: {
                     'stats-bg': 'hsl(var(--github-stats-bg) / <alpha-value>)',
                     'stats-icon': 'hsl(var(--github-stats-icon) / <alpha-value>)',
@@ -65,9 +71,21 @@ export default {
         plugin(function ({ addUtilities }) {
             addUtilities({
                 '.body-gradient': {
+                    position: 'relative',
                     background:
                         'linear-gradient(to bottom right, hsl(var(--gradient-bg-color-1)) 0%, hsl(var(--gradient-bg-color-2)) 35%, hsl(var(--gradient-bg-color-3)) 65%, hsl(var(--gradient-bg-color-4)) 100%)',
-                    'background-attachment': 'fixed',
+                    '&::before': {
+                        content: '""',
+                        top: '0',
+                        left: '0',
+                        'background-attachment': 'fixed',
+                        'background-size': 'cover',
+                        'background-position': 'center',
+                        'background-repeat': 'no-repeat',
+                        'background-blend-mode': 'overlay',
+                        'min-height': '100dvh',
+                        zIndex: '-50',
+                    },
                 },
             });
         }),

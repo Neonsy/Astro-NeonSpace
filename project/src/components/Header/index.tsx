@@ -11,7 +11,9 @@ type HeaderProps = {
 
 export default function Header({ currentPath }: HeaderProps) {
     return (
-        <motion.header {...fadeInUpConfig} className='bg-header/60 sticky top-0 z-50 border-b border-white/30 py-6 shadow-lg backdrop-blur-lg'>
+        <motion.header
+            {...fadeInUpConfig}
+            className='sticky top-0 z-50 border-b border-white/30 bg-header-primary/60 py-6 shadow-lg backdrop-blur-lg'>
             <Container>
                 <Nav currentPath={currentPath} />
             </Container>

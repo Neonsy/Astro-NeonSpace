@@ -7,7 +7,7 @@ export default function LoadingSkeleton() {
                 </h2>
 
                 {/* Profile Card Skeleton - Updated to match ProfileCard.tsx */}
-                <div className='rounded-xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-lg'>
+                <div className='rounded-xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm'>
                     <div className='flex flex-col items-center justify-center sm:gap-6 md:flex-row'>
                         <div className='h-32 w-32 shrink-0 animate-pulse rounded-full bg-white/10 ring-2 ring-purple-500/20' />
                         <div className='mt-4 flex w-full flex-1 flex-col items-center sm:items-start'>
@@ -38,7 +38,7 @@ export default function LoadingSkeleton() {
                         {[...Array(6)].map((_, i) => (
                             <div
                                 key={i}
-                                className='flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.03] p-4 backdrop-blur-lg'>
+                                className='flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.03] p-4 backdrop-blur-sm'>
                                 <div className='h-4 w-12 animate-pulse rounded bg-white/10' />
                                 <div className='h-2 w-36 animate-pulse rounded-full bg-white/10' />
                                 <div className='h-4 w-6 animate-pulse rounded bg-white/10' />
@@ -55,7 +55,7 @@ export default function LoadingSkeleton() {
                             {[...Array(3)].map((_, i) => (
                                 <div
                                     key={i}
-                                    className='flex min-h-[200px] flex-col gap-y-6 rounded-xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-lg'>
+                                    className='flex min-h-[200px] flex-col gap-y-6 rounded-xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm'>
                                     <div className='flex items-center gap-2'>
                                         <div className='h-4 w-4 shrink-0 animate-pulse rounded bg-white/10' />
                                         <div className='h-4 w-32 animate-pulse rounded bg-white/10' />
