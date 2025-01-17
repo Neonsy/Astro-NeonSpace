@@ -5,9 +5,9 @@ on:
         types: [opened, reopened, synchronize]
 
 # Add concurrency group to cancel in-progress runs
-concurrency: 
-  group: ${{ github.head_ref }}
-  cancel-in-progress: true
+concurrency:
+    group: ${{ github.head_ref }}
+    cancel-in-progress: true
 
 env:
     VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
@@ -68,7 +68,7 @@ jobs:
                       const body = `## 🚀 Vercel Preview Deployment
 
                       ### Build Information
-                      > **Commit:** \`${context.sha.substring(0, 7)}\`
+                      > **Commit:** \`${context.payload.pull_request.head.sha.substring(0, 7)}\`
 
                       ### Deployment Links
                       | Type | Link |
