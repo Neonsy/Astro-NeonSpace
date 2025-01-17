@@ -17,7 +17,10 @@ export default function ProfileCard({ stats }: ProfileCardProps) {
     return (
         <motion.div {...fadeInUpConfig}>
             <div className='rounded-xl border border-white/10 bg-white/[0.03] p-6 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-white/[0.05]'>
-                <div className='flex flex-col items-center justify-center sm:gap-6 md:flex-row'>
+                <motion.div
+                    {...fadeInUpConfig}
+                    transition={{ ...fadeInUpConfig.transition, delay: 0.1 }}
+                    className='flex flex-col items-center justify-center sm:gap-6 md:flex-row'>
                     <Link href={`https://github.com/${stats.userInfo.username}`} external>
                         <img
                             src={stats.userInfo.avatarUrl}
@@ -26,7 +29,10 @@ export default function ProfileCard({ stats }: ProfileCardProps) {
                         />
                     </Link>
                     <div className='mt-4 flex flex-1 flex-col items-center sm:items-start'>
-                        <div className='flex flex-col items-center gap-4 sm:flex-row'>
+                        <motion.div
+                            {...fadeInUpConfig}
+                            transition={{ ...fadeInUpConfig.transition, delay: 0.18 }}
+                            className='flex flex-col items-center gap-4 sm:flex-row'>
                             <Link
                                 href={`https://github.com/${stats.userInfo.username}`}
                                 external
@@ -54,17 +60,27 @@ export default function ProfileCard({ stats }: ProfileCardProps) {
                                     {stats.social.followers}
                                 </Link>
                             </div>
-                        </div>
-                        <p className='mt-2 text-sm text-text-secondary'>
+                        </motion.div>
+                        <motion.p
+                            {...fadeInUpConfig}
+                            transition={{ ...fadeInUpConfig.transition, delay: 0.25 }}
+                            className='mt-2 text-sm text-text-secondary'>
                             Joined{' '}
                             {new Date(stats.userInfo.joinedAt).toLocaleDateString('en-US', {
                                 month: 'long',
                                 year: 'numeric',
                             })}
-                        </p>
-                        {stats.userInfo.description && <p className='mt-2 text-text-primary'>{stats.userInfo.description}</p>}
+                        </motion.p>
+                        {stats.userInfo.description && (
+                            <motion.p
+                                {...fadeInUpConfig}
+                                transition={{ ...fadeInUpConfig.transition, delay: 0.25 }}
+                                className='mt-2 text-text-primary'>
+                                {stats.userInfo.description}
+                            </motion.p>
+                        )}
                     </div>
-                </div>
+                </motion.div>
             </div>
         </motion.div>
     );
