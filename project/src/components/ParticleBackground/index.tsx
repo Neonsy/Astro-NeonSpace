@@ -39,7 +39,7 @@ export default function ParticleBackground({}) {
                     color: '#ffffff',
                     distance: 150,
                     enable: true,
-                    opacity: 0.1,
+                    opacity: 0.09,
                     width: 1,
                 },
                 move: {
@@ -60,7 +60,7 @@ export default function ParticleBackground({}) {
                     value: 90,
                 },
                 opacity: {
-                    value: 0.3,
+                    value: 0.18,
                 },
                 shape: {
                     type: 'circle',
