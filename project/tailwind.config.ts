@@ -69,24 +69,7 @@ export default {
         }),
         forms,
         plugin(function ({ addUtilities }) {
-            addUtilities({
-                '.body-gradient': {
-                    position: 'relative',
-                    '&::before': {
-                        content: '""',
-                        position: 'fixed',
-                        top: '0',
-                        left: '0',
-                        width: '100%',
-                        height: '100%',
-                        'background-attachment': 'scroll',
-                        background:
-                            'linear-gradient(to bottom right, hsl(var(--gradient-bg-color-1)) 0%, hsl(var(--gradient-bg-color-2)) 35%, hsl(var(--gradient-bg-color-3)) 65%, hsl(var(--gradient-bg-color-4)) 100%)',
-                        'z-index': '-50',
-                        'overscroll-behavior': 'none',
-                    },
-                },
-            });
+            addUtilities({});
         }),
     ],
     safelist: ['grid-cols-1', 'grid-cols-2', 'grid-cols-3', 'grid-cols-4', 'grid-cols-5'],
