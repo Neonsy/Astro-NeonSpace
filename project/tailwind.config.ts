@@ -83,7 +83,7 @@ export default {
                         'background-position': 'center',
                         'background-repeat': 'no-repeat',
                         'background-blend-mode': 'overlay',
-                        'min-height': '100dvh',
+                        'min-height': '100vh',
                         zIndex: '-50',
                     },
                 },
