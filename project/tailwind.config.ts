@@ -72,7 +72,6 @@ export default {
             addUtilities({
                 '.body-gradient': {
                     position: 'relative',
-                    'min-height': '100dvh',
                     '&::before': {
                         content: '""',
                         position: 'fixed',
@@ -80,11 +79,11 @@ export default {
                         left: '0',
                         width: '100%',
                         height: '100%',
+                        'background-attachment': 'scroll',
                         background:
                             'linear-gradient(to bottom right, hsl(var(--gradient-bg-color-1)) 0%, hsl(var(--gradient-bg-color-2)) 35%, hsl(var(--gradient-bg-color-3)) 65%, hsl(var(--gradient-bg-color-4)) 100%)',
                         'z-index': '-50',
-                        'will-change': 'transform',
-                        '-webkit-backface-visibility': 'hidden',
+                        'overscroll-behavior': 'none',
                     },
                 },
             });
