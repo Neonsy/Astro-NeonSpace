@@ -131,13 +131,13 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
         stats.languages = sortedLanguages;
 
         // Get popular repositories (by composite score)
-        stats.popularRepos = repoDetails
+        stats.popularRepos = [...repoDetails]
             .sort((a, b) => {
                 // Compare stars first
                 if (a.stars !== b.stars) return b.stars - a.stars;
                 // If stars are equal, compare forks
                 if (a.forks !== b.forks) return b.forks - a.forks;
-                // If forks are equal, compare watchers
+                // If watchers are equal, compare watchers
                 if (a.watchers !== b.watchers) return b.watchers - a.watchers;
                 // If watchers are equal, compare PRs
                 if (a.totalPRs !== b.totalPRs) return b.totalPRs - a.totalPRs;
@@ -147,8 +147,7 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
             .slice(0, 3);
 
         // Get recently active repositories (by activity score)
-        stats.activeRepos = repoDetails.sort((a, b) => b.activityScore - a.activityScore).slice(0, 3);
-
+        stats.activeRepos = [...repoDetails].sort((a, b) => b.activityScore - a.activityScore).slice(0, 3);
         return stats;
     } catch (error) {
         console.error('Error fetching GitHub stats:', error);
