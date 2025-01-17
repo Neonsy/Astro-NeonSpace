@@ -91,7 +91,11 @@ export default function MobileNav({ currentPath, navItems }: Props) {
                                 {...slideInRightConfig}
                                 transition={{ ...slideInRightConfig.transition, delay: 0.6 }}
                                 className='flex justify-center ~py-4/6'>
-                                <Link href='https://github.com/neonsy/Astro-NeonSpace' external className='flex items-center gap-2' aria-label='Visit the code repository'>
+                                <Link
+                                    href='https://github.com/neonsy/Astro-NeonSpace'
+                                    external
+                                    className='flex items-center gap-2'
+                                    aria-label='Visit the code repository'>
                                     <FaGithub className='~text-2xl/5xl' />
                                 </Link>
                             </motion.div>

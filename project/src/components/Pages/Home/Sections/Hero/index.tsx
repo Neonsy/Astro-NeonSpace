@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 
 import { fadeInUpConfig, fadeInConfig, fadeInThenBounceConfig } from '@/lib/animations/simple';
 
-import { FaAngleDoubleDown } from "react-icons/fa";
+import { FaAngleDoubleDown } from 'react-icons/fa';
 
 import Link from '@/components/Link';
 
@@ -37,7 +37,14 @@ export default function Hero() {
                     </Link>
                 </div>
             </div>
-            <Link href='#explore' aria-label='Scroll down to explore' hasMotion motionProps={{ ...fadeInThenBounceConfig, transition: { ...fadeInThenBounceConfig.transition, delay: 0.1, y: { ...fadeInThenBounceConfig.transition.y, duration: 3 } } }}>
+            <Link
+                href='#explore'
+                aria-label='Scroll down to explore'
+                hasMotion
+                motionProps={{
+                    ...fadeInThenBounceConfig,
+                    transition: { ...fadeInThenBounceConfig.transition, delay: 0.1, y: { ...fadeInThenBounceConfig.transition.y, duration: 3 } },
+                }}>
                 <FaAngleDoubleDown className='rounded-full border border-white/15 text-white ~text-5xl/9xl ~p-1/3 lg:backdrop-blur-sm' />
             </Link>
         </section>

@@ -51,7 +51,12 @@ export default function DesktopNav({ currentPath, navItems }: Props) {
             </ul>
 
             {/* GitHub Link */}
-            <Link hasMotion motionProps={fadeInThenBounceConfig} href='https://github.com/neonsy/Astro-NeonSpace' external aria-label='Visit the code repository'>
+            <Link
+                hasMotion
+                motionProps={fadeInThenBounceConfig}
+                href='https://github.com/neonsy/Astro-NeonSpace'
+                external
+                aria-label='Visit the code repository'>
                 <FaGithub className='~text-xl/3xl' />
             </Link>
         </nav>
