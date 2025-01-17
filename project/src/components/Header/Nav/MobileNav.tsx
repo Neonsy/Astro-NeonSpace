@@ -1,8 +1,8 @@
+import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 
 import { fadeInUpConfig, slideInRightConfig } from '@/lib/animations/simple';
 
-import { useState } from 'react';
 import { FaGithub } from 'react-icons/fa6';
 import { IoClose, IoMenu } from 'react-icons/io5';
 
@@ -17,9 +17,21 @@ type Props = {
 
 export default function MobileNav({ currentPath, navItems }: Props) {
     const [isOpen, setIsOpen] = useState(false);
+    const navRef = useRef<HTMLElement>(null);
+
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (navRef.current && !navRef.current.contains(event.target as Node)) {
+                setIsOpen(false);
+            }
+        }
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
     return (
-        <nav className='lg:hidden'>
+        <nav className='lg:hidden' ref={navRef}>
             {/* Mobile Header */}
             <div className='flex items-center justify-between ~px-6/8 ~py-2/3'>
                 <Link
@@ -68,14 +80,21 @@ export default function MobileNav({ currentPath, navItems }: Props) {
                             </ul>
 
                             {/* Separator Line */}
-                            <div className='mx-auto w-1/3 border-t border-text-primary/20' />
+                            <motion.div
+                                {...slideInRightConfig}
+                                transition={{ ...slideInRightConfig.transition, delay: 0.5 }}
+                                className='mx-auto w-1/3 border-t border-text-primary/20'
+                            />
 
                             {/* Repository Link */}
-                            <div className='flex justify-center ~py-4/6'>
+                            <motion.div
+                                {...slideInRightConfig}
+                                transition={{ ...slideInRightConfig.transition, delay: 0.6 }}
+                                className='flex justify-center ~py-4/6'>
                                 <Link href='https://github.com/neonsy/Astro-NeonSpace' external className='flex items-center gap-2'>
                                     <FaGithub className='~text-2xl/5xl' />
                                 </Link>
-                            </div>
+                            </motion.div>
                         </div>
                     </motion.div>
                 )}
