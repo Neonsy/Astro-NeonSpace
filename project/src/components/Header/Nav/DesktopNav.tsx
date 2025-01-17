@@ -33,7 +33,7 @@ export default function DesktopNav({ currentPath, navItems }: Props) {
             <div>
                 <Link
                     href='/'
-                    className='w-fit bg-gradient-to-r from-logo-gradient-1 via-logo-gradient-2 to-logo-gradient-3 bg-clip-text font-bold text-transparent ~text-3xl/5xl'
+                    className='gradient-text w-fit font-bold ~text-3xl/5xl'
                     hasMotion
                     motionProps={{
                         ...fadeInUpConfig,
@@ -51,7 +51,13 @@ export default function DesktopNav({ currentPath, navItems }: Props) {
             </ul>
 
             {/* GitHub Link */}
-            <Link hasMotion motionProps={fadeInThenBounceConfig} href='https://github.com/neonsy/Astro-NeonSpace' external>
+            <Link
+                hasMotion
+                motionProps={fadeInThenBounceConfig}
+                href='https://github.com/neonsy/Astro-NeonSpace'
+                external
+                aria-label='Visit Astro-NeonSpace repository on GitHub'
+                title='View source code on GitHub'>
                 <FaGithub className='~text-xl/3xl' />
             </Link>
         </nav>

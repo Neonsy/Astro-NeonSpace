@@ -68,11 +68,9 @@ export default function MobileNav({ currentPath, navItems }: Props) {
                                         key={href}
                                         {...slideInRightConfig}
                                         transition={{ ...slideInRightConfig.transition, delay }}
-                                        className='w-full text-center'>
-                                        <Link
-                                            href={href}
-                                            className={`block ~text-lg/xl ~py-3/4 ${currentPath === href ? 'font-bold' : ''}`}
-                                            onClick={() => setIsOpen(false)}>
+                                        className='w-full text-center'
+                                        onClick={() => setIsOpen(false)}>
+                                        <Link href={href} className={`block ~text-lg/xl ~py-3/4 ${currentPath === href ? 'font-bold' : ''}`}>
                                             {label}
                                         </Link>
                                     </motion.li>
@@ -91,7 +89,12 @@ export default function MobileNav({ currentPath, navItems }: Props) {
                                 {...slideInRightConfig}
                                 transition={{ ...slideInRightConfig.transition, delay: 0.6 }}
                                 className='flex justify-center ~py-4/6'>
-                                <Link href='https://github.com/neonsy/Astro-NeonSpace' external className='flex items-center gap-2'>
+                                <Link
+                                    href='https://github.com/neonsy/Astro-NeonSpace'
+                                    external
+                                    className='flex items-center gap-2'
+                                    aria-label='Visit Astro-NeonSpace repository on GitHub'
+                                    title='View source code on GitHub'>
                                     <FaGithub className='~text-2xl/5xl' />
                                 </Link>
                             </motion.div>

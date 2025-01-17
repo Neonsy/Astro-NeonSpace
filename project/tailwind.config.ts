@@ -70,17 +70,16 @@ export default {
         forms,
         plugin(function ({ addUtilities }) {
             addUtilities({
-                '.body-gradient': {
+                '.body-bg': {
                     position: 'relative',
                     '&::before': {
                         content: '""',
                         top: '0',
                         left: '0',
                         width: '100vw',
-                        height: '100vh',
+                        height: '100lvh',
                         position: 'fixed',
-                        background:
-                            'linear-gradient(to bottom right, hsl(var(--gradient-bg-color-1)) 0%, hsl(var(--gradient-bg-color-2)) 35%, hsl(var(--gradient-bg-color-3)) 65%, hsl(var(--gradient-bg-color-4)) 100%)',
+                        background: 'url(/body-backdrop.webp)',
                         'background-size': 'cover',
                         'background-position': 'center',
                         'background-repeat': 'no-repeat',
@@ -89,6 +88,43 @@ export default {
                 },
             });
         }),
+        plugin(function ({ addComponents }) {
+            addComponents({
+                // Base card style used across components
+                '.card-base': {
+                    '@apply rounded-xl border border-white/10 bg-white/[0.03] transition-all duration-200': {},
+                    '&:hover': {
+                        '@apply -translate-y-1 border-white/20 bg-white/[0.05]': {},
+                    },
+                },
+
+                // Card with padding variant
+                '.card-padded': {
+                    '@apply card-base p-6': {},
+                },
+
+                // Gradient text styles
+                '.gradient-text': {
+                    '@apply bg-gradient-to-r from-logo-gradient-1 via-logo-gradient-2 to-logo-gradient-3 bg-clip-text text-transparent': {},
+                },
+
+                '.gradient-text-purple': {
+                    '@apply bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent': {},
+                },
+
+                // Common backdrop blur style
+                '.glass-effect': {
+                    '@apply backdrop-blur-lg bg-white/[0.03] border border-white/10': {},
+                },
+
+                // Navigation link style
+                '.nav-link': {
+                    '@apply hover:underline': {},
+                    '&.active': {
+                        '@apply font-bold': {},
+                    },
+                },
+            });
+        }),
     ],
-    safelist: ['grid-cols-1', 'grid-cols-2', 'grid-cols-3', 'grid-cols-4', 'grid-cols-5'],
 } satisfies Config;
