@@ -39,13 +39,28 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
         // Filter out Neonsy repo once
         const filteredRepos = repos.filter((repo) => repo.name !== 'Neonsy');
 
-        // Batch fetch languages for all repos in parallel
-        const languagePromises = filteredRepos.map((repo) =>
-            octokit.repos.listLanguages({
-                owner: username,
-                repo: repo.name,
-            })
-        );
+        // Process languages in batches to avoid rate limiting
+        const LANGUAGE_BATCH_SIZE = 5;
+        const languageResponses: { data: Record<string, number> }[] = [];
+
+        for (let i = 0; i < filteredRepos.length; i += LANGUAGE_BATCH_SIZE) {
+            const batch = filteredRepos.slice(i, i + LANGUAGE_BATCH_SIZE);
+            const batchPromises = batch.map((repo) =>
+                octokit.repos.listLanguages({
+                    owner: username,
+                    repo: repo.name,
+                })
+            );
+
+            // Process batch
+            const batchResults = await Promise.all(batchPromises);
+            languageResponses.push(...batchResults);
+
+            // Add small delay between batches to help with rate limiting
+            if (i + LANGUAGE_BATCH_SIZE < filteredRepos.length) {
+                await new Promise((resolve) => setTimeout(resolve, 1000));
+            }
+        }
 
         // Process repositories in batches to avoid rate limiting
         const BATCH_SIZE = 5; // Adjust based on rate limits
@@ -96,11 +111,8 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
             }
         }
 
-        // Process all language data in parallel
-        const languageResponses = await Promise.all(languagePromises);
-        const totalLanguages: Record<string, number> = {};
-
         // Calculate total stars and process languages
+        const totalLanguages: Record<string, number> = {};
         filteredRepos.forEach((repo, index) => {
             stats.social.stars += repo.stargazers_count ?? 0;
 
@@ -137,9 +149,9 @@ export async function fetchGithubStats(username: string, authToken: string): Pro
                 if (a.stars !== b.stars) return b.stars - a.stars;
                 // If stars are equal, compare forks
                 if (a.forks !== b.forks) return b.forks - a.forks;
-                // If watchers are equal, compare watchers
+                // If forks are equal, compare watchers
                 if (a.watchers !== b.watchers) return b.watchers - a.watchers;
-                // If watchers are equal, compare PRs
+                // If watchers are equal, compare total PRs
                 if (a.totalPRs !== b.totalPRs) return b.totalPRs - a.totalPRs;
                 // If PRs are equal, compare issues
                 return b.totalIssues - a.totalIssues;
