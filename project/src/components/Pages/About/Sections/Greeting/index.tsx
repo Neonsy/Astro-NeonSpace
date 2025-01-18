@@ -12,7 +12,7 @@ type GreetingProps = {
 
 export default function Greeting({ jobStatus }: GreetingProps) {
     return (
-        <section className='flex min-h-[90svh] select-none flex-col items-center justify-around gap-y-8 text-center ~sm/md:~px-10/4'>
+        <section className='flex min-h-[90svh] flex-col items-center justify-around gap-y-8 text-center ~sm/md:~px-10/4'>
             <div className='flex flex-col items-center justify-center gap-y-6 ~pt-0/36'>
                 <motion.div {...fadeInUpConfig} className='flex flex-col gap-y-6'>
                     <h1 className='bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text font-bold text-transparent ~text-5xl/9xl'>
