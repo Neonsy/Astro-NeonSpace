@@ -11,6 +11,6 @@ const jobStatus = import.meta.env.JOB_STATUS;
 <Layout title='About Me'>
     <Container>
         <Greeting client:load jobStatus={jobStatus} />
-        <Overview client:load />
+        <Overview client:visible />
     </Container>
 </Layout>
