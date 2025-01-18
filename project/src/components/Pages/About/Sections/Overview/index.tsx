@@ -11,9 +11,9 @@ export default function Overview() {
                 <div className='absolute right-1/4 top-1/2 h-24 w-24 rounded-full bg-body-gradient-3/30 blur-2xl' />
             </div>
 
-            <div className='flex flex-col items-center gap-y-16'>
+            <div className='flex flex-col items-center gap-y-16 px-4'>
                 {/* Main introduction */}
-                <motion.div {...fadeInUpConfig} className='card-padded max-w-3xl text-center'>
+                <motion.div {...fadeInUpConfig} className='card-padded w-full max-w-3xl text-center'>
                     <h2 className='gradient-text-purple ~text-2xl/4xl'>TL;DR</h2>
 
                     <p className='mt-6 text-text-secondary ~text-lg/xl'>
@@ -23,7 +23,7 @@ export default function Overview() {
                 </motion.div>
 
                 {/* Interest Categories Grid */}
-                <div className='grid w-full max-w-6xl grid-cols-1 gap-8 px-4 md:grid-cols-2 lg:grid-cols-3'>
+                <div className='grid w-full max-w-6xl grid-cols-1 gap-8 px-4 lg:grid-cols-3'>
                     {/* Professional Focus */}
                     <motion.div
                         {...fadeInUpConfig}
@@ -71,7 +71,7 @@ export default function Overview() {
                 </div>
 
                 {/* Additional Context */}
-                <motion.div {...fadeInUpConfig} transition={{ delay: 0.4 }} className='card-padded max-w-3xl'>
+                <motion.div {...fadeInUpConfig} transition={{ delay: 0.4 }} className='card-padded w-full max-w-3xl'>
                     <p className='text-center text-text-secondary ~text-lg/xl'>
                         With a formal background in Application Development and additional expertise in networking, as well as the drive to find a way
                         to solve problems, I bring a sharp mind fueled by curiosity to every project.

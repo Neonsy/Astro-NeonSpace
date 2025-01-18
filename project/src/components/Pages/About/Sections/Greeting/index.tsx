@@ -19,17 +19,29 @@ export default function Greeting({ jobStatus }: GreetingProps) {
                 <p className='text-text-secondary ~text-xl/2xl'>Full-Stack Web Developer with a passion for creating digital experiences</p>
             </motion.div>
 
-            <motion.div {...fadeInConfig} transition={{ ...fadeInConfig.transition, delay: 0.2 }} className='flex gap-8'>
-                <Link href='https://github.com/neonsy' external>
+            <div className='flex gap-8'>
+                <Link
+                    hasMotion
+                    motionProps={{ ...fadeInConfig, transition: { ...fadeInConfig.transition, delay: 0.1 } }}
+                    href='https://github.com/neonsy'
+                    external>
                     <FaGithub className='text-text-primary transition-colors ~h-8/10 ~w-8/10 hover:text-cyan-400' />
                 </Link>
-                <Link href='https://discord.com/users/your-id' external>
+                <Link
+                    hasMotion
+                    motionProps={{ ...fadeInConfig, transition: { ...fadeInConfig.transition, delay: 0.18 } }}
+                    href='https://discord.com/users/your-id'
+                    external>
                     <FaDiscord className='text-text-primary transition-colors ~h-8/10 ~w-8/10 hover:text-cyan-400' />
                 </Link>
-                <Link href='https://instagram.com/your-profile' external>
+                <Link
+                    hasMotion
+                    motionProps={{ ...fadeInConfig, transition: { ...fadeInConfig.transition, delay: 0.25 } }}
+                    href='https://instagram.com/your-profile'
+                    external>
                     <FaInstagram className='text-text-primary transition-colors ~h-8/10 ~w-8/10 hover:text-cyan-400' />
                 </Link>
-            </motion.div>
+            </div>
 
             <motion.div
                 {...fadeInConfig}
