@@ -9,7 +9,7 @@ import Link from '@/components/Link';
 export default function Hero() {
     return (
         <section className='flex min-h-[90svh] flex-col items-center justify-around ~sm/md:~px-10/4'>
-            <div className='flex select-none flex-col items-center justify-center gap-y-6'>
+            <div className='flex flex-col items-center justify-center gap-y-6'>
                 <div className='flex flex-col items-center justify-center gap-y-6'>
                     <motion.h1
                         {...fadeInUpConfig}
@@ -40,6 +40,7 @@ export default function Hero() {
             <Link
                 href='#explore'
                 aria-label='Scroll down to explore'
+                title='Scroll down to explore'
                 hasMotion
                 motionProps={{
                     ...fadeInThenBounceConfig,

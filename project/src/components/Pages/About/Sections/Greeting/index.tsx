@@ -13,7 +13,7 @@ type GreetingProps = {
 export default function Greeting({ jobStatus }: GreetingProps) {
     return (
         <section className='flex min-h-[90svh] flex-col items-center justify-center gap-y-12 ~sm/md:~px-10/4'>
-            <div className='flex select-none flex-col items-center justify-center gap-y-10'>
+            <div className='flex flex-col items-center justify-center gap-y-10'>
                 <motion.div {...fadeInUpConfig} className='flex flex-col items-center gap-y-8 text-center'>
                     <h1 className='bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text font-bold text-transparent ~text-5xl/9xl'>
                         Hey there! I'm Timothy Enderson
@@ -34,6 +34,7 @@ export default function Greeting({ jobStatus }: GreetingProps) {
                 <motion.div {...fadeInConfig} transition={{ ...fadeInConfig.transition, delay: 0.2 }} className='flex gap-8'>
                     <Link
                         aria-label='GitHub'
+                        title='Visit my GitHub profile'
                         href='https://github.com/neonsy'
                         external
                         className='group rounded-full border border-white/10 bg-white/[0.03] p-4 backdrop-blur-sm transition-all hover:border-cyan-500/50 hover:bg-white/[0.06]'>
@@ -41,6 +42,7 @@ export default function Greeting({ jobStatus }: GreetingProps) {
                     </Link>
                     <Link
                         aria-label='Discord'
+                        title='Join my Discord server'
                         href='https://discord.gg/aK3B9QyGU4'
                         external
                         className='group rounded-full border border-white/10 bg-white/[0.03] p-4 backdrop-blur-sm transition-all hover:border-cyan-500/50 hover:bg-white/[0.06]'>
@@ -48,6 +50,7 @@ export default function Greeting({ jobStatus }: GreetingProps) {
                     </Link>
                     <Link
                         aria-label='Instagram'
+                        title='Visit my Instagram profile'
                         href='https://www.instagram.com/neonsy01/'
                         external
                         className='group rounded-full border border-white/10 bg-white/[0.03] p-4 backdrop-blur-sm transition-all hover:border-cyan-500/50 hover:bg-white/[0.06]'>
