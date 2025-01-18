@@ -10,7 +10,7 @@ type GithubStatsProps = {
 
 export default function Stats({ stats }: GithubStatsProps) {
     return (
-        <section id='explore' className='py-36'>
+        <section id='stats' className='py-36'>
             <div className='mx-auto flex flex-col gap-y-12 px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
                 <h2 className='gradient-text-purple text-center text-3xl font-bold'>
                     Developer Profile

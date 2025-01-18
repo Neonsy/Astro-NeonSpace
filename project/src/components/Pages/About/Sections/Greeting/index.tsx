@@ -21,6 +21,8 @@ export default function Greeting({ jobStatus }: GreetingProps) {
 
             <div className='flex gap-8'>
                 <Link
+                    aria-label='Github'
+                    title='Github'
                     hasMotion
                     motionProps={{ ...fadeInConfig, transition: { ...fadeInConfig.transition, delay: 0.1 } }}
                     href='https://github.com/neonsy'
@@ -28,6 +30,8 @@ export default function Greeting({ jobStatus }: GreetingProps) {
                     <FaGithub className='text-text-primary transition-colors ~h-8/10 ~w-8/10 hover:text-cyan-400' />
                 </Link>
                 <Link
+                    aria-label='Discord '
+                    title='Discord'
                     hasMotion
                     motionProps={{ ...fadeInConfig, transition: { ...fadeInConfig.transition, delay: 0.18 } }}
                     href='https://discord.com/users/your-id'
@@ -35,6 +39,8 @@ export default function Greeting({ jobStatus }: GreetingProps) {
                     <FaDiscord className='text-text-primary transition-colors ~h-8/10 ~w-8/10 hover:text-cyan-400' />
                 </Link>
                 <Link
+                    aria-label='Instagram'
+                    title='Instagram'
                     hasMotion
                     motionProps={{ ...fadeInConfig, transition: { ...fadeInConfig.transition, delay: 0.25 } }}
                     href='https://instagram.com/your-profile'

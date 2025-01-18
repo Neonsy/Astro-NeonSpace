@@ -38,7 +38,7 @@ export default function Hero() {
                 </div>
             </div>
             <Link
-                href='#explore'
+                href='#stats'
                 aria-label='Scroll down to explore'
                 title='Scroll down to explore'
                 hasMotion
