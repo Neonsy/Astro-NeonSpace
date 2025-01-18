@@ -20,7 +20,7 @@ export default function Overview() {
                 </motion.div>
 
                 {/* Interest Categories Grid */}
-                <div className='grid w-full max-w-6xl grid-cols-1 gap-8 px-4 lg:grid-cols-3'>
+                <div className='grid w-full grid-cols-1 gap-8 px-4 max-w-xl lg:max-w-5xl lg:grid-cols-3'>
                     {/* Professional Focus */}
                     <motion.div
                         {...fadeInUpConfig}
