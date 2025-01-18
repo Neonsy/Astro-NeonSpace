@@ -6,6 +6,11 @@ on:
     schedule:
         - cron: '0 6 * * 1' # Runs at (6 AM) on Monday
 
+# Add concurrency control
+concurrency:
+    group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+    cancel-in-progress: true
+
 jobs:
     analyze:
         name: Analyze
