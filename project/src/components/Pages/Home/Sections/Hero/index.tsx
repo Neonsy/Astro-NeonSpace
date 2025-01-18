@@ -1,15 +1,14 @@
 import { motion } from 'motion/react';
 
-import { fadeInUpConfig, fadeInConfig, fadeInThenBounceConfig } from '@/lib/animations/simple';
+import { fadeInConfig, fadeInUpConfig } from '@/lib/animations/simple';
 
-import { FaAngleDoubleDown } from 'react-icons/fa';
-
+import ExploreButton from '@/components/ExploreButton';
 import Link from '@/components/Link';
 
 export default function Hero() {
     return (
         <section className='flex min-h-[90svh] flex-col items-center justify-around ~sm/md:~px-10/4'>
-            <div className='flex flex-col items-center justify-center gap-y-6'>
+            <div className='flex flex-col items-center justify-center gap-y-6 ~pt-0/36'>
                 <div className='flex flex-col items-center justify-center gap-y-6'>
                     <motion.h1
                         {...fadeInUpConfig}
@@ -37,17 +36,7 @@ export default function Hero() {
                     </Link>
                 </div>
             </div>
-            <Link
-                href='#stats'
-                aria-label='Scroll down to explore'
-                title='Scroll down to explore'
-                hasMotion
-                motionProps={{
-                    ...fadeInThenBounceConfig,
-                    transition: { ...fadeInThenBounceConfig.transition, y: { ...fadeInThenBounceConfig.transition.y, duration: 3 } },
-                }}>
-                <FaAngleDoubleDown className='rounded-full border border-white/15 text-white ~text-5xl/9xl ~p-1/3 lg:backdrop-blur-sm' />
-            </Link>
+            <ExploreButton href='#stats' />
         </section>
     );
 }
