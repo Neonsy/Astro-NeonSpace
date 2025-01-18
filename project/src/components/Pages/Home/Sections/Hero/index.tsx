@@ -29,11 +29,11 @@ export default function Hero() {
                         Start a Project
                     </Link>
                     <Link
-                        href='/projects'
+                        href='/about'
                         hasMotion
                         motionProps={{ ...fadeInConfig, transition: { ...fadeInUpConfig.transition, delay: 0.1 } }}
                         className='rounded-3xl border border-cyan-400/50 bg-white/[0.03] font-medium text-cyan-400 transition-all ~text-base/lg ~px-6/8 ~py-2/3 hover:border-cyan-400/80 hover:bg-white/[0.06] hover:text-cyan-300 lg:backdrop-blur-sm'>
-                        View Portfolio
+                        Get to know me
                     </Link>
                 </div>
             </div>
@@ -43,7 +43,7 @@ export default function Hero() {
                 hasMotion
                 motionProps={{
                     ...fadeInThenBounceConfig,
-                    transition: { ...fadeInThenBounceConfig.transition, delay: 0.1, y: { ...fadeInThenBounceConfig.transition.y, duration: 3 } },
+                    transition: { ...fadeInThenBounceConfig.transition, y: { ...fadeInThenBounceConfig.transition.y, duration: 3 } },
                 }}>
                 <FaAngleDoubleDown className='rounded-full border border-white/15 text-white ~text-5xl/9xl ~p-1/3 lg:backdrop-blur-sm' />
             </Link>

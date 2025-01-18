@@ -1,0 +1,15 @@
+---
+export const prerender = true;
+
+import Layout from '@layouts/global/RootLayout.astro';
+import Container from '@/components/Container';
+import Greeting from '@/components/Pages/About/Sections/Greeting';
+
+const jobStatus = import.meta.env.JOB_STATUS;
+---
+
+<Layout title='About Me'>
+    <Container>
+        <Greeting client:load jobStatus={jobStatus} />
+    </Container>
+</Layout>
