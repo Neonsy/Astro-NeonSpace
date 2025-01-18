@@ -4,7 +4,7 @@ import { fadeInUpConfig } from '@/lib/animations/simple';
 
 export default function Overview() {
     return (
-        <section id='overview' className='relative min-h-[50vh] ~py-36/36'>
+        <section id='overview' className='relative py-36'>
             {/* Decorative background elements */}
             <div className='absolute inset-0 -z-10'>
                 <div className='absolute left-1/4 top-1/4 h-32 w-32 rounded-full bg-body-gradient-2/30 blur-3xl' />

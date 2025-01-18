@@ -6,7 +6,7 @@ import { fadeInUpConfig, slideInRightConfig } from '@/lib/animations/simple';
 import { FaGithub } from 'react-icons/fa6';
 import { IoClose, IoMenu } from 'react-icons/io5';
 
-import Link from '@/components/Link';
+import Link from '@/components/Common/Link';
 
 import type { NavItem } from '@/types/navItems';
 

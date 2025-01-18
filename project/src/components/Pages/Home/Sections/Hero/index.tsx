@@ -2,8 +2,8 @@ import { motion } from 'motion/react';
 
 import { fadeInConfig, fadeInUpConfig } from '@/lib/animations/simple';
 
-import ExploreButton from '@/components/ExploreButton';
-import Link from '@/components/Link';
+import ExploreButton from '@/components/Common/ExploreButton';
+import Link from '@/components/Common/Link';
 
 export default function Hero() {
     return (

@@ -3,8 +3,8 @@ import { motion } from 'motion/react';
 import { fadeInUpConfig, fadeInConfig } from '@/lib/animations/simple';
 import { FaGithub, FaDiscord, FaInstagram } from 'react-icons/fa6';
 
-import Link from '@/components/Link';
-import ExploreButton from '@/components/ExploreButton';
+import Link from '@/components/Common/Link';
+import ExploreButton from '@/components/Common/ExploreButton';
 
 type GreetingProps = {
     jobStatus: string;
