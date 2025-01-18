@@ -2,16 +2,13 @@ import { motion } from 'motion/react';
 
 import { fadeInUpConfig } from '@/lib/animations/simple';
 
+import SectionTitle from '@/components/Common/SectionTitle';
+
 export default function Overview() {
     return (
         <section id='overview' className='relative py-36'>
-            {/* Decorative background elements */}
-            <div className='absolute inset-0 -z-10'>
-                <div className='absolute left-1/4 top-1/4 h-32 w-32 rounded-full bg-body-gradient-2/30 blur-3xl' />
-                <div className='absolute right-1/4 top-1/2 h-24 w-24 rounded-full bg-body-gradient-3/30 blur-2xl' />
-            </div>
-
             <div className='flex flex-col items-center gap-y-16 px-4'>
+                <SectionTitle title='Introduction' />
                 {/* Main introduction */}
                 <motion.div {...fadeInUpConfig} className='card-padded w-full max-w-3xl text-center'>
                     <h2 className='gradient-text-purple ~text-2xl/4xl'>TL;DR</h2>
