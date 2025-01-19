@@ -12,15 +12,21 @@ export default function Journey() {
     return (
         <section className='flex flex-col gap-y-9 py-36'>
             <SectionTitle title='Journey' />
-            <div className='flex flex-col gap-8'>
+            <div className='flex flex-col gap-y-8 px-3'>
                 <JourneyCard
-                    startDate='start date'
-                    endDate='end date'
-                    title='title'
-                    place='place'
-                    description='description'
+                    startDate='2022'
+                    endDate='2024'
+                    title='Vocational Training as IT Specialist for Application Development'
+                    place='Neckargemünd - BW'
+                    description="At the start of the second year, I've switched to the application development track, as I've gained a good amount of experience in system integration during the first year to know, that I prefer software development as the primary field. I've also found my passion for web development, as I've learned a lot of new technologies and frameworks, and I've gained a good amount of experience in the field."
                 />
-                {/* Add more JourneyCards as needed */}
+                <JourneyCard
+                    startDate='2021'
+                    endDate='2022'
+                    title='Vocational Training as IT Specialist for System Integration'
+                    place='Neckargemünd - BW'
+                    description="Due to my interest in IT, and the introduction in both system integration and application development during Pre-vocational Training, I felt like this was the right path for me, as I've gathered a good amount of experience over my school years."
+                />
             </div>
         </section>
     );
@@ -28,7 +34,7 @@ export default function Journey() {
 
 export function JourneyCard({ startDate, endDate, title, place, description }: JourneyCardProps) {
     return (
-        <div className='relative flex gap-8'>
+        <div className='relative flex gap-2'>
             {/* Timeline line and circle */}
             <div className='relative flex flex-col items-center'>
                 <div className='h-4 w-4 rounded-full bg-cyan-400'></div>
