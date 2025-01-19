@@ -1,3 +1,7 @@
+import { motion } from 'motion/react';
+
+import { fadeInUpConfig } from '@/lib/animations/simple';
+
 import SectionTitle from '@/components/Common/SectionTitle';
 
 interface JourneyCardProps {
@@ -34,7 +38,7 @@ export default function Journey() {
 
 export function JourneyCard({ startDate, endDate, title, place, description }: JourneyCardProps) {
     return (
-        <div className='relative flex gap-2'>
+        <motion.div {...fadeInUpConfig} transition={{ ...fadeInUpConfig.transition, delay: 0.18 }} className='relative flex gap-2'>
             {/* Timeline line and circle */}
             <div className='relative flex flex-col items-center'>
                 <div className='h-4 w-4 rounded-full bg-cyan-400'></div>
@@ -55,6 +59,6 @@ export function JourneyCard({ startDate, endDate, title, place, description }: J
                 {/* Description */}
                 <p className='mt-2 text-text-secondary'>{description}</p>
             </div>
-        </div>
+        </motion.div>
     );
 }

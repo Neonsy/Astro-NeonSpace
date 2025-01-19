@@ -9,7 +9,12 @@ type ProgressBarProps = {
 export default function ProgressBar({ skill, percentage }: ProgressBarProps) {
     return (
         <div className='card-base grid grid-cols-[0.72fr_1fr_0.1fr] items-center p-4 sm:grid-cols-[0.6fr_1fr_0.1fr] md:grid-cols-[0.2fr_1fr_0.1fr] lg:grid-cols-[0.3fr_1fr_0.1fr] xl:grid-cols-[0.2fr_1fr_0.1fr]'>
-            <span className='text-sm font-medium text-text-secondary'>{skill}</span>
+            <motion.span
+                {...fadeInUpConfig}
+                transition={{ ...fadeInUpConfig.transition, delay: 0.1 }}
+                className='text-sm font-medium text-text-secondary'>
+                {skill}
+            </motion.span>
             <div className='h-2 w-full rounded-full bg-white/[0.03]'>
                 <motion.div
                     {...fadeInUpConfig}
