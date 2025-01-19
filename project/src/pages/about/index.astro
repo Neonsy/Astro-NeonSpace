@@ -1,11 +1,12 @@
 ---
 export const prerender = true;
 
-import Layout from '@layouts/global/RootLayout.astro';
+import Layout from '@/layouts/global/RootLayout.astro';
 import Container from '@/components/Layout/Container';
 import Greeting from '@/components/Pages/About/Sections/Greeting';
 import Overview from '@/components/Pages/About/Sections/Overview';
-import Proficiencies from '@/components/Pages/About/Sections/Journey';
+import Proficiency from '@/components/Pages/About/Sections/Proficiencies';
+import Journey from '@/components/Pages/About/Sections/Journey';
 
 const professionStatus = import.meta.env.PROFESSION_STATUS;
 ---
@@ -14,6 +15,7 @@ const professionStatus = import.meta.env.PROFESSION_STATUS;
     <Container>
         <Greeting client:load professionStatus={professionStatus} />
         <Overview client:visible />
-        <Proficiencies client:visible />
+        <Proficiency client:visible />
+        <Journey client:visible />
     </Container>
 </Layout>
