@@ -5,12 +5,15 @@ import Layout from '@layouts/global/RootLayout.astro';
 import Container from '@/components/Layout/Container';
 import Greeting from '@/components/Pages/About/Sections/Greeting';
 import Overview from '@/components/Pages/About/Sections/Overview';
-const jobStatus = import.meta.env.JOB_STATUS;
+import Proficiencies from '@/components/Pages/About/Sections/Journey';
+
+const professionStatus = import.meta.env.PROFESSION_STATUS;
 ---
 
 <Layout title='About Me'>
     <Container>
-        <Greeting client:load jobStatus={jobStatus} />
+        <Greeting client:load professionStatus={professionStatus} />
         <Overview client:visible />
+        <Proficiencies client:visible />
     </Container>
 </Layout>

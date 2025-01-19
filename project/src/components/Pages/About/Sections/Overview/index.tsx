@@ -14,7 +14,7 @@ export default function Overview() {
                     <h2 className='gradient-text-purple ~text-2xl/4xl'>TL;DR</h2>
 
                     <p className='mt-6 text-text-secondary ~text-lg/xl'>
-                        I'm a Full-Stack Developer who found their passion at the intersection of creativity and technology. What started with modding
+                        I'm a junior Full-Stack Developer who found their passion at the intersection of creativity and technology. What started with modding
                         games and tinkering with servers has evolved into a journey that lead me to becoming a software developer.
                     </p>
                 </motion.div>

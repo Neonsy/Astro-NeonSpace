@@ -7,10 +7,10 @@ import Link from '@/components/Common/Link';
 import ExploreButton from '@/components/Common/ExploreButton';
 
 type GreetingProps = {
-    jobStatus: string;
+    professionStatus: string;
 };
 
-export default function Greeting({ jobStatus }: GreetingProps) {
+export default function Greeting({ professionStatus }: GreetingProps) {
     return (
         <section className='flex min-h-[90svh] flex-col items-center justify-around gap-y-8 text-center ~sm/md:~px-10/4'>
             <div className='flex flex-col items-center justify-center gap-y-6 ~pt-0/36'>
@@ -55,7 +55,7 @@ export default function Greeting({ jobStatus }: GreetingProps) {
                     {...fadeInConfig}
                     transition={{ ...fadeInConfig.transition, delay: 0.3 }}
                     className='bg-background-secondary/50 rounded-full border border-cyan-400/20 px-6 py-2'>
-                    <span className='text-cyan-400 ~text-sm/base'>{jobStatus}</span>
+                    <span className='text-cyan-400 ~text-sm/base'>{professionStatus}</span>
                 </motion.div>
             </div>
             <ExploreButton href='#overview' />
