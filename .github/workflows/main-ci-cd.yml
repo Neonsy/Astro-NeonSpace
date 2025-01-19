@@ -5,6 +5,11 @@ on:
         branches: [main, Preview]
         types: [opened, reopened, synchronize]
 
+# Add concurrency control
+concurrency:
+    group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+    cancel-in-progress: true
+
 jobs:
     restrict-pr:
         if: github.event.action == 'opened' || github.event.action == 'reopened'

@@ -1,15 +1,14 @@
 import { motion } from 'motion/react';
 
-import { fadeInUpConfig, fadeInConfig, fadeInThenBounceConfig } from '@/lib/animations/simple';
+import { fadeInConfig, fadeInUpConfig } from '@/lib/animations/simple';
 
-import { FaAngleDoubleDown } from 'react-icons/fa';
-
-import Link from '@/components/Link';
+import ExploreButton from '@/components/Common/ExploreButton';
+import Link from '@/components/Common/Link';
 
 export default function Hero() {
     return (
-        <section className='flex min-h-[90svh] flex-col items-center justify-around ~sm/md:~px-10/4'>
-            <div className='flex select-none flex-col items-center justify-center gap-y-6'>
+        <section id='top' className='flex min-h-[90svh] flex-col items-center justify-around ~sm/md:~px-10/4'>
+            <div className='flex flex-col items-center justify-center gap-y-6 ~pt-0/36'>
                 <div className='flex flex-col items-center justify-center gap-y-6'>
                     <motion.h1
                         {...fadeInUpConfig}
@@ -29,24 +28,15 @@ export default function Hero() {
                         Start a Project
                     </Link>
                     <Link
-                        href='/projects'
+                        href='/about'
                         hasMotion
                         motionProps={{ ...fadeInConfig, transition: { ...fadeInUpConfig.transition, delay: 0.1 } }}
                         className='rounded-3xl border border-cyan-400/50 bg-white/[0.03] font-medium text-cyan-400 transition-all ~text-base/lg ~px-6/8 ~py-2/3 hover:border-cyan-400/80 hover:bg-white/[0.06] hover:text-cyan-300 lg:backdrop-blur-sm'>
-                        View Portfolio
+                        Get to know me
                     </Link>
                 </div>
             </div>
-            <Link
-                href='#explore'
-                aria-label='Scroll down to explore'
-                hasMotion
-                motionProps={{
-                    ...fadeInThenBounceConfig,
-                    transition: { ...fadeInThenBounceConfig.transition, delay: 0.1, y: { ...fadeInThenBounceConfig.transition.y, duration: 3 } },
-                }}>
-                <FaAngleDoubleDown className='rounded-full border border-white/15 text-white ~text-5xl/9xl ~p-1/3 lg:backdrop-blur-sm' />
-            </Link>
+            <ExploreButton href='#stats' />
         </section>
     );
 }

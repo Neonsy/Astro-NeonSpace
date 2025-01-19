@@ -1,3 +1,4 @@
+import SectionTitle from '@/components/Common/SectionTitle';
 import LanguageSection from '@/components/Pages/Home/Sections/Stats/LanguageSection';
 import ProfileCard from '@/components/Pages/Home/Sections/Stats/ProfileCard';
 import RepoSection from '@/components/Pages/Home/Sections/Stats/RepoSection';
@@ -10,11 +11,9 @@ type GithubStatsProps = {
 
 export default function Stats({ stats }: GithubStatsProps) {
     return (
-        <section id='explore' className='py-36'>
-            <div className='mx-auto flex flex-col gap-y-12 px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
-                <h2 className='bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-center text-3xl font-bold text-transparent'>
-                    Developer Profile
-                </h2>
+        <section id='stats' className='flex items-center justify-center py-36'>
+            <div className='flex flex-col gap-y-12 px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
+                <SectionTitle title='Developer Profile' />
 
                 <ProfileCard stats={stats} />
                 <LanguageSection languages={stats.languages} />
