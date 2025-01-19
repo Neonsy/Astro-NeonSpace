@@ -92,7 +92,7 @@ export default {
             addComponents({
                 // Base card style used across components
                 '.card-base': {
-                    '@apply rounded-xl border border-white/10 bg-white/[0.03] transition-all duration-200': {},
+                    '@apply rounded-xl border border-white/10 bg-white/[0.03] transition-all duration-150 backdrop-blur-sm': {},
                     '&:hover': {
                         '@apply -translate-y-1 border-white/20 bg-white/[0.05]': {},
                     },

@@ -42,8 +42,8 @@ export const fadeInThenBounceConfig = {
         y: [5, -5, 5],
     },
     transition: {
-        opacity: { delay: 0.5 },
-        x: { delay: 0.5 },
+        opacity: { delay: 0.2 },
+        x: { delay: 0.2 },
         y: {
             delay: 0.6,
             duration: 5,

@@ -6,7 +6,7 @@ import { fadeInUpConfig, slideInRightConfig } from '@/lib/animations/simple';
 import { FaGithub } from 'react-icons/fa6';
 import { IoClose, IoMenu } from 'react-icons/io5';
 
-import Link from '@/components/Link';
+import Link from '@/components/Common/Link';
 
 import type { NavItem } from '@/types/navItems';
 
@@ -45,7 +45,7 @@ export default function MobileNav({ currentPath, navItems }: Props) {
                     NeonSpace
                 </Link>
 
-                <button onClick={() => setIsOpen(!isOpen)} className='text-2xl' aria-label='Toggle menu'>
+                <button onClick={() => setIsOpen(!isOpen)} className='text-2xl' aria-label='Toggle menu' title='Toggle menu'>
                     <motion.div animate={{ rotate: isOpen ? 90 : 0 }} transition={{ duration: 0.2 }}>
                         {isOpen ? <IoClose /> : <IoMenu />}
                     </motion.div>

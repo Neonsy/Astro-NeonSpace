@@ -5,7 +5,7 @@ import { fadeInUpConfig } from '@/lib/animations/simple';
 import { FaCode, FaCodeFork, FaCodePullRequest, FaEye, FaStar } from 'react-icons/fa6';
 import { VscIssues } from 'react-icons/vsc';
 
-import Link from '@/components/Link';
+import Link from '@/components/Common/Link';
 
 import type { Repository } from '@/types/githubStats';
 

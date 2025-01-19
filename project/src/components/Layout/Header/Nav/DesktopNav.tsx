@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 
-import Link from '@/components/Link';
+import Link from '@/components/Common/Link';
 
 import { FaGithub } from 'react-icons/fa6';
 import { fadeInThenBounceConfig, fadeInUpConfig, slideInLeftConfig } from '@/lib/animations/simple';
