@@ -1,4 +1,4 @@
-import type { IconType } from "react-icons";
+import type { IconType } from 'react-icons';
 
 export type NavItem = {
     href: string;
@@ -6,4 +6,3 @@ export type NavItem = {
     label: string;
     delay: number;
 };
-
