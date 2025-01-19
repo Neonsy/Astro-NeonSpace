@@ -7,13 +7,11 @@ import Greeting from '@/components/Pages/About/Sections/Greeting';
 import Overview from '@/components/Pages/About/Sections/Overview';
 import Proficiency from '@/components/Pages/About/Sections/Proficiencies';
 import Journey from '@/components/Pages/About/Sections/Journey';
-
-const professionStatus = import.meta.env.PROFESSION_STATUS;
 ---
 
 <Layout title='About Me'>
     <Container>
-        <Greeting client:load professionStatus={professionStatus} />
+        <Greeting client:load />
         <Overview client:visible />
         <Proficiency client:visible />
         <Journey client:visible />

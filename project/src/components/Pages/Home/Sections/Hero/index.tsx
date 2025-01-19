@@ -7,7 +7,7 @@ import Link from '@/components/Common/Link';
 
 export default function Hero() {
     return (
-        <section className='flex min-h-[90svh] flex-col items-center justify-around ~sm/md:~px-10/4'>
+        <section id='top' className='flex min-h-[90svh] flex-col items-center justify-around ~sm/md:~px-10/4'>
             <div className='flex flex-col items-center justify-center gap-y-6 ~pt-0/36'>
                 <div className='flex flex-col items-center justify-center gap-y-6'>
                     <motion.h1

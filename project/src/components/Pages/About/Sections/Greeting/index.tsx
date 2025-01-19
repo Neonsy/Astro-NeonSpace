@@ -6,13 +6,9 @@ import { FaGithub, FaDiscord, FaInstagram } from 'react-icons/fa6';
 import Link from '@/components/Common/Link';
 import ExploreButton from '@/components/Common/ExploreButton';
 
-type GreetingProps = {
-    professionStatus: string;
-};
-
-export default function Greeting({ professionStatus }: GreetingProps) {
+export default function Greeting() {
     return (
-        <section className='flex min-h-[90svh] flex-col items-center justify-around gap-y-8 text-center ~sm/md:~px-10/4'>
+        <section id='top' className='flex min-h-[90svh] flex-col items-center justify-around gap-y-8 text-center ~sm/md:~px-10/4'>
             <div className='flex flex-col items-center justify-center gap-y-6 ~pt-0/36'>
                 <motion.div {...fadeInUpConfig} className='flex flex-col gap-y-6'>
                     <h1 className='bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 bg-clip-text font-bold text-transparent ~text-5xl/9xl'>
@@ -55,7 +51,7 @@ export default function Greeting({ professionStatus }: GreetingProps) {
                     {...fadeInConfig}
                     transition={{ ...fadeInConfig.transition, delay: 0.3 }}
                     className='bg-background-secondary/50 rounded-full border border-cyan-400/20 px-6 py-2'>
-                    <span className='text-cyan-400 ~text-sm/base'>{professionStatus}</span>
+                    <span className='text-cyan-400 ~text-sm/base'>Looking for a Frontend || Full-Stack Developer Opportunity</span>
                 </motion.div>
             </div>
             <ExploreButton href='#overview' />

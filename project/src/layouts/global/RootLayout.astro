@@ -3,6 +3,7 @@ import Head from '@/layouts/global/Head.astro';
 import ParticleBackground from '@/components/ParticleBackground';
 
 import Header from '@/components/Layout/Header';
+import Footer from '@/components/Layout/Footer';
 
 import '@/global.css';
 
@@ -30,6 +31,7 @@ const {
             <main class='flex-grow'>
                 <slot />
             </main>
+            <Footer client:visible transition:persist />
         </div>
     </body>
 </html>
