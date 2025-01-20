@@ -27,7 +27,7 @@ export default function Overview() {
                         transition={{ delay: 0.1 }}
                         className='card-padded flex flex-col items-center justify-center gap-y-4'>
                         <h3 className='gradient-text-purple mb-4 ~text-xl/2xl'>Professional Focus</h3>
-                        <ul className='flex flex-col items-center justify-center gap-y-4 text-text-secondary'>
+                        <ul className='flex flex-col items-center justify-center gap-y-4 text-text-secondary' aria-label='Professional Focus'>
                             <li className='text-center'>Modern Web Development</li>
                             <li className='text-center'>Synergy between Frontend and Backend</li>
                             <li className='text-center'>State of the Art Technologies</li>
@@ -42,7 +42,7 @@ export default function Overview() {
                         transition={{ delay: 0.2 }}
                         className='card-padded flex flex-col items-center justify-center gap-y-4'>
                         <h3 className='gradient-text-purple mb-4 ~text-xl/2xl'>Tech Passions</h3>
-                        <ul className='flex flex-col items-center justify-center gap-y-4 text-text-secondary'>
+                        <ul className='flex flex-col items-center justify-center gap-y-4 text-text-secondary' aria-label='Tech Passions'>
                             <li className='text-center'>System Administration</li>
                             <li className='text-center'>Linux Environments</li>
                             <li className='text-center'>Cloud Architecture</li>
@@ -57,7 +57,7 @@ export default function Overview() {
                         transition={{ delay: 0.3 }}
                         className='card-padded flex flex-col items-center justify-center gap-y-4'>
                         <h3 className='gradient-text-purple mb-4 ~text-xl/2xl'>Pursuits of curiosity</h3>
-                        <ul className='flex flex-col items-center justify-center gap-y-4 text-text-secondary'>
+                        <ul className='flex flex-col items-center justify-center gap-y-4 text-text-secondary' aria-label='Pursuits of curiosity'>
                             <li className='text-center'>Design</li>
                             <li className='text-center'>Open Source Projects</li>
                             <li className='text-center'>Learning New Tech</li>

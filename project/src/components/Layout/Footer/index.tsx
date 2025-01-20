@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-
+import { fadeInConfig, fadeInUpDelayedConfig } from '@/lib/animations/simple';
 import { SOCIAL_NAV } from '@/lib/nav/items';
 
 import Container from '@/components/Layout/Container';
@@ -8,34 +8,16 @@ import Link from '@/components/Common/Link';
 export default function Footer() {
     return (
         <motion.footer
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.3 }}
-            className='bg-footer border-t border-white/30 bg-footer-primary/95 py-3 shadow-xl lg:bg-footer-primary/60 lg:backdrop-blur-lg'>
+            {...fadeInConfig}
+            className='bg-footer border-t border-white/15 bg-footer-primary py-3 shadow-xl lg:bg-footer-primary/5 lg:backdrop-blur-sm'>
             <Container>
                 <div className='flex flex-col items-center justify-center gap-y-4 px-4'>
-                    <motion.div
-                        className='flex max-w-xl flex-col items-center justify-center gap-y-4'
-                        initial={{ opacity: 0, y: -12 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{
-                            duration: 0.3,
-                            delay: 0.2,
-                        }}>
+                    <motion.div className='flex max-w-xl flex-col items-center justify-center gap-y-4' {...fadeInUpDelayedConfig(0.2)}>
                         <SocialNav />
                     </motion.div>
-                    <motion.div
-                        initial={{ opacity: 0, y: -12 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{
-                            duration: 0.3,
-                            delay: 0.3,
-                        }}>
+                    <motion.div {...fadeInUpDelayedConfig(0.3)}>
                         <Link
-                            href='https://github.com/neonsy'
+                            href='https://astro-neonspace.vercel.app/'
                             external
                             aria-label='Github'
                             title='Github'

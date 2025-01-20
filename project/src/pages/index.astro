@@ -13,7 +13,7 @@ import LoadingSkeleton from '@/components/Pages/Home/Sections/Stats/LoadingSkele
     <Container>
         <Hero client:load />
         <Stats server:defer>
-            <LoadingSkeleton client:visible slot='fallback' />
+            <LoadingSkeleton slot='fallback' />
         </Stats>
     </Container>
 </Layout>

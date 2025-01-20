@@ -3,7 +3,7 @@ import ProgressBar from '@/components/Common/ProgressBar';
 
 export default function Proficiency() {
     return (
-        <section className='flex flex-col gap-y-9 ~py-12/72'>
+        <section className='flex flex-col gap-y-9 py-36'>
             <SectionTitle title='Proficiency' />
             <div className='grid grid-cols-1 flex-col gap-3 px-3 lg:grid-cols-2'>
                 <ProgressBar skill='HTML' percentage={100} />
