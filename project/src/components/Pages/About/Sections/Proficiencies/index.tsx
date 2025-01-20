@@ -5,7 +5,7 @@ export default function Proficiency() {
     return (
         <section className='flex flex-col gap-y-9 ~py-12/72'>
             <SectionTitle title='Proficiency' />
-            <div className='grid grid-cols-1 flex-col gap-3 lg:grid-cols-2 px-3'>
+            <div className='grid grid-cols-1 flex-col gap-3 px-3 lg:grid-cols-2'>
                 <ProgressBar skill='HTML' percentage={100} />
                 <ProgressBar skill='CSS' percentage={95} />
                 <ProgressBar skill='Tailwind' percentage={85} />

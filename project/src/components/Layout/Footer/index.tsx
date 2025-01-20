@@ -53,7 +53,16 @@ export function SocialNav() {
     return (
         <div className='flex flex-row items-center justify-center gap-x-4'>
             {SOCIAL_NAV.map((item) => (
-                <Link key={item.href} iconOnly icon={item.icon} href={item.href} className='~text-lg/5xl' external aria-label={item.label} title={item.label} />
+                <Link
+                    key={item.href}
+                    iconOnly
+                    icon={item.icon}
+                    href={item.href}
+                    className='~text-lg/5xl'
+                    external
+                    aria-label={item.label}
+                    title={item.label}
+                />
             ))}
         </div>
     );

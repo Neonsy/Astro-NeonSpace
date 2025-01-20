@@ -14,13 +14,13 @@ export default function Overview() {
                     <h2 className='gradient-text-purple ~text-2xl/4xl'>TL;DR</h2>
 
                     <p className='mt-6 text-text-secondary ~text-lg/xl'>
-                        I'm a junior Full-Stack Developer who found their passion at the intersection of creativity and technology. What started with modding
-                        games and tinkering with servers has evolved into a journey that lead me to becoming a software developer.
+                        I'm a junior Full-Stack Developer who found their passion at the intersection of creativity and technology. What started with
+                        modding games and tinkering with servers has evolved into a journey that lead me to becoming a software developer.
                     </p>
                 </motion.div>
 
                 {/* Interest Categories Grid */}
-                <div className='grid w-full grid-cols-1 gap-8 px-4 max-w-xl lg:max-w-5xl lg:grid-cols-3'>
+                <div className='grid w-full max-w-xl grid-cols-1 gap-8 px-4 lg:max-w-5xl lg:grid-cols-3'>
                     {/* Professional Focus */}
                     <motion.div
                         {...fadeInUpConfig}
