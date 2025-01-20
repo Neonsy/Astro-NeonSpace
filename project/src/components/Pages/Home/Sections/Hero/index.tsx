@@ -10,9 +10,7 @@ export default function Hero() {
         <section id='top' className='flex min-h-[90svh] flex-col items-center justify-around ~sm/md:~px-10/4'>
             <div className='flex flex-col items-center justify-center gap-y-6 ~pt-0/36'>
                 <div className='flex flex-col items-center justify-center gap-y-6'>
-                    <motion.h1
-                        {...fadeInUpConfig}
-                        className='gradient-text font-bold ~text-5xl/12xl'>
+                    <motion.h1 {...fadeInUpConfig} className='gradient-text font-bold ~text-5xl/12xl'>
                         NeonSpace
                     </motion.h1>
                     <motion.p {...fadeInUpConfig} transition={{ ...fadeInUpConfig.transition }} className='max-w-2xl text-center ~text-base/3xl'>
