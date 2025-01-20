@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 
-import { fadeInUpConfig } from '@/lib/animations/simple';
+import { fadeInConfig } from '@/lib/animations/simple';
 
 import SectionTitle from '@/components/Common/SectionTitle';
 
@@ -44,7 +44,7 @@ export function JourneyCard({ startDate, endDate, title, place, description }: J
     };
 
     return (
-        <motion.div {...fadeInUpConfig({ delay: animationConfig.delay.timeline })} className='relative flex gap-2'>
+        <motion.div {...fadeInConfig({ delay: animationConfig.delay.timeline })} className='relative flex gap-2'>
             {/* Timeline line and circle */}
             <div className='relative flex flex-col items-center'>
                 <div className='h-4 w-4 rounded-full bg-cyan-400'></div>

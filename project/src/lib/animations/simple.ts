@@ -11,28 +11,6 @@ export const fadeInConfig = (options?: TransitionOptions) => ({
     },
 });
 
-export const fadeInUpConfig = (options?: TransformOptions) => ({
-    initial: { opacity: 0, y: options?.distance ?? 9 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: {
-        duration: options?.duration ?? 0.3,
-        delay: options?.delay ?? 0,
-        ease: options?.ease ?? 'easeOut',
-    },
-});
-
-export const fadeInDownConfig = (options?: TransformOptions) => ({
-    initial: { opacity: 0, y: -(options?.distance ?? 9) },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: {
-        duration: options?.duration ?? 0.3,
-        delay: options?.delay ?? 0,
-        ease: options?.ease ?? 'easeOut',
-    },
-});
-
 export const slideInLeftConfig = (options?: TransformOptions) => ({
     initial: { opacity: 0, x: -(options?.distance ?? -5) },
     whileInView: { opacity: 1, x: 0 },

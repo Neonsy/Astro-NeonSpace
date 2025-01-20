@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 
-import { fadeInUpConfig, fadeInConfig } from '@/lib/animations/simple';
+import { fadeInConfig } from '@/lib/animations/simple';
 import { FaGithub, FaDiscord, FaInstagram } from 'react-icons/fa6';
 
 import Link from '@/components/Common/Link';
@@ -12,7 +12,7 @@ export default function Greeting() {
             heading: 0.1,
             github: 0.18,
             discord: 0.24,
-            instagram: 0.30,
+            instagram: 0.3,
             lookingForOpportunity: 0.36,
         },
     };
@@ -20,7 +20,7 @@ export default function Greeting() {
     return (
         <section id='top' className='flex min-h-[90svh] flex-col items-center justify-around gap-y-8 text-center ~sm/md:~px-10/4'>
             <div className='flex flex-col items-center justify-center gap-y-6 ~pt-0/36'>
-                <motion.div {...fadeInUpConfig({ delay: animationConfig.delay.heading })} className='flex flex-col gap-y-6'>
+                <motion.div {...fadeInConfig({ delay: animationConfig.delay.heading })} className='flex flex-col gap-y-6'>
                     <h1 className='gradient-text font-bold ~text-5xl/9xl'>Timothy Enderson</h1>
                     <p className='text-text-secondary ~text-xl/2xl'>Full-Stack Web Developer with a passion for creating digital experiences</p>
                 </motion.div>

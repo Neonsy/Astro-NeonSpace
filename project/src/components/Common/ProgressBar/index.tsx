@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 
-import { fadeInUpConfig } from '@/lib/animations/simple';
+import { fadeInConfig } from '@/lib/animations/simple';
 
 type ProgressBarProps = {
     skill: string;
@@ -19,19 +19,19 @@ export default function ProgressBar({ skill, percentage }: ProgressBarProps) {
     };
     return (
         <motion.div
-            {...fadeInUpConfig({ delay: animationConfig.delay.container })}
+            {...fadeInConfig({ delay: animationConfig.delay.container })}
             className='card-base grid grid-cols-[0.72fr_1fr_0.1fr] items-center p-4 sm:grid-cols-[0.6fr_1fr_0.1fr] md:grid-cols-[0.2fr_1fr_0.1fr] lg:grid-cols-[0.3fr_1fr_0.1fr] xl:grid-cols-[0.2fr_1fr_0.1fr]'>
-            <motion.span {...fadeInUpConfig({ delay: animationConfig.delay.skill })} className='text-sm font-medium text-text-secondary'>
+            <motion.span {...fadeInConfig({ delay: animationConfig.delay.skill })} className='text-sm font-medium text-text-secondary'>
                 {skill}
             </motion.span>
-            <motion.div {...fadeInUpConfig({ delay: animationConfig.delay.progressLine })} className='h-2 w-full rounded-full bg-white/[0.03]'>
+            <motion.div {...fadeInConfig({ delay: animationConfig.delay.progressLine })} className='h-2 w-full rounded-full bg-white/[0.03]'>
                 <motion.div
-                    {...fadeInUpConfig({ delay: animationConfig.delay.progressFill })}
+                    {...fadeInConfig({ delay: animationConfig.delay.progressFill })}
                     className='h-full rounded-full bg-gradient-to-r from-purple-500/50 to-blue-500/50 lg:backdrop-blur-sm'
                     style={{ width: `${percentage}%` }}
                 />
             </motion.div>
-            <motion.span {...fadeInUpConfig({ delay: animationConfig.delay.percentage })} className='w-16 text-center text-sm text-text-secondary'>
+            <motion.span {...fadeInConfig({ delay: animationConfig.delay.percentage })} className='w-16 text-center text-sm text-text-secondary'>
                 {percentage.toFixed(1)}%
             </motion.span>
         </motion.div>

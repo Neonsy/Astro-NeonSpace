@@ -3,7 +3,7 @@ import { motion } from 'motion/react';
 import Link from '@/components/Common/Link';
 
 import { FaGithub } from 'react-icons/fa6';
-import { fadeInThenBounceConfig, fadeInUpConfig, slideInLeftConfig } from '@/lib/animations/simple';
+import { fadeInThenBounceConfig, fadeInConfig, slideInLeftConfig } from '@/lib/animations/simple';
 
 import type { NavItem } from '@/types/navItems';
 
@@ -51,7 +51,7 @@ export default function DesktopNav({ currentPath, navItems }: Props) {
                     href='/'
                     className='gradient-text w-fit font-bold ~text-3xl/5xl'
                     hasMotion
-                    motionProps={fadeInUpConfig({ delay: animationConfig.delay.logo })}>
+                    motionProps={fadeInConfig({ delay: animationConfig.delay.logo })}>
                     NeonSpace
                 </Link>
             </div>

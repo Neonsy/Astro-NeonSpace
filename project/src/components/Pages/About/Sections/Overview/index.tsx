@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 
-import { fadeInUpConfig } from '@/lib/animations/simple';
+import { fadeInConfig } from '@/lib/animations/simple';
 
 import SectionTitle from '@/components/Common/SectionTitle';
 
@@ -19,7 +19,7 @@ export default function Overview() {
             <div className='flex flex-col items-center gap-y-16 px-4'>
                 <SectionTitle title='Introduction' />
                 {/* Main introduction */}
-                <motion.div {...fadeInUpConfig} className='card-padded w-full max-w-3xl text-center'>
+                <motion.div {...fadeInConfig} className='card-padded w-full max-w-3xl text-center'>
                     <h2 className='gradient-text-purple ~text-2xl/4xl'>TL;DR</h2>
 
                     <p className='mt-6 text-text-secondary ~text-lg/xl'>
@@ -32,7 +32,7 @@ export default function Overview() {
                 <div className='grid w-full max-w-xl grid-cols-1 gap-8 px-4 lg:max-w-5xl lg:grid-cols-3'>
                     {/* Professional Focus */}
                     <motion.div
-                        {...fadeInUpConfig({ delay: animationConfig.delay.professionalFocus })}
+                        {...fadeInConfig({ delay: animationConfig.delay.professionalFocus })}
                         className='card-padded flex flex-col items-center justify-center gap-y-4'>
                         <h3 className='gradient-text-purple mb-4 ~text-xl/2xl'>Professional Focus</h3>
                         <ul className='flex flex-col items-center justify-center gap-y-4 text-text-secondary' aria-label='Professional Focus'>
@@ -46,7 +46,7 @@ export default function Overview() {
 
                     {/* Technical Expertise */}
                     <motion.div
-                        {...fadeInUpConfig({ delay: animationConfig.delay.technicalExpertise })}
+                        {...fadeInConfig({ delay: animationConfig.delay.technicalExpertise })}
                         className='card-padded flex flex-col items-center justify-center gap-y-4'>
                         <h3 className='gradient-text-purple mb-4 ~text-xl/2xl'>Tech Passions</h3>
                         <ul className='flex flex-col items-center justify-center gap-y-4 text-text-secondary' aria-label='Tech Passions'>
@@ -60,7 +60,7 @@ export default function Overview() {
 
                     {/* Creative Side */}
                     <motion.div
-                        {...fadeInUpConfig({ delay: animationConfig.delay.creativeSide })}
+                        {...fadeInConfig({ delay: animationConfig.delay.creativeSide })}
                         className='card-padded flex flex-col items-center justify-center gap-y-4'>
                         <h3 className='gradient-text-purple mb-4 ~text-xl/2xl'>Pursuits of curiosity</h3>
                         <ul className='flex flex-col items-center justify-center gap-y-4 text-text-secondary' aria-label='Pursuits of curiosity'>
@@ -74,7 +74,7 @@ export default function Overview() {
                 </div>
 
                 {/* Additional Context */}
-                <motion.div {...fadeInUpConfig({ delay: animationConfig.delay.additionalContext })} className='card-padded w-full max-w-3xl'>
+                <motion.div {...fadeInConfig({ delay: animationConfig.delay.additionalContext })} className='card-padded w-full max-w-3xl'>
                     <p className='text-center text-text-secondary ~text-lg/xl'>
                         With a formal background in Application Development and additional expertise in networking, as well as the drive to find a way
                         to solve problems, I bring a sharp mind fueled by curiosity to every project.

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 
-import { fadeInUpConfig, fadeInDownConfig } from '@/lib/animations/simple';
+import { fadeInConfig } from '@/lib/animations/simple';
 
 import { FaGithub } from 'react-icons/fa6';
 import { IoClose, IoMenu } from 'react-icons/io5';
@@ -53,7 +53,7 @@ export default function MobileNav({ currentPath, navItems }: Props) {
                     className='w-fit bg-gradient-to-r from-logo-gradient-1 via-logo-gradient-2 to-logo-gradient-3 bg-clip-text font-bold text-transparent ~text-2xl/4xl'
                     hasMotion
                     motionProps={{
-                        ...fadeInUpConfig({ delay: animationConfig.delay.logo }),
+                        ...fadeInConfig({ delay: animationConfig.delay.logo }),
                     }}>
                     NeonSpace
                 </Link>
@@ -75,7 +75,7 @@ export default function MobileNav({ currentPath, navItems }: Props) {
                                 {navItems.map(({ href, label }, index) => (
                                     <motion.li
                                         key={href}
-                                        {...fadeInDownConfig({ delay: index * 0.05 })}
+                                        {...fadeInConfig({ delay: index * 0.05 })}
                                         className='w-full text-center'
                                         onClick={() => setIsOpen(false)}>
                                         <Link href={href} className={`block ~text-lg/xl ~py-3/4 ${currentPath === href ? 'font-bold' : ''}`}>
@@ -87,12 +87,12 @@ export default function MobileNav({ currentPath, navItems }: Props) {
 
                             {/* Separator Line */}
                             <motion.div
-                                {...fadeInDownConfig({ delay: animationConfig.delay.line })}
+                                {...fadeInConfig({ delay: animationConfig.delay.line })}
                                 className='mx-auto w-1/3 border-t border-text-primary/20'
                             />
 
                             {/* Repository Link */}
-                            <motion.div {...fadeInDownConfig({ delay: animationConfig.delay.github })} className='flex justify-center ~py-4/6'>
+                            <motion.div {...fadeInConfig({ delay: animationConfig.delay.github })} className='flex justify-center ~py-4/6'>
                                 <Link
                                     href='https://github.com/neonsy/Astro-NeonSpace'
                                     external

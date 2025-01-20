@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { fadeInConfig, fadeInUpConfig } from '@/lib/animations/simple';
+import { fadeInConfig } from '@/lib/animations/simple';
 import { SOCIAL_NAV } from '@/lib/nav/items';
 
 import Container from '@/components/Layout/Container';
@@ -23,10 +23,10 @@ export default function Footer() {
                 <div className='flex flex-col items-center justify-center gap-y-4 px-4'>
                     <motion.div
                         className='flex max-w-xl flex-col items-center justify-center gap-y-4'
-                        {...fadeInUpConfig({ delay: animationConfig.delay.socialNav })}>
+                        {...fadeInConfig({ delay: animationConfig.delay.socialNav })}>
                         <SocialNav />
                     </motion.div>
-                    <motion.div {...fadeInUpConfig({ delay: animationConfig.delay.copyright })}>
+                    <motion.div {...fadeInConfig({ delay: animationConfig.delay.copyright })}>
                         <Link
                             href='https://astro-neonspace.vercel.app/'
                             external

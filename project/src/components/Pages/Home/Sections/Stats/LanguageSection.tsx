@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 
-import { fadeInUpConfig } from '@/lib/animations/simple';
+import { fadeInConfig } from '@/lib/animations/simple';
 import ProgressBar from '@/components/Common/ProgressBar';
 
 type LanguageSectionProps = {
@@ -16,11 +16,11 @@ export default function LanguageSection({ languages }: LanguageSectionProps) {
     };
 
     return (
-        <motion.div {...fadeInUpConfig} className='flex flex-col gap-y-4'>
-            <motion.h3 {...fadeInUpConfig({ delay: animationConfig.delay.title })} className='text-xl font-semibold text-text-primary'>
+        <motion.div {...fadeInConfig} className='flex flex-col gap-y-4'>
+            <motion.h3 {...fadeInConfig({ delay: animationConfig.delay.title })} className='text-xl font-semibold text-text-primary'>
                 Languages
             </motion.h3>
-            <motion.div {...fadeInUpConfig({ delay: animationConfig.delay.progressBars })} className='grid grid-cols-1 gap-3 lg:grid-cols-2'>
+            <motion.div {...fadeInConfig({ delay: animationConfig.delay.progressBars })} className='grid grid-cols-1 gap-3 lg:grid-cols-2'>
                 {Object.entries(languages)
                     .sort(([, a], [, b]) => b - a)
                     .map(([language, percentage]) => (
