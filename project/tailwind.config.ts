@@ -92,7 +92,7 @@ export default {
             addComponents({
                 // Base card style used across components
                 '.card-base': {
-                    '@apply rounded-xl border border-white/10 bg-white/[0.03] transition-all duration-150 backdrop-blur-sm': {},
+                    '@apply rounded-xl border border-white/10 bg-white/[0.03] transition-all duration-150 lg:backdrop-blur-sm': {},
                     '&:hover': {
                         '@apply -translate-y-1 border-white/20 bg-white/[0.05]': {},
                     },
@@ -114,7 +114,7 @@ export default {
 
                 // Common backdrop blur style
                 '.glass-effect': {
-                    '@apply backdrop-blur-lg bg-white/[0.03] border border-white/10': {},
+                    '@apply lg:backdrop-blur-lg bg-white/[0.03] border border-white/10': {},
                 },
 
                 // Navigation link style

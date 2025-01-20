@@ -19,7 +19,7 @@ export default function ProgressBar({ skill, percentage }: ProgressBarProps) {
                 <motion.div
                     {...fadeInUpConfig}
                     transition={{ ...fadeInUpConfig.transition, delay: 0.25 }}
-                    className='h-full rounded-full bg-gradient-to-r from-purple-500/50 to-blue-500/50 backdrop-blur-sm'
+                    className='h-full rounded-full bg-gradient-to-r from-purple-500/50 to-blue-500/50 lg:backdrop-blur-sm'
                     style={{ width: `${percentage}%` }}
                 />
             </div>
