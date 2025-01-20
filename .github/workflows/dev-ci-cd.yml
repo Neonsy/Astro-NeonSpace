@@ -44,13 +44,23 @@ jobs:
         name: 'Dependabot'
         needs: [build]
         runs-on: ubuntu-latest
+        permissions: # Add required permissions
+          pull-requests: write
+          contents: write
         if: ${{ github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'}}
         steps:
             - name: Enable auto-merge for Dependabot PRs
               run: |
-                  if ! gh pr merge --auto --merge "$PR_URL"; then
-                    echo "Merge failed, attempting rebase..."
-                    gh pr merge --auto --rebase "$PR_URL"
+                  # First approve the PR (required for auto-merge)
+                  gh pr review --approve "$PR_URL"
+                  
+                  # Try merge strategies in order
+                  if ! gh pr merge --merge "$PR_URL" --delete-branch; then
+                    echo "Regular merge failed, attempting rebase..."
+                    if ! gh pr merge --rebase "$PR_URL" --delete-branch; then
+                      echo "Rebase failed, attempting squash..."
+                      gh pr merge --squash "$PR_URL" --delete-branch
+                    fi
                   fi
               env:
                   PR_URL: ${{github.event.pull_request.html_url}}

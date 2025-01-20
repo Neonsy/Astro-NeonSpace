@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+
 import { fadeInUpConfig } from '@/lib/animations/simple';
 
 type ProgressBarProps = {

@@ -111,19 +111,6 @@ export default {
                 '.gradient-text-purple': {
                     '@apply bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent': {},
                 },
-
-                // Common backdrop blur style
-                '.glass-effect': {
-                    '@apply lg:backdrop-blur-lg bg-white/[0.03] border border-white/10': {},
-                },
-
-                // Navigation link style
-                '.nav-link': {
-                    '@apply hover:underline': {},
-                    '&.active': {
-                        '@apply font-bold': {},
-                    },
-                },
             });
         }),
     ],
