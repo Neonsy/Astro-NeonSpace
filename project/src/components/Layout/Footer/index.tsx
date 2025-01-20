@@ -12,7 +12,7 @@ export default function Footer() {
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.3 }}
-            className='bg-footer border-t border-white/30 bg-footer-primary/95 py-3 shadow-xl lg:bg-footer-primary/60 lg:backdrop-blur-lg'>
+            className='bg-footer border-t border-white/30 bg-footer-primary py-3 shadow-xl lg:bg-footer-primary/60 lg:backdrop-blur-lg'>
             <Container>
                 <div className='flex flex-col items-center justify-center gap-y-4 px-4'>
                     <motion.div
