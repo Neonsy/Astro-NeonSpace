@@ -14,12 +14,19 @@ type ProfileCardProps = {
 };
 
 export default function ProfileCard({ stats }: ProfileCardProps) {
+    const animationConfig = {
+        delay: {
+            profileCard: 0.1,
+            profileCardContent: 0.25,
+            profileCardDescription: 0.36,
+        },
+    };
+
     return (
         <motion.div {...fadeInUpConfig}>
             <div className='card-padded'>
                 <motion.div
-                    {...fadeInUpConfig}
-                    transition={{ ...fadeInUpConfig.transition, delay: 0.1 }}
+                    {...fadeInUpConfig({ delay: animationConfig.delay.profileCard })}
                     className='flex flex-col items-center justify-center sm:gap-6 md:flex-row'>
                     <Link href={`https://github.com/${stats.userInfo.username}`} external>
                         <img
@@ -30,8 +37,7 @@ export default function ProfileCard({ stats }: ProfileCardProps) {
                     </Link>
                     <div className='mt-4 flex flex-1 flex-col items-center sm:items-start'>
                         <motion.div
-                            {...fadeInUpConfig}
-                            transition={{ ...fadeInUpConfig.transition, delay: 0.18 }}
+                            {...fadeInUpConfig({ delay: animationConfig.delay.profileCardContent })}
                             className='flex flex-col items-center gap-4 sm:flex-row'>
                             <Link
                                 href={`https://github.com/${stats.userInfo.username}`}
@@ -62,8 +68,7 @@ export default function ProfileCard({ stats }: ProfileCardProps) {
                             </div>
                         </motion.div>
                         <motion.p
-                            {...fadeInUpConfig}
-                            transition={{ ...fadeInUpConfig.transition, delay: 0.25 }}
+                            {...fadeInUpConfig({ delay: animationConfig.delay.profileCardDescription })}
                             className='mt-2 text-sm text-text-secondary'>
                             Joined{' '}
                             {new Date(stats.userInfo.joinedAt).toLocaleDateString('en-US', {
@@ -72,10 +77,7 @@ export default function ProfileCard({ stats }: ProfileCardProps) {
                             })}
                         </motion.p>
                         {stats.userInfo.description && (
-                            <motion.p
-                                {...fadeInUpConfig}
-                                transition={{ ...fadeInUpConfig.transition, delay: 0.25 }}
-                                className='mt-2 text-text-primary'>
+                            <motion.p {...fadeInUpConfig({ delay: animationConfig.delay.profileCardDescription })} className='mt-2 text-text-primary'>
                                 {stats.userInfo.description}
                             </motion.p>
                         )}

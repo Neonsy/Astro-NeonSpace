@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 
-import { fadeInUpConfig, slideInRightConfig } from '@/lib/animations/simple';
+import { fadeInUpConfig, fadeInDownConfig } from '@/lib/animations/simple';
 
 import { FaGithub } from 'react-icons/fa6';
 import { IoClose, IoMenu } from 'react-icons/io5';
@@ -30,6 +30,20 @@ export default function MobileNav({ currentPath, navItems }: Props) {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
+    const animationConfig = {
+        delay: {
+            logo: 0.1,
+            line: 0.18,
+            github: 0.25,
+        },
+    };
+
+    const openCloseAnimation = {
+        initial: { opacity: 0, height: 0 },
+        animate: { opacity: 1, height: 'auto' },
+        exit: { opacity: 0, height: 0 },
+    };
+
     return (
         <nav className='lg:hidden' ref={navRef}>
             {/* Mobile Header */}
@@ -39,8 +53,7 @@ export default function MobileNav({ currentPath, navItems }: Props) {
                     className='w-fit bg-gradient-to-r from-logo-gradient-1 via-logo-gradient-2 to-logo-gradient-3 bg-clip-text font-bold text-transparent ~text-2xl/4xl'
                     hasMotion
                     motionProps={{
-                        ...fadeInUpConfig,
-                        transition: { ...fadeInUpConfig.transition, delay: 0.1 },
+                        ...fadeInUpConfig({ delay: animationConfig.delay.logo }),
                     }}>
                     NeonSpace
                 </Link>
@@ -55,19 +68,14 @@ export default function MobileNav({ currentPath, navItems }: Props) {
             {/* Mobile Menu */}
             <AnimatePresence>
                 {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className='absolute left-0 right-0 top-full w-full bg-text-inverted shadow-lg'>
+                    <motion.div {...openCloseAnimation} className='absolute left-0 right-0 top-full w-full bg-text-inverted shadow-lg'>
                         <div className='flex flex-col'>
                             {/* Main Navigation Links */}
                             <ul className='flex flex-col items-center gap-y-2 ~px-6/8 ~py-4/6'>
-                                {navItems.map(({ href, label, delay }) => (
+                                {navItems.map(({ href, label }, index) => (
                                     <motion.li
                                         key={href}
-                                        {...slideInRightConfig}
-                                        transition={{ ...slideInRightConfig.transition, delay }}
+                                        {...fadeInDownConfig({ delay: index * 0.05 })}
                                         className='w-full text-center'
                                         onClick={() => setIsOpen(false)}>
                                         <Link href={href} className={`block ~text-lg/xl ~py-3/4 ${currentPath === href ? 'font-bold' : ''}`}>
@@ -79,16 +87,12 @@ export default function MobileNav({ currentPath, navItems }: Props) {
 
                             {/* Separator Line */}
                             <motion.div
-                                {...slideInRightConfig}
-                                transition={{ ...slideInRightConfig.transition, delay: 0.5 }}
+                                {...fadeInDownConfig({ delay: animationConfig.delay.line })}
                                 className='mx-auto w-1/3 border-t border-text-primary/20'
                             />
 
                             {/* Repository Link */}
-                            <motion.div
-                                {...slideInRightConfig}
-                                transition={{ ...slideInRightConfig.transition, delay: 0.6 }}
-                                className='flex justify-center ~py-4/6'>
+                            <motion.div {...fadeInDownConfig({ delay: animationConfig.delay.github })} className='flex justify-center ~py-4/6'>
                                 <Link
                                     href='https://github.com/neonsy/Astro-NeonSpace'
                                     external

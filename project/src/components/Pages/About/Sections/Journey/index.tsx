@@ -14,9 +14,9 @@ interface JourneyCardProps {
 
 export default function Journey() {
     return (
-        <section className='flex flex-col gap-y-9 py-36'>
+        <section className='mx-auto flex flex-col gap-y-9 py-36 lg:max-w-7xl'>
             <SectionTitle title='Journey' />
-            <div className='flex flex-col gap-y-8 px-3'>
+            <div className='flex flex-col gap-y-12 px-3'>
                 <JourneyCard
                     startDate='2022'
                     endDate='2024'
@@ -37,8 +37,14 @@ export default function Journey() {
 }
 
 export function JourneyCard({ startDate, endDate, title, place, description }: JourneyCardProps) {
+    const animationConfig = {
+        delay: {
+            timeline: 0.18,
+        },
+    };
+
     return (
-        <motion.div {...fadeInUpConfig} transition={{ ...fadeInUpConfig.transition, delay: 0.18 }} className='relative flex gap-2'>
+        <motion.div {...fadeInUpConfig({ delay: animationConfig.delay.timeline })} className='relative flex gap-2'>
             {/* Timeline line and circle */}
             <div className='relative flex flex-col items-center'>
                 <div className='h-4 w-4 rounded-full bg-cyan-400'></div>
@@ -46,7 +52,7 @@ export function JourneyCard({ startDate, endDate, title, place, description }: J
             </div>
 
             {/* Content card */}
-            <div className='card-padded flex-1'>
+            <div className='card-padded flex flex-1 flex-col gap-y-4'>
                 {/* Date range */}
                 <p className='text-sm text-cyan-400'>
                     {startDate} - {endDate}

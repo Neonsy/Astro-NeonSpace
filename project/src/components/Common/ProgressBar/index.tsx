@@ -8,28 +8,32 @@ type ProgressBarProps = {
 };
 
 export default function ProgressBar({ skill, percentage }: ProgressBarProps) {
+    const animationConfig = {
+        delay: {
+            container: 0.09,
+            skill: 0.18,
+            progressLine: 0.21,
+            progressFill: 0.27,
+            percentage: 0.36,
+        },
+    };
     return (
-        <div className='card-base grid grid-cols-[0.72fr_1fr_0.1fr] items-center p-4 sm:grid-cols-[0.6fr_1fr_0.1fr] md:grid-cols-[0.2fr_1fr_0.1fr] lg:grid-cols-[0.3fr_1fr_0.1fr] xl:grid-cols-[0.2fr_1fr_0.1fr]'>
-            <motion.span
-                {...fadeInUpConfig}
-                transition={{ ...fadeInUpConfig.transition, delay: 0.1 }}
-                className='text-sm font-medium text-text-secondary'>
+        <motion.div
+            {...fadeInUpConfig({ delay: animationConfig.delay.container })}
+            className='card-base grid grid-cols-[0.72fr_1fr_0.1fr] items-center p-4 sm:grid-cols-[0.6fr_1fr_0.1fr] md:grid-cols-[0.2fr_1fr_0.1fr] lg:grid-cols-[0.3fr_1fr_0.1fr] xl:grid-cols-[0.2fr_1fr_0.1fr]'>
+            <motion.span {...fadeInUpConfig({ delay: animationConfig.delay.skill })} className='text-sm font-medium text-text-secondary'>
                 {skill}
             </motion.span>
-            <div className='h-2 w-full rounded-full bg-white/[0.03]'>
+            <motion.div {...fadeInUpConfig({ delay: animationConfig.delay.progressLine })} className='h-2 w-full rounded-full bg-white/[0.03]'>
                 <motion.div
-                    {...fadeInUpConfig}
-                    transition={{ ...fadeInUpConfig.transition, delay: 0.25 }}
+                    {...fadeInUpConfig({ delay: animationConfig.delay.progressFill })}
                     className='h-full rounded-full bg-gradient-to-r from-purple-500/50 to-blue-500/50 lg:backdrop-blur-sm'
                     style={{ width: `${percentage}%` }}
                 />
-            </div>
-            <motion.span
-                {...fadeInUpConfig}
-                transition={{ ...fadeInUpConfig.transition, delay: 0.3 }}
-                className='w-16 text-center text-sm text-text-secondary'>
+            </motion.div>
+            <motion.span {...fadeInUpConfig({ delay: animationConfig.delay.percentage })} className='w-16 text-center text-sm text-text-secondary'>
                 {percentage.toFixed(1)}%
             </motion.span>
-        </div>
+        </motion.div>
     );
 }

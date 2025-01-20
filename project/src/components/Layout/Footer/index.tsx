@@ -1,21 +1,32 @@
 import { motion } from 'motion/react';
-import { fadeInConfig, fadeInUpDelayedConfig } from '@/lib/animations/simple';
+import { fadeInConfig, fadeInUpConfig } from '@/lib/animations/simple';
 import { SOCIAL_NAV } from '@/lib/nav/items';
 
 import Container from '@/components/Layout/Container';
 import Link from '@/components/Common/Link';
 
+import type { TransformOptions } from '@/types/animation';
+
 export default function Footer() {
+    const animationConfig = {
+        delay: {
+            socialNav: 0.2,
+            copyright: 0.3,
+        },
+    };
+
     return (
         <motion.footer
             {...fadeInConfig}
             className='bg-footer border-t border-white/15 bg-footer-primary py-3 shadow-xl lg:bg-footer-primary/5 lg:backdrop-blur-sm'>
             <Container>
                 <div className='flex flex-col items-center justify-center gap-y-4 px-4'>
-                    <motion.div className='flex max-w-xl flex-col items-center justify-center gap-y-4' {...fadeInUpDelayedConfig(0.2)}>
+                    <motion.div
+                        className='flex max-w-xl flex-col items-center justify-center gap-y-4'
+                        {...fadeInUpConfig({ delay: animationConfig.delay.socialNav })}>
                         <SocialNav />
                     </motion.div>
-                    <motion.div {...fadeInUpDelayedConfig(0.3)}>
+                    <motion.div {...fadeInUpConfig({ delay: animationConfig.delay.copyright })}>
                         <Link
                             href='https://astro-neonspace.vercel.app/'
                             external

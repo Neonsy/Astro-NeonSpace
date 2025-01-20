@@ -1,21 +1,20 @@
+import { FaTools } from 'react-icons/fa';
 import {
-    FaCode,
-    FaRocket,
-    FaHashtag,
-    FaPeopleGroup,
-    FaHouse,
-    FaGlobe,
-    FaCubes,
     FaChartBar,
-    FaServer,
+    FaCode,
+    FaCubes,
     FaGamepad,
-    FaPaintbrush,
-    FaMicrochip,
+    FaGlobe,
+    FaHashtag,
+    FaHouse,
     FaLifeRing,
+    FaMicrochip,
+    FaPaintbrush,
+    FaPeopleGroup,
+    FaRocket,
+    FaServer,
     FaTicketSimple,
 } from 'react-icons/fa6';
-import { FaTools } from 'react-icons/fa';
-
 import { MdChatBubble } from 'react-icons/md';
 
 import Link from '@/components/Common/Link';
@@ -31,11 +30,8 @@ export default function Discord() {
             <div className='flex flex-col justify-center gap-y-12 p-12 lg:flex-row'>
                 <div className='flex flex-col items-center gap-y-12'>
                     <div className='flex flex-col items-center gap-y-2.5 px-3'>
-                        <h2 className='flex items-center justify-center gap-x-2 ~text-xl/5xl'>
-                            <IconStyle icon={MdChatBubble} />
-                            Discord Community
-                        </h2>
-                        <p className='max-w-md text-center text-text-secondary ~text-sm/xl'>
+                        <h2 className='flex items-center justify-center gap-x-2 ~text-xl/5xl'>Discord Community</h2>
+                        <p className='px-1 max-w-md text-center text-text-secondary ~text-sm/xl'>
                             Join the community and connect with fellow developers, creators and enthusiasts, in this vibrant discord server.
                         </p>
                     </div>
