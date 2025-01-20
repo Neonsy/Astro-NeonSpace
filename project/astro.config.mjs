@@ -28,6 +28,7 @@ export default defineConfig({
         }),
     ],
     site: 'https://astro-neonspace.vercel.app',
+    trailingSlash: 'never',
     adapter: vercel(),
     output: 'server',
 });
