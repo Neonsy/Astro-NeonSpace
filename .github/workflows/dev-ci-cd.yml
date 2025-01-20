@@ -45,8 +45,8 @@ jobs:
         needs: [build]
         runs-on: ubuntu-latest
         permissions: # Add required permissions
-          pull-requests: write
-          contents: write
+            pull-requests: write
+            contents: write
         if: ${{ github.actor == 'dependabot[bot]' && github.event_name == 'pull_request'}}
         steps:
             - name: Enable auto-merge for Dependabot PRs
