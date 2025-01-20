@@ -9,4 +9,4 @@ Astro.response.headers.set('Cache-Control', 'public, max-age=86400, stale-while-
 const stats = await fetchGithubStats('neonsy', import.meta.env.GITHUB_TOKEN);
 ---
 
-<Stats client:visible stats={stats} client:load />
+<Stats client:visible stats={stats} />
