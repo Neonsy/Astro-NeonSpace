@@ -45,7 +45,7 @@ export default function MobileNav({ currentPath, navItems }: Props) {
                     NeonSpace
                 </Link>
 
-                <button onClick={() => setIsOpen(!isOpen)} className='text-2xl' aria-label='Toggle menu' title='Toggle menu'>
+                <button type='button' onClick={() => setIsOpen(!isOpen)} className='text-2xl' aria-label='Toggle menu' title='Toggle menu'>
                     <motion.div animate={{ rotate: isOpen ? 90 : 0 }} transition={{ duration: 0.2 }}>
                         {isOpen ? <IoClose /> : <IoMenu />}
                     </motion.div>

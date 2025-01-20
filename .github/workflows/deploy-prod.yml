@@ -47,27 +47,21 @@ jobs:
               run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
 
             - name: Get PR number and apply label
-              if: github.event_name == 'push'
               run: |
                   PR_NUMBER=$(gh api graphql -f query='
                     query($sha: String!) {
-                      search(query: $sha, type: COMMIT, first: 1) {
-                        edges {
-                          node {
-                            ... on Commit {
-                              associatedPullRequests(first: 1) {
-                                nodes {
-                                  number
-                                }
-                              }
-                            }
+                      search(query: $sha, type: ISSUE, first: 1) {
+                        nodes {
+                          ... on PullRequest {
+                            number
                           }
                         }
                       }
-                    }' -f sha=${{ github.sha }} --jq '.data.search.edges[0].node.associatedPullRequests.nodes[0].number')
-
-                  if [ ! -z "$PR_NUMBER" ]; then
-                    gh api --method POST /repos/${{ github.repository }}/issues/${PR_NUMBER}/labels \
+                    }' -f sha="${GITHUB_SHA}" --jq '.data.search.nodes[0].number')
+                  if [ -n "${PR_NUMBER}" ]; then
+                    gh api \
+                      --method POST \
+                      "/repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/labels" \
                       --body '{"labels":["Deployed"]}'
                   fi
               env:
