@@ -152,7 +152,7 @@ function FeatureCard({ icon: Icon, title, description }: FeatureCardProps) {
         <div className='card-padded flex flex-col gap-y-6'>
             <h3 className='flex items-center justify-center gap-2 font-medium text-text-primary ~text-base/3xl'>
                 <IconStyle icon={Icon} />
-                <h4 className='~text-base/3xl'>{title}</h4>
+                <p className='~text-base/3xl'>{title}</p>
             </h3>
             <p className='max-w-xs text-center ~text-base/lg'>{description}</p>
         </div>
