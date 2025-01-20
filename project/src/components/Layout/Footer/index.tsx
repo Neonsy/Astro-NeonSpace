@@ -9,7 +9,7 @@ export default function Footer() {
     return (
         <motion.footer
             {...fadeInConfig}
-            className='bg-footer border-t border-white/30 bg-footer-primary py-3 shadow-xl lg:bg-footer-primary/60 lg:backdrop-blur-lg'>
+            className='bg-footer border-t border-white/15 bg-footer-primary py-3 shadow-xl lg:bg-footer-primary/5 lg:backdrop-blur-sm'>
             <Container>
                 <div className='flex flex-col items-center justify-center gap-y-4 px-4'>
                     <motion.div className='flex max-w-xl flex-col items-center justify-center gap-y-4' {...fadeInUpDelayedConfig(0.2)}>
@@ -17,7 +17,7 @@ export default function Footer() {
                     </motion.div>
                     <motion.div {...fadeInUpDelayedConfig(0.3)}>
                         <Link
-                            href='https://github.com/neonsy'
+                            href='https://astro-neonspace.vercel.app/'
                             external
                             aria-label='Github'
                             title='Github'
