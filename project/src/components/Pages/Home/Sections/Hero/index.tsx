@@ -12,10 +12,10 @@ export default function Hero() {
                 <div className='flex flex-col items-center justify-center gap-y-6'>
                     <motion.h1
                         {...fadeInUpConfig}
-                        className='bg-gradient-to-r from-logo-gradient-1 via-logo-gradient-2 to-logo-gradient-3 bg-clip-text text-center font-bold text-transparent ~text-5xl/12xl'>
+                        className='gradient-text font-bold ~text-5xl/12xl'>
                         NeonSpace
                     </motion.h1>
-                    <motion.p {...fadeInUpConfig} transition={{ ...fadeInUpConfig.transition }} className='max-w-2xl text-center ~xs/lg:~text-sm/2xl'>
+                    <motion.p {...fadeInUpConfig} transition={{ ...fadeInUpConfig.transition }} className='max-w-2xl text-center ~text-base/3xl'>
                         Where Digital Artistry Intersects With The Cosmos, Creating Experiences Beyond This Reality
                     </motion.p>
                 </div>

@@ -30,6 +30,9 @@
     --github-stats-bg: 264deg 80% 50%;
     --github-stats-text: 264deg 80% 90%;
     --github-stats-icon: 180deg 100% 45%;
+
+    /* Other */
+    --discord-primary: 235deg 87% 66%;
 }
 
 :where(:not(svg, svg *)) {

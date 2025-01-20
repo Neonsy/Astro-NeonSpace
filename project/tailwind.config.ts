@@ -60,6 +60,9 @@ export default {
                     'stats-icon': 'hsl(var(--github-stats-icon) / <alpha-value>)',
                     'stats-text': 'hsl(var(--github-stats-text) / <alpha-value>)',
                 },
+                discord: {
+                    primary: 'hsl(var(--discord-primary) / <alpha-value>)',
+                },
             },
         },
     },
