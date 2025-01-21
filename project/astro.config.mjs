@@ -1,9 +1,10 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
+import tailwind from '@astrojs/tailwind';
 import vercel from '@astrojs/vercel';
+import clerk from '@clerk/astro';
 
 const ReactCompilerConfig = {
     // Optional: configure specific directories
@@ -26,6 +27,7 @@ export default defineConfig({
                 plugins: [['babel-plugin-react-compiler', ReactCompilerConfig]],
             },
         }),
+        clerk(),
     ],
     site: 'https://astro-neonspace.vercel.app',
     trailingSlash: 'never',

@@ -1,9 +1,10 @@
 import { motion } from 'motion/react';
 
-import Link from '@/components/Common/Link';
-
+import { fadeInConfig, fadeInThenBounceConfig, slideInLeftConfig } from '@/lib/animations/simple';
 import { FaGithub } from 'react-icons/fa6';
-import { fadeInThenBounceConfig, fadeInConfig, slideInLeftConfig } from '@/lib/animations/simple';
+
+import Link from '@/components/Common/Link';
+import { AuthButton } from '.';
 
 import type { NavItem } from '@/types/navItems';
 
@@ -63,16 +64,20 @@ export default function DesktopNav({ currentPath, navItems }: Props) {
                 ))}
             </ul>
 
-            {/* GitHub Link */}
-            <Link
-                hasMotion
-                motionProps={fadeInThenBounceConfig({ delay: animationConfig.delay.github })}
-                href='https://github.com/neonsy/Astro-NeonSpace'
-                external
-                aria-label='Visit Astro-NeonSpace repository on GitHub'
-                title='View source code on GitHub'>
-                <FaGithub className='~text-xl/3xl' />
-            </Link>
+            <div className='flex items-center gap-x-10'>
+                {/* Auth Button */}
+                <AuthButton />
+                {/* GitHub Link */}
+                <Link
+                    hasMotion
+                    motionProps={fadeInThenBounceConfig({ delay: animationConfig.delay.github })}
+                    href='https://github.com/neonsy/Astro-NeonSpace'
+                    external
+                    aria-label='Visit Astro-NeonSpace repository on GitHub'
+                    title='View source code on GitHub'>
+                    <FaGithub className='~text-xl/3xl' />
+                </Link>
+            </div>
         </nav>
     );
 }
