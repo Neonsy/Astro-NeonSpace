@@ -4,7 +4,6 @@ import { fadeInConfig, fadeInThenBounceConfig, slideInLeftConfig } from '@/lib/a
 import { FaGithub } from 'react-icons/fa6';
 
 import Link from '@/components/Common/Link';
-import { AuthButton } from '.';
 
 import type { NavItem } from '@/types/navItems';
 
@@ -65,8 +64,6 @@ export default function DesktopNav({ currentPath, navItems }: Props) {
             </ul>
 
             <div className='flex items-center gap-x-10'>
-                {/* Auth Button */}
-                <AuthButton />
                 {/* GitHub Link */}
                 <Link
                     hasMotion
