@@ -65,10 +65,9 @@ jobs:
                       }
                     }' -f sha="${GITHUB_SHA}" --jq '.data.search.nodes[0].number')
                   if [ -n "${PR_NUMBER}" ]; then
-                    gh api \
-                      --method POST \
-                      "/repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/labels" \
-                      --body '{"labels":["Deployed"]}'
+                    gh api repos/${GITHUB_REPOSITORY}/issues/${PR_NUMBER}/labels \
+                      -X POST \
+                      -f labels[]="Deployed"
                   fi
               env:
                   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
