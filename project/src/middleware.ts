@@ -1,3 +1,14 @@
-import { clerkMiddleware } from '@clerk/astro/server';
+import { clerkMiddleware, createRouteMatcher } from '@clerk/astro/server';
 
-export const onRequest = clerkMiddleware();
+const isSecureRoute = createRouteMatcher(['/blog/create']);
+
+export const onRequest = clerkMiddleware((auth, context) => {
+    const { userId, redirectToSignIn } = auth();
+
+    if (isSecureRoute(context.request)) {
+        if (!userId) {
+            return redirectToSignIn();
+        }
+    }
+
+});
