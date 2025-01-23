@@ -19,6 +19,8 @@ export const posts = sqliteTable(
         title: text('title').notNull(),
         description: text('description').notNull(),
         content: text('content').notNull(),
+        slug: text('slug').notNull().unique(),
+        searchVector: text('search_vector'), // For full-text search
         createdAt: text('created_at')
             .notNull()
             .$defaultFn(() => new Date().toISOString()),
@@ -34,12 +36,21 @@ export const posts = sqliteTable(
             foreignColumns: [author.name],
             name: 'post_author_fk',
         }),
-        check('title_length', sql`LENGTH(${table.title}) BETWEEN 5 AND 100`),
-        check('content_length', sql`LENGTH(${table.content}) BETWEEN 100 AND 10000`),
+        check('title_length', sql`LENGTH(${table.title}) BETWEEN 9 AND 90`),
+        check('content_length', sql`LENGTH(${table.content}) BETWEEN 90 AND 18000`),
         index('post_author_idx').on(table.authorName),
         index('post_created_idx').on(table.createdAt),
     ]
 );
+
+// Create FTS5 virtual table for search
+export const postsFTS = sqliteTable('posts_fts', {
+  title: text('title'),
+  description: text('description'),
+  content: text('content'),
+}, (table) => [{
+  fts: sql`USING fts5(title, description, content)`
+}]);
 
 export const allowedTags = ['javascript', 'typescript', 'webdev', 'tutorial', 'ai'] as const;
 
