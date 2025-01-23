@@ -1,38 +1,112 @@
 import { sql } from 'drizzle-orm';
-import { integer, sqliteTable, text } from 'drizzle-orm/sqlite-core';
+import { sqliteTable, text, primaryKey, foreignKey, index, check } from 'drizzle-orm/sqlite-core';
+import { relations } from 'drizzle-orm';
 
-export const usersTable = sqliteTable('users', {
-    id: integer('id').primaryKey(),
-    name: text('name').notNull(),
-    age: integer('age').notNull(),
-    email: text('email').unique().notNull(),
-});
+// Author Table
+export const author = sqliteTable(
+    'author',
+    {
+        name: text('name').notNull(),
+        icon: text('icon').notNull(),
+    },
+    (table) => [primaryKey({ columns: [table.name] }), index('author_name_idx').on(table.name)]
+);
 
-export const postsTable = sqliteTable('posts', {
-    id: integer('id').primaryKey(),
-    title: text('title').notNull(),
-    tags: text('tags', { mode: 'json' }).notNull(),
-    content: text('content').notNull(),
-    userId: integer('user_id')
-        .notNull()
-        .references(() => usersTable.id, { onDelete: 'cascade' }),
-    createdAt: text('created_at')
-        .default(sql`(CURRENT_TIMESTAMP)`)
-        .notNull(),
-    updateAt: integer('updated_at', { mode: 'timestamp' }).$onUpdate(() => new Date()),
-});
+// Posts Table
+export const posts = sqliteTable(
+    'posts',
+    {
+        title: text('title').notNull(),
+        description: text('description').notNull(),
+        content: text('content').notNull(),
+        createdAt: text('created_at')
+            .notNull()
+            .$defaultFn(() => new Date().toISOString()),
+        updatedAt: text('updated_at')
+            .notNull()
+            .$defaultFn(() => new Date().toISOString()),
+        authorName: text('author_name'),
+    },
+    (table) => [
+        primaryKey({ columns: [table.createdAt] }),
+        foreignKey({
+            columns: [table.authorName],
+            foreignColumns: [author.name],
+            name: 'post_author_fk',
+        }),
+        check('title_length', sql`LENGTH(${table.title}) BETWEEN 5 AND 100`),
+        check('content_length', sql`LENGTH(${table.content}) BETWEEN 100 AND 10000`),
+        index('post_author_idx').on(table.authorName),
+        index('post_created_idx').on(table.createdAt),
+    ]
+);
 
-export const tagsTable = sqliteTable('tags', {
-    id: integer('id').primaryKey(),
-    name: text('name').notNull(),
-});
+export const allowedTags = ['javascript', 'typescript', 'webdev', 'tutorial', 'ai', 'test'] as const;
 
-export type InsertUser = typeof usersTable.$inferInsert;
-export type SelectUser = typeof usersTable.$inferSelect;
+// Generate SQL-safe string from enum
+const tagValues = allowedTags.map((t) => `'${t}'`).join(', ');
 
-export type InsertPost = typeof postsTable.$inferInsert;
-export type SelectPost = typeof postsTable.$inferSelect;
+// Tags Table
+export const tags = sqliteTable(
+    'tags',
+    {
+        name: text('name', { enum: allowedTags }).notNull(),
+    },
+    (table) => [
+        primaryKey({ columns: [table.name] }),
+        check('valid_tags', sql`${table.name} IN (${sql.raw(tagValues)})`),
+        index('tag_name_idx').on(table.name),
+    ]
+);
 
-export type InsertTag = typeof tagsTable.$inferInsert;
-export type SelectTag = typeof tagsTable.$inferSelect;
+// Junction Table
+export const postTags = sqliteTable(
+    'post_tags',
+    {
+        postCreatedAt: text('post_created_at').notNull(),
+        tagName: text('tag_name').notNull(),
+    },
+    (table) => [
+        primaryKey({ columns: [table.postCreatedAt, table.tagName] }),
+        foreignKey({
+            columns: [table.postCreatedAt],
+            foreignColumns: [posts.createdAt],
+            name: 'post_tag_post_fk',
+        }),
+        foreignKey({
+            columns: [table.tagName],
+            foreignColumns: [tags.name],
+            name: 'post_tag_tag_fk',
+        }),
+        index('post_tag_post_idx').on(table.postCreatedAt),
+        index('post_tag_tag_idx').on(table.tagName),
+    ]
+);
 
+// Relations
+export const authorRelations = relations(author, ({ many }) => ({
+    posts: many(posts),
+}));
+
+export const postRelations = relations(posts, ({ one, many }) => ({
+    author: one(author, {
+        fields: [posts.authorName],
+        references: [author.name],
+    }),
+    tags: many(postTags),
+}));
+
+export const tagRelations = relations(tags, ({ many }) => ({
+    posts: many(postTags),
+}));
+
+export const postTagRelations = relations(postTags, ({ one }) => ({
+    post: one(posts, {
+        fields: [postTags.postCreatedAt],
+        references: [posts.createdAt],
+    }),
+    tag: one(tags, {
+        fields: [postTags.tagName],
+        references: [tags.name],
+    }),
+}));

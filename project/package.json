@@ -11,7 +11,8 @@
         "prettier:check": "prettier --check .",
         "prettier:write": "prettier --write .",
         "db:generate": "drizzle-kit generate",
-        "db:migrate": "drizzle-kit migrate"
+        "db:migrate": "drizzle-kit migrate",
+        "db:sync": "drizzle-kit generate && drizzle-kit migrate"
     },
     "dependencies": {
         "@astrojs/react": "^4.1.5",
@@ -28,6 +29,7 @@
         "astro": "^5.1.7",
         "dotenv": "^16.4.7",
         "drizzle-orm": "^0.38.4",
+        "drizzle-seed": "^0.3.0",
         "motion": "^11.18.1",
         "react": "^19.0.0",
         "react-dom": "^19.0.0",

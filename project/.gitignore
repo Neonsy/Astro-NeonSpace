@@ -30,3 +30,4 @@ migrations/
 # jetbrains setting folder
 .idea/
 
+.vercel
