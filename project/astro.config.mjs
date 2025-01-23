@@ -29,7 +29,7 @@ export default defineConfig({
         }),
         clerk(),
     ],
-    site: 'https://astro-neonspace.vercel.app',
+    site: 'https://neonsy.space',
     trailingSlash: 'never',
     adapter: vercel(),
     output: 'server',
