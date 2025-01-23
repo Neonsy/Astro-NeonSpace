@@ -1,6 +1,5 @@
 ---
-import CreatePost from '@/components/Pages/Blog/Create/index.tsx';
-import Layout from '@/layouts/global/RootLayout.astro';
+import { SignOutButton } from '@clerk/astro/components';
 
 const user = await Astro.locals.currentUser();
 
@@ -11,7 +10,6 @@ if (!isAuthenticated) {
 }
 ---
 
-<Layout title='Create New Post'>
-    <!-- Only load React for the form -->
-    <CreatePost client:load />
-</Layout>
+<h1>Create Blog</h1>
+
+<SignOutButton />
