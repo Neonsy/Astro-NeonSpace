@@ -16,9 +16,9 @@ type ProfileCardProps = {
 export default function ProfileCard({ stats }: ProfileCardProps) {
     const animationConfig = {
         delay: {
-            profileCard: 0.1,
-            profileCardContent: 0.25,
-            profileCardDescription: 0.36,
+            profileCard: 0.009,
+            profileCardContent: 0.018,
+            profileCardDescription: 0.027,
         },
     };
 

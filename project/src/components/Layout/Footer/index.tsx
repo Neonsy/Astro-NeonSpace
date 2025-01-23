@@ -10,8 +10,8 @@ import type { TransformOptions } from '@/types/animation';
 export default function Footer() {
     const animationConfig = {
         delay: {
-            socialNav: 0.2,
-            copyright: 0.3,
+            socialNav: 0.009,
+            copyright: 0.018,
         },
     };
 

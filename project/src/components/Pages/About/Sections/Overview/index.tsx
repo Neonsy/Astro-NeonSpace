@@ -7,10 +7,10 @@ import SectionTitle from '@/components/Common/SectionTitle';
 export default function Overview() {
     const animationConfig = {
         delay: {
-            professionalFocus: 0.1,
-            technicalExpertise: 0.2,
-            creativeSide: 0.3,
-            additionalContext: 0.4,
+            professionalFocus: 0.009,
+            technicalExpertise: 0.018,
+            creativeSide: 0.027,
+            additionalContext: 0.036,
         },
     };
 
