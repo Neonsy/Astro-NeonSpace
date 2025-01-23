@@ -43,11 +43,8 @@ jobs:
             - name: Build Project Artifacts
               run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
 
-            - name: Generate Drizzle Migrations
-              run: pnpm db:generate
-
             - name: Push Drizzle Migrations
-              run: db:migrate
+              run: db:mig
 
             - name: Deploy Project Artifacts to Vercel
               run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}

@@ -41,7 +41,7 @@ export const posts = sqliteTable(
     ]
 );
 
-export const allowedTags = ['javascript', 'typescript', 'webdev', 'tutorial', 'ai', 'test'] as const;
+export const allowedTags = ['javascript', 'typescript', 'webdev', 'tutorial', 'ai'] as const;
 
 // Generate SQL-safe string from enum
 const tagValues = allowedTags.map((t) => `'${t}'`).join(', ');
@@ -50,7 +50,7 @@ const tagValues = allowedTags.map((t) => `'${t}'`).join(', ');
 export const tags = sqliteTable(
     'tags',
     {
-        name: text('name', { enum: allowedTags }).notNull(),
+        name: text('name', { enum: allowedTags }).primaryKey(),
     },
     (table) => [
         primaryKey({ columns: [table.name] }),
