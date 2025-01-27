@@ -27,7 +27,7 @@
         "@tsparticles/slim": "^3.7.1",
         "@types/react": "^19.0.7",
         "@types/react-dom": "^19.0.3",
-        "astro": "^5.1.7",
+        "astro": "^5.1.9",
         "dotenv": "^16.4.7",
         "drizzle-orm": "^0.38.4",
         "drizzle-seed": "^0.3.0",
