@@ -17,7 +17,7 @@
     },
     "dependencies": {
         "@astrojs/react": "^4.1.5",
-        "@astrojs/tailwind": "^5.1.4",
+        "@astrojs/tailwind": "^5.1.5",
         "@astrojs/vercel": "^8.0.2",
         "@clerk/astro": "^2.1.12",
         "@libsql/client": "^0.14.0",
