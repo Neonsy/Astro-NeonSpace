@@ -35,7 +35,7 @@ export const fadeInThenBounceConfig = (options?: BounceOptions) => ({
         y: {
             delay: options?.bounceDelay ?? 0.6,
             duration: options?.bounceDuration ?? 5,
-            repeat: Infinity,
+            repeat: Number.POSITIVE_INFINITY,
             ease: options?.ease ?? 'easeInOut',
             times: [0, 0.5, 1],
         },

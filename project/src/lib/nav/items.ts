@@ -13,6 +13,6 @@ export const NAV_ITEMS: ReadonlyArray<NavItem> = [
 
 export const SOCIAL_NAV: ReadonlyArray<NavItem> = [
     { href: 'https://github.com/neonsy', icon: FaGithub, label: 'Github' },
-    { href: 'https://discord.com/users/your-id', icon: FaDiscord, label: 'Discord' },
-    { href: 'https://instagram.com/your-profile', icon: AiFillInstagram, label: 'Instagram' },
+    { href: 'https://discord.gg/aK3B9QyGU4', icon: FaDiscord, label: 'Discord' },
+    { href: 'https://www.instagram.com/neonsy01/', icon: AiFillInstagram, label: 'Instagram' },
 ];

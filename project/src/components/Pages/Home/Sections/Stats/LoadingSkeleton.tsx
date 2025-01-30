@@ -1,6 +1,6 @@
 export default function LoadingSkeleton() {
     return (
-        <section id='stats' className='flex items-center justify-center py-36' aria-busy>
+        <section id='stats' className='flex items-center justify-center py-36' aria-busy role='status'>
             <div className='flex flex-col gap-y-12 px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
                 <h2 className='bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-center text-3xl font-bold text-transparent'>
                     Developer Profile
@@ -18,7 +18,7 @@ export default function LoadingSkeleton() {
                                 </div>
                                 <div className='flex items-center gap-4'>
                                     {[...Array(3)].map((_, i) => (
-                                        <div key={i} className='flex items-center gap-1'>
+                                        <div key={i} className='flex items-center gap-1 contain-paint'>
                                             <div className='h-4 w-4 animate-pulse rounded bg-white/10' />
                                             <div className='h-4 w-2 animate-pulse rounded bg-white/10' />
                                         </div>
@@ -43,7 +43,7 @@ export default function LoadingSkeleton() {
                         {[...Array(6)].map((_, i) => (
                             <div
                                 key={i}
-                                className='flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.03] p-4 lg:backdrop-blur-sm'>
+                                className='flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.03] p-4 contain-paint lg:backdrop-blur-sm'>
                                 <div className='h-6 w-12 animate-pulse rounded bg-white/10' />
                                 <div className='mx-12 h-2 w-full animate-pulse rounded-full bg-white/10' />
                                 <div className='h-4 w-6 animate-pulse rounded bg-white/10' />
@@ -60,7 +60,7 @@ export default function LoadingSkeleton() {
                             {[...Array(3)].map((_, i) => (
                                 <div
                                     key={i}
-                                    className='flex min-h-[200px] flex-col gap-y-6 rounded-xl border border-white/10 bg-white/[0.03] p-6 lg:backdrop-blur-sm'>
+                                    className='flex min-h-[200px] flex-col gap-y-6 rounded-xl border border-white/10 bg-white/[0.03] p-6 contain-paint lg:backdrop-blur-sm'>
                                     <div className='flex items-center gap-2'>
                                         <div className='h-4 w-4 shrink-0 animate-pulse rounded bg-white/10' />
                                         <div className='h-4 w-32 animate-pulse rounded bg-white/10' />

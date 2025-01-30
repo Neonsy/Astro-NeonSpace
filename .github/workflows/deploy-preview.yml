@@ -30,6 +30,12 @@ jobs:
                       });
                       return pull.data;
 
+            - name: Validate PR State
+              if: fromJSON(steps.pr-details.outputs.result).state != 'open'
+              run: |
+                echo "::error::Cannot deploy from a closed pull request"
+                exit 1
+
             - name: Wait for Main CI/CD
               id: wait-for-ci-cd
               uses: fountainhead/action-wait-for-check@v1.2.0

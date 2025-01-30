@@ -1,11 +1,9 @@
-import { motion } from 'motion/react';
 import { fadeInConfig } from '@/lib/animations/simple';
-import { SOCIAL_NAV } from '@/lib/nav/items';
+import { motion } from 'motion/react';
 
-import Container from '@/components/Layout/Container';
 import Link from '@/components/Common/Link';
-
-import type { TransformOptions } from '@/types/animation';
+import SocialNav from '@/components/Common/SocialNav';
+import Container from '@/components/Layout/Container';
 
 export default function Footer() {
     const animationConfig = {
@@ -24,7 +22,7 @@ export default function Footer() {
                     <motion.div
                         className='flex max-w-xl flex-col items-center justify-center gap-y-4'
                         {...fadeInConfig({ delay: animationConfig.delay.socialNav })}>
-                        <SocialNav />
+                        <SocialNav containerClassName='flex flex-row items-center justify-center gap-x-4' linkClassName='~text-lg/5xl' />
                     </motion.div>
                     <motion.div {...fadeInConfig({ delay: animationConfig.delay.copyright })}>
                         <Link
@@ -39,24 +37,5 @@ export default function Footer() {
                 </div>
             </Container>
         </motion.footer>
-    );
-}
-
-export function SocialNav() {
-    return (
-        <div className='flex flex-row items-center justify-center gap-x-4'>
-            {SOCIAL_NAV.map((item) => (
-                <Link
-                    key={item.href}
-                    iconOnly
-                    icon={item.icon}
-                    href={item.href}
-                    className='~text-lg/5xl'
-                    external
-                    aria-label={item.label}
-                    title={item.label}
-                />
-            ))}
-        </div>
     );
 }

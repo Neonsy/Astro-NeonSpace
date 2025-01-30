@@ -17,7 +17,7 @@ type ItemProps = NavItem & {
     index: number;
 };
 
-function NavItem({ href, label, currentPath, index }: ItemProps) {
+function DesktopNavItem({ href, label, currentPath, index }: ItemProps) {
     const animationConfig = {
         delay: {
             logo: 0.1,
@@ -59,7 +59,7 @@ export default function DesktopNav({ currentPath, navItems }: Props) {
             {/* Navigation Items */}
             <ul className='flex items-center gap-x-10'>
                 {navItems.map((item, index) => (
-                    <NavItem key={item.href} {...item} currentPath={currentPath} index={index} />
+                    <DesktopNavItem key={item.href} {...item} currentPath={currentPath} index={index} />
                 ))}
             </ul>
 

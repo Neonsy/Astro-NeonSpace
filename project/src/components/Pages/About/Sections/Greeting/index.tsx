@@ -40,7 +40,7 @@ export default function Greeting() {
                         title='Discord'
                         hasMotion
                         motionProps={fadeInConfig({ delay: animationConfig.delay.discord })}
-                        href='https://discord.com/users/your-id'
+                        href='https://discord.gg/aK3B9QyGU4'
                         external>
                         <FaDiscord className='text-text-primary transition-colors ~h-8/10 ~w-8/10 hover:text-cyan-400' />
                     </Link>
@@ -49,7 +49,7 @@ export default function Greeting() {
                         title='Instagram'
                         hasMotion
                         motionProps={fadeInConfig({ delay: animationConfig.delay.instagram })}
-                        href='https://instagram.com/your-profile'
+                        href='https://www.instagram.com/neonsy01/'
                         external>
                         <FaInstagram className='text-text-primary transition-colors ~h-8/10 ~w-8/10 hover:text-cyan-400' />
                     </Link>

@@ -39,9 +39,24 @@ export default function MobileNav({ currentPath, navItems }: Props) {
     };
 
     const openCloseAnimation = {
-        initial: { opacity: 0, height: 0 },
-        animate: { opacity: 1, height: 'auto' },
-        exit: { opacity: 0, height: 0 },
+        initial: {
+            opacity: 0,
+            clipPath: 'inset(0 0 100% 0)',
+            transform: 'translateY(-20px)',
+        },
+        animate: {
+            opacity: 1,
+            clipPath: 'inset(0 0 0 0)',
+            transform: 'translateY(0)',
+        },
+        exit: {
+            opacity: 0,
+            clipPath: 'inset(0 0 100% 0)',
+            transform: 'translateY(-20px)',
+        },
+        transition: {
+            duration: 0.2,
+        },
     };
 
     return (
