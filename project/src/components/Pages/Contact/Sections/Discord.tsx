@@ -26,7 +26,7 @@ import Link from '@/components/Common/Link';
 import type { IconType } from 'react-icons';
 
 export default function Discord() {
-    const features: FeatureCardProps[] = [
+    const features = [
         {
             title: 'Home',
             icon: FaHouse,
@@ -87,7 +87,7 @@ export default function Discord() {
             icon: FaTicketSimple,
             description: 'Get personalized help through private staff tickets or community support channels',
         },
-    ];
+    ] as const satisfies ReadonlyArray<FeatureCardProps>;
 
     const animationConfig = {
         delay: {
