@@ -6,7 +6,7 @@ export const fadeInConfig = (options?: TransitionOptions) => ({
     viewport: { once: true },
     transition: {
         duration: options?.duration ?? 0.3,
-        delay: options?.delay ?? 0,
+        delay: options?.delay ?? 0.12,
         ease: options?.ease ?? 'easeOut',
     },
 });

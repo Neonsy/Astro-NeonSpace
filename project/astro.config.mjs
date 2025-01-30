@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
@@ -33,4 +33,16 @@ export default defineConfig({
     trailingSlash: 'never',
     adapter: vercel(),
     output: 'server',
+    env: {
+        validateSecrets: true,
+        schema: {
+            GITHUB_TOKEN: envField.string({ context: 'server', access: 'secret' }),
+
+            PUBLIC_CLERK_PUBLISHABLE_KEY: envField.string({ context: 'client', access: 'public' }),
+            CLERK_SECRET_KEY: envField.string({ context: 'server', access: 'secret' }),
+
+            TURSO_DATABASE_URL: envField.string({ context: 'server', access: 'secret' }),
+            TURSO_AUTH_TOKEN: envField.string({ context: 'server', access: 'secret' }),
+        },
+    },
 });
