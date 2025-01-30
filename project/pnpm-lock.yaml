@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@astrojs/react':
         specifier: ^4.1.5
-        version: 4.1.5(@types/node@22.10.7)(@types/react-dom@19.0.3(@types/react@19.0.7))(@types/react@19.0.7)(jiti@1.21.7)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(tsx@4.19.2)(yaml@2.7.0)
+        version: 4.1.5(@types/node@22.10.7)(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(jiti@1.21.7)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(tsx@4.19.2)(yaml@2.7.0)
       '@astrojs/tailwind':
         specifier: ^5.1.4
         version: 5.1.4(astro@5.1.7(@types/node@22.10.7)(jiti@1.21.7)(rollup@4.31.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))(tailwindcss@3.4.17)
@@ -36,11 +36,11 @@ importers:
         specifier: ^3.8.0
         version: 3.8.0
       '@types/react':
-        specifier: ^19.0.7
-        version: 19.0.7
+        specifier: ^19.0.8
+        version: 19.0.8
       '@types/react-dom':
         specifier: ^19.0.3
-        version: 19.0.3(@types/react@19.0.7)
+        version: 19.0.3(@types/react@19.0.8)
       astro:
         specifier: ^5.1.7
         version: 5.1.7(@types/node@22.10.7)(jiti@1.21.7)(rollup@4.31.0)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
@@ -49,10 +49,10 @@ importers:
         version: 16.4.7
       drizzle-orm:
         specifier: ^0.38.4
-        version: 0.38.4(@libsql/client@0.14.0)(@types/react@19.0.7)(react@19.0.0)
+        version: 0.38.4(@libsql/client@0.14.0)(@types/react@19.0.8)(react@19.0.0)
       drizzle-seed:
         specifier: ^0.3.0
-        version: 0.3.0(drizzle-orm@0.38.4(@libsql/client@0.14.0)(@types/react@19.0.7)(react@19.0.0))
+        version: 0.3.0(drizzle-orm@0.38.4(@libsql/client@0.14.0)(@types/react@19.0.8)(react@19.0.0))
       motion:
         specifier: ^12.0.6
         version: 12.0.6(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -1503,8 +1503,8 @@ packages:
     peerDependencies:
       '@types/react': ^19.0.0
 
-  '@types/react@19.0.7':
-    resolution: {integrity: sha512-MoFsEJKkAtZCrC1r6CM8U22GzhG7u2Wir8ons/aCKH6MBdD1ibV24zOSSkdZVUKqN5i396zG5VKLYZ3yaUZdLA==}
+  '@types/react@19.0.8':
+    resolution: {integrity: sha512-9P/o1IGdfmQxrujGbIMDyYaaCykhLKc0NGCtYcECNUr9UAaDe4gwvV9bR6tvd5Br1SG0j+PBpbKr2UYY8CwqSw==}
 
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
@@ -4169,10 +4169,10 @@ snapshots:
     dependencies:
       prismjs: 1.29.0
 
-  '@astrojs/react@4.1.5(@types/node@22.10.7)(@types/react-dom@19.0.3(@types/react@19.0.7))(@types/react@19.0.7)(jiti@1.21.7)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(tsx@4.19.2)(yaml@2.7.0)':
+  '@astrojs/react@4.1.5(@types/node@22.10.7)(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(jiti@1.21.7)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(tsx@4.19.2)(yaml@2.7.0)':
     dependencies:
-      '@types/react': 19.0.7
-      '@types/react-dom': 19.0.3(@types/react@19.0.7)
+      '@types/react': 19.0.8
+      '@types/react-dom': 19.0.3(@types/react@19.0.8)
       '@vitejs/plugin-react': 4.3.4(vite@6.0.7(@types/node@22.10.7)(jiti@1.21.7)(tsx@4.19.2)(yaml@2.7.0))
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
@@ -5386,11 +5386,11 @@ snapshots:
     dependencies:
       undici-types: 6.20.0
 
-  '@types/react-dom@19.0.3(@types/react@19.0.7)':
+  '@types/react-dom@19.0.3(@types/react@19.0.8)':
     dependencies:
-      '@types/react': 19.0.7
+      '@types/react': 19.0.8
 
-  '@types/react@19.0.7':
+  '@types/react@19.0.8':
     dependencies:
       csstype: 3.1.3
 
@@ -5975,17 +5975,17 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  drizzle-orm@0.38.4(@libsql/client@0.14.0)(@types/react@19.0.7)(react@19.0.0):
+  drizzle-orm@0.38.4(@libsql/client@0.14.0)(@types/react@19.0.8)(react@19.0.0):
     optionalDependencies:
       '@libsql/client': 0.14.0
-      '@types/react': 19.0.7
+      '@types/react': 19.0.8
       react: 19.0.0
 
-  drizzle-seed@0.3.0(drizzle-orm@0.38.4(@libsql/client@0.14.0)(@types/react@19.0.7)(react@19.0.0)):
+  drizzle-seed@0.3.0(drizzle-orm@0.38.4(@libsql/client@0.14.0)(@types/react@19.0.8)(react@19.0.0)):
     dependencies:
       pure-rand: 6.1.0
     optionalDependencies:
-      drizzle-orm: 0.38.4(@libsql/client@0.14.0)(@types/react@19.0.7)(react@19.0.0)
+      drizzle-orm: 0.38.4(@libsql/client@0.14.0)(@types/react@19.0.8)(react@19.0.0)
 
   dset@3.1.4: {}
 
