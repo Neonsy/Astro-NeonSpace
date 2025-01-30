@@ -41,8 +41,8 @@ export default function RepoSection({ title, repos }: RepoSectionProps) {
                                 {repo.name}
                             </Link>
                         </h4>
-                        <motion.p 
-                            {...fadeInConfig({ delay: animationConfig.delay.content })} 
+                        <motion.p
+                            {...fadeInConfig({ delay: animationConfig.delay.content })}
                             className='line-clamp-2 text-text-secondary'
                             title={repo.description}>
                             {repo.description}
