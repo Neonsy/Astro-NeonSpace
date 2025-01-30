@@ -3,18 +3,18 @@ import SectionTitle from '@/components/Common/SectionTitle';
 
 export default function Proficiency() {
     const proficiencies = [
-        {skill: "HTML", percentage: 100,},
-        {skill: "CSS", percentage: 95,},
-        {skill: "Tailwind", percentage: 85,},
-        {skill: "JavaScript", percentage: 80,},
-        {skill: "TypeScript", percentage: 55,},
-        {skill: "React", percentage: 75,},
-        {skill: "NextJS", percentage: 70,},
-        {skill: "Docker", percentage: 65,},
-        {skill: "PHP", percentage: 85,},
-        {skill: "SQL", percentage: 75,},
-        {skill: "Git", percentage: 90,},
-        {skill: "C#", percentage: 50,},
+        { skill: 'HTML', percentage: 100 },
+        { skill: 'CSS', percentage: 95 },
+        { skill: 'Tailwind', percentage: 85 },
+        { skill: 'JavaScript', percentage: 80 },
+        { skill: 'TypeScript', percentage: 55 },
+        { skill: 'React', percentage: 75 },
+        { skill: 'NextJS', percentage: 70 },
+        { skill: 'Docker', percentage: 65 },
+        { skill: 'PHP', percentage: 85 },
+        { skill: 'SQL', percentage: 75 },
+        { skill: 'Git', percentage: 90 },
+        { skill: 'C#', percentage: 50 },
     ];
 
     return (

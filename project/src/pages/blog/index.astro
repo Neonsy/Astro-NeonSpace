@@ -1,5 +1,5 @@
 ---
-const user = await Astro.locals.currentUser()
+const user = await Astro.locals.currentUser();
 
 const isAuthenticated = user?.privateMetadata.role === 'owner';
 
