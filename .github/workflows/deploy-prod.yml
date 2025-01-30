@@ -58,7 +58,7 @@ jobs:
 
             - name: Push Drizzle Migrations
               run: |
-                  cd project && pnpm db:migrate
+                  cd project && pnpm db:mig
                   if [ $? -ne 0 ]; then
                     echo "::error::Database migration failed"
                     exit 1
