@@ -19,7 +19,6 @@ jobs:
 
         steps:
             - name: Wait for Main CI/CD
-              id: wait-for-ci-cd
               uses: fountainhead/action-wait-for-check@v1.2.0
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
@@ -51,6 +50,14 @@ jobs:
 
             - name: Build Project Artifacts
               run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+
+            - name: Push Drizzle Migrations
+              run: |
+                pnpm db:migrate
+                if [ $? -ne 0 ]; then
+                  echo "::error::Database migration failed"
+                  exit 1
+                fi
 
             - name: Deploy Project Artifacts to Vercel
               id: deploy
