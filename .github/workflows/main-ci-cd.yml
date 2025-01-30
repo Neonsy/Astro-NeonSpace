@@ -82,7 +82,7 @@ jobs:
               uses: buildsville/add-remove-label@v2.0.1
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
-                  labels: Preview, CodeRabbit
+                  labels: Preview
                   type: add
 
             - id: label-production-ready
