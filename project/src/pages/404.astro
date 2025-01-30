@@ -3,12 +3,11 @@ export const prerender = true;
 
 import Layout from '@/layouts/global/RootLayout.astro';
 import Container from '@/components/Layout/Container';
+import Animated404 from '@/components/404';
 ---
 
-<Layout title='404'>
-    <Container className='flex h-[90svh] flex-col items-center justify-center'>
-        <h1 class='~text-5xl/9xl'>404</h1>
-        <p class='~text-4xl/8xl'>Page not found</p>
-        <a href='/' class='mt-4 text-blue-500 ~text-3xl/7xl hover:underline'>Return to Homepage</a>
+<Layout title='Page Not Found'>
+    <Container className='flex h-[81svh] flex-col items-center justify-center'>
+        <Animated404 client:load />
     </Container>
 </Layout>
