@@ -1,7 +1,0 @@
-name: /deploy
-description: Trigger a Vercel preview deployment
-inputs:
-  skip-migrations:
-    description: Skip database migrations (true/false)
-    required: false
-    default: 'false'

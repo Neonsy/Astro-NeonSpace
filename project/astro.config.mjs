@@ -21,7 +21,7 @@ export default defineConfig({
         enabled: false,
     },
     integrations: [
-        tailwind(),
+        tailwind({ applyBaseStyles: false }),
         react({
             babel: {
                 plugins: [['babel-plugin-react-compiler', ReactCompilerConfig]],
