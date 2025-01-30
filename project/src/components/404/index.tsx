@@ -1,21 +1,16 @@
 import { motion } from 'motion/react';
-import { fadeInUpConfig } from '@/lib/animations/simple';
+import { fadeInConfig } from '@/lib/animations/simple';
 import Link from '@/components/Common/Link';
 
 export default function Animated404() {
     const animationConfig = {
-        subHeading: {
-            ...fadeInUpConfig,
-            transition: { ...fadeInUpConfig.transition, delay: 0.1 },
-        },
-        content: {
-            ...fadeInUpConfig,
-            transition: { ...fadeInUpConfig.transition, delay: 0.2 },
-        },
+        heading: fadeInConfig({ delay: 0.12 }),
+        subHeading: fadeInConfig({ delay: 0.18 }),
+        content: fadeInConfig({ delay: 0.24 }),
     };
     return (
         <section className='px-4 text-center'>
-            <motion.div {...fadeInUpConfig}>
+            <motion.div {...animationConfig.heading}>
                 <h1 className='gradient-text font-bold ~text-7xl/12xl'>404</h1>
             </motion.div>
 
