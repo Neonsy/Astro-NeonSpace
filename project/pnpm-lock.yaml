@@ -18,8 +18,8 @@ importers:
         specifier: ^8.0.5
         version: 8.0.5(astro@5.1.7(@types/node@22.10.7)(jiti@1.21.7)(rollup@4.32.1)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))(react@19.0.0)(rollup@4.32.1)
       '@clerk/astro':
-        specifier: ^2.1.12
-        version: 2.1.12(astro@5.1.7(@types/node@22.10.7)(jiti@1.21.7)(rollup@4.32.1)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+        specifier: ^2.1.17
+        version: 2.1.17(astro@5.1.7(@types/node@22.10.7)(jiti@1.21.7)(rollup@4.32.1)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@libsql/client':
         specifier: ^0.14.0
         version: 0.14.0
@@ -288,18 +288,18 @@ packages:
     resolution: {integrity: sha512-t8kDRGrKXyp6+tjUh7hw2RLyclsW4TRoRvRHtSyAX9Bb5ldlFh+90YAYY6awRXrlB4G5G2izNeGySpATlFzmOg==}
     engines: {node: '>=6.9.0'}
 
-  '@clerk/astro@2.1.12':
-    resolution: {integrity: sha512-N8PkfK0fzCyRrvuWMssVd8qxc8Qo+bXOLGYV7w1ppcNwg7t6jY+yQl5VVjxVsCVBO6220hX3yZHCOV8Lq6GtLg==}
+  '@clerk/astro@2.1.17':
+    resolution: {integrity: sha512-H3BdHc2OhO3iAjVRx4v4lwLYQqX+uqsbV2nGqo252+I/Ud6zNCHbWC2p74HceYxSi5R3KhGt6ZRT5COlMYUm9w==}
     engines: {node: '>=18.17.0'}
     peerDependencies:
       astro: ^4.15.0 || ^5.0.0
 
-  '@clerk/backend@1.23.4':
-    resolution: {integrity: sha512-KrcoHzuxsnsKzzf8c2i/VHMJlnfU8BfEPpuzNJEDVJRSFzIs81axVqXdhdOyzuSirjpBgMt4gGIjfJWQdPNAPQ==}
+  '@clerk/backend@1.23.9':
+    resolution: {integrity: sha512-tVcS9jj8MIZjcqMiftokdEuI6urmNj2ChvJ+Uz3yhD89d7ChlJe/rXqzNYy3X5y9N6vmA4oJq7NjRBrY3SD2Zw==}
     engines: {node: '>=18.17.0'}
 
-  '@clerk/shared@2.20.11':
-    resolution: {integrity: sha512-nUqDJuBSOhm1+7KslVr3vkIpc3bAJ1L0VOB4l9vH6igg8MqRz5EFtFjbp3ayNFtAL/DVxGZ3EeJA7JJ8L1zcWQ==}
+  '@clerk/shared@2.20.16':
+    resolution: {integrity: sha512-SO5RAYg6VnZKJDtiAZo4nX50AanAQN9idAjeb6T/c2kmRRbpKVjtXqnmK8TqmltqXQF51p4JDHxO5IlMQk4djQ==}
     engines: {node: '>=18.17.0'}
     peerDependencies:
       react: ^18.0.0 || ^19.0.0 || ^19.0.0-0
@@ -310,8 +310,8 @@ packages:
       react-dom:
         optional: true
 
-  '@clerk/types@4.41.2':
-    resolution: {integrity: sha512-8hvNzyeSa2sENQ86jHXTSnGKfhr9OHcIcm4w7bU4pAhCqF2aLYi9AZGNY4nvBcS3zPw1e8OLMiRKi5qhZrdt+g==}
+  '@clerk/types@4.44.2':
+    resolution: {integrity: sha512-s0Nznnf7RjnkvkVXG+ahty88HfCPIoxLKMa6YfMt0alQ7KXeDouQlLKXexX5c1sX3FhcokYmBukVsbeoZAZdqA==}
     engines: {node: '>=18.17.0'}
 
   '@drizzle-team/brocli@0.10.2':
@@ -3884,6 +3884,10 @@ packages:
     resolution: {integrity: sha512-rfgpoi08xagF3JSdtJlCwMq9DGNDE0IMh3Mkpc1wUypg9vPi786AiqeBBKcqvIkq42azsBM85N490fyZjeUftw==}
     engines: {node: '>=16'}
 
+  type-fest@4.33.0:
+    resolution: {integrity: sha512-s6zVrxuyKbbAsSAD5ZPTB77q4YIdRctkTbJ2/Dqlinwz+8ooH2gd+YA7VA6Pa93KML9GockVvoxjZ2vHP+mu8g==}
+    engines: {node: '>=16'}
+
   typed-array-buffer@1.0.3:
     resolution: {integrity: sha512-nAYYwfY3qnzX30IkA6AQZjVbtK6duGontcQm1WSG1MD94YLqK0515GNApXkoxKOWMusVssAHWLh9SeaoefYFGw==}
     engines: {node: '>= 0.4'}
@@ -4535,11 +4539,11 @@ snapshots:
       '@babel/helper-string-parser': 7.25.9
       '@babel/helper-validator-identifier': 7.25.9
 
-  '@clerk/astro@2.1.12(astro@5.1.7(@types/node@22.10.7)(jiti@1.21.7)(rollup@4.32.1)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@clerk/astro@2.1.17(astro@5.1.7(@types/node@22.10.7)(jiti@1.21.7)(rollup@4.32.1)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
-      '@clerk/backend': 1.23.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@clerk/shared': 2.20.11(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@clerk/types': 4.41.2
+      '@clerk/backend': 1.23.9(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@clerk/shared': 2.20.16(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@clerk/types': 4.44.2
       astro: 5.1.7(@types/node@22.10.7)(jiti@1.21.7)(rollup@4.32.1)(tsx@4.19.2)(typescript@5.7.3)(yaml@2.7.0)
       nanoid: 5.0.9
       nanostores: 0.11.3
@@ -4547,10 +4551,10 @@ snapshots:
       - react
       - react-dom
 
-  '@clerk/backend@1.23.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@clerk/backend@1.23.9(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
-      '@clerk/shared': 2.20.11(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
-      '@clerk/types': 4.41.2
+      '@clerk/shared': 2.20.16(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@clerk/types': 4.44.2
       cookie: 1.0.2
       snakecase-keys: 8.0.1
       tslib: 2.4.1
@@ -4558,9 +4562,9 @@ snapshots:
       - react
       - react-dom
 
-  '@clerk/shared@2.20.11(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
+  '@clerk/shared@2.20.16(react-dom@19.0.0(react@19.0.0))(react@19.0.0)':
     dependencies:
-      '@clerk/types': 4.41.2
+      '@clerk/types': 4.44.2
       dequal: 2.0.3
       glob-to-regexp: 0.4.1
       js-cookie: 3.0.5
@@ -4570,7 +4574,7 @@ snapshots:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
-  '@clerk/types@4.41.2':
+  '@clerk/types@4.44.2':
     dependencies:
       csstype: 3.1.1
 
@@ -8177,7 +8181,7 @@ snapshots:
     dependencies:
       map-obj: 4.3.0
       snake-case: 3.0.4
-      type-fest: 4.32.0
+      type-fest: 4.33.0
 
   source-map-js@1.2.1: {}
 
@@ -8371,6 +8375,8 @@ snapshots:
       prelude-ls: 1.2.1
 
   type-fest@4.32.0: {}
+
+  type-fest@4.33.0: {}
 
   typed-array-buffer@1.0.3:
     dependencies:
