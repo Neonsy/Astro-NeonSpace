@@ -28,7 +28,7 @@ jobs:
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
                   checkName: signal-build-can-start
-                  intervalSeconds: 30
+                  intervalSeconds: 60
                   timeoutSeconds: 600
                   ref: ${{ github.event.pull_request.head.sha }}
 
