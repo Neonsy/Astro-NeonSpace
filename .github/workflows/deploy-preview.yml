@@ -46,7 +46,14 @@ jobs:
               run: pnpm add -g vercel@latest
 
             - name: Pull Vercel Environment Information
-              run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+              run: |
+                vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+                          
+                echo "Loading Vercel secrets into build environment..."
+                if [ -f .vercel/.env.preview ]; then
+                  sed 's/^/export /' .vercel/.env.preview >> $GITHUB_ENV
+                  echo "::notice::Injected $(wc -l < .vercel/.env.preview) environment variables"
+                fi
 
             - name: Build Project Artifacts
               run: vercel build --token=${{ secrets.VERCEL_TOKEN }}

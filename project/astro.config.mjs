@@ -34,6 +34,7 @@ export default defineConfig({
     adapter: vercel(),
     output: 'server',
     env: {
+        validateSecrets: true,
         schema: {
             GITHUB_TOKEN: envField.string({ context: 'server', access: 'secret' }),
 
