@@ -1,4 +1,4 @@
-name: Vercel PR Deployments
+name: Deploy Preview
 
 on:
   issue_comment:
@@ -15,7 +15,7 @@ env:
 
 jobs:
   deploy:
-    if: github.event.issue.pull_request && startsWith(github.event.comment.body, '/deploy')
+    if: github.event.issue.pull_request && contains(github.event.comment.body, '/preview')
 
     runs-on: ubuntu-latest
     permissions:
@@ -28,7 +28,7 @@ jobs:
           uses: fountainhead/action-wait-for-check@v1.2.0
           with:
               token: ${{ secrets.GITHUB_TOKEN }}
-              checkName: start-prod-build
+              checkName: signal-build-can-start
               intervalSeconds: 30
               timeoutSeconds: 600
               ref: ${{ github.event.pull_request.head.sha }}
