@@ -51,14 +51,6 @@ jobs:
             - name: Build Project Artifacts
               run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
-            - name: Push Drizzle Migrations
-              run: |
-                cd project && pnpm db:mig
-                if [ $? -ne 0 ]; then
-                  echo "::error::Database migration failed"
-                  exit 1
-                fi
-
             - name: Deploy Project Artifacts to Vercel
               id: deploy
               run: |
