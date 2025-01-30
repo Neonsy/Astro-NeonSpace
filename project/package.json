@@ -22,7 +22,7 @@
         "@clerk/astro": "^2.1.12",
         "@libsql/client": "^0.14.0",
         "@octokit/rest": "^21.1.0",
-        "@tsparticles/engine": "^3.7.1",
+        "@tsparticles/engine": "^3.8.0",
         "@tsparticles/react": "^3.0.0",
         "@tsparticles/slim": "^3.8.0",
         "@types/react": "^19.0.7",
