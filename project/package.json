@@ -24,7 +24,7 @@
         "@octokit/rest": "^21.1.0",
         "@tsparticles/engine": "^3.7.1",
         "@tsparticles/react": "^3.0.0",
-        "@tsparticles/slim": "^3.7.1",
+        "@tsparticles/slim": "^3.8.0",
         "@types/react": "^19.0.7",
         "@types/react-dom": "^19.0.3",
         "astro": "^5.1.7",
