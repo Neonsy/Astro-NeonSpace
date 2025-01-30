@@ -42,7 +42,7 @@
     "devDependencies": {
         "@tailwindcss/forms": "^0.5.10",
         "@typescript-eslint/parser": "^8.22.0",
-        "babel-plugin-react-compiler": "19.0.0-beta-e552027-20250112",
+        "babel-plugin-react-compiler": "19.0.0-beta-27714ef-20250124",
         "drizzle-kit": "^0.30.2",
         "eslint": "^9.19.0",
         "eslint-config-prettier": "^10.0.1",
