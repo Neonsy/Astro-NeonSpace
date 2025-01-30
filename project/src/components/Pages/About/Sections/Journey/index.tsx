@@ -47,8 +47,8 @@ export function JourneyCard({ startDate, endDate, title, place, description }: J
         <motion.div {...fadeInConfig({ delay: animationConfig.delay.timeline })} className='relative flex gap-2'>
             {/* Timeline line and circle */}
             <div className='relative flex flex-col items-center'>
-                <div className='h-4 w-4 rounded-full bg-cyan-400'></div>
-                <div className='h-full w-0.5 bg-gradient-to-b from-cyan-400/50 to-transparent'></div>
+                <div className='h-4 w-4 rounded-full bg-cyan-400' />
+                <div className='h-full w-0.5 bg-gradient-to-b from-cyan-400/50 to-transparent' />
             </div>
 
             {/* Content card */}
