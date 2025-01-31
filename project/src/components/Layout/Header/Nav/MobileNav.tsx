@@ -31,11 +31,9 @@ export default function MobileNav({ currentPath, navItems }: Props) {
     }, []);
 
     const animationConfig = {
-        delay: {
-            logo: 0.1,
-            line: 0.18,
-            github: 0.25,
-        },
+        logo: fadeInConfig({ delay: 0.1 }),
+        line: fadeInConfig({ delay: 0.18 }),
+        github: fadeInConfig({ delay: 0.25 }),
     };
 
     const openCloseAnimation = {
@@ -67,9 +65,7 @@ export default function MobileNav({ currentPath, navItems }: Props) {
                     href='/'
                     className='w-fit bg-gradient-to-r from-logo-gradient-1 via-logo-gradient-2 to-logo-gradient-3 bg-clip-text font-bold text-transparent ~text-2xl/4xl'
                     hasMotion
-                    motionProps={{
-                        ...fadeInConfig({ delay: animationConfig.delay.logo }),
-                    }}>
+                    motionProps={animationConfig.logo}>
                     NeonSpace
                 </Link>
 
@@ -101,13 +97,10 @@ export default function MobileNav({ currentPath, navItems }: Props) {
                             </ul>
 
                             {/* Separator Line */}
-                            <motion.div
-                                {...fadeInConfig({ delay: animationConfig.delay.line })}
-                                className='mx-auto w-1/3 border-t border-text-primary/20'
-                            />
+                            <motion.div {...animationConfig.line} className='mx-auto w-1/3 border-t border-text-primary/20' />
 
                             {/* Repository Link */}
-                            <motion.div {...fadeInConfig({ delay: animationConfig.delay.github })} className='flex justify-center ~py-4/6'>
+                            <motion.div {...animationConfig.github} className='flex justify-center ~py-4/6'>
                                 <Link
                                     href='https://github.com/neonsy/Astro-NeonSpace'
                                     external
