@@ -38,13 +38,11 @@ export default function Journey() {
 
 export function JourneyCard({ startDate, endDate, title, place, description }: JourneyCardProps) {
     const animationConfig = {
-        delay: {
-            timeline: 0.18,
-        },
+        timeline: fadeInConfig({ delay: 0.18 }),
     };
 
     return (
-        <motion.div {...fadeInConfig({ delay: animationConfig.delay.timeline })} className='relative flex gap-2'>
+        <motion.div {...animationConfig.timeline} className='relative flex gap-2'>
             {/* Timeline line and circle */}
             <div className='relative flex flex-col items-center'>
                 <div className='h-4 w-4 rounded-full bg-cyan-400' />

@@ -7,10 +7,8 @@ import Container from '@/components/Layout/Container';
 
 export default function Footer() {
     const animationConfig = {
-        delay: {
-            socialNav: 0.009,
-            copyright: 0.018,
-        },
+        socialNav: fadeInConfig({ delay: 0.009 }),
+        copyright: fadeInConfig({ delay: 0.018 }),
     };
 
     return (
@@ -19,12 +17,10 @@ export default function Footer() {
             className='bg-footer border-t border-white/15 bg-footer-primary py-3 shadow-xl lg:bg-footer-primary/5 lg:backdrop-blur-sm'>
             <Container>
                 <div className='flex flex-col items-center justify-center gap-y-4 px-4'>
-                    <motion.div
-                        className='flex max-w-xl flex-col items-center justify-center gap-y-4'
-                        {...fadeInConfig({ delay: animationConfig.delay.socialNav })}>
+                    <motion.div {...animationConfig.socialNav}>
                         <SocialNav containerClassName='flex flex-row items-center justify-center gap-x-4' linkClassName='~text-lg/5xl' />
                     </motion.div>
-                    <motion.div {...fadeInConfig({ delay: animationConfig.delay.copyright })}>
+                    <motion.div {...animationConfig.copyright}>
                         <Link
                             href='https://astro-neonspace.vercel.app/'
                             external
