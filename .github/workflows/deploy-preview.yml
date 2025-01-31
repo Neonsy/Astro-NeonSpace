@@ -49,13 +49,15 @@ jobs:
               run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
             - name: Load Preview Env Vars
-              run: cp .vercel/.env.preview.local project/.env
+              run: sed -e 's/^export //' -e 's/"//g' .vercel/.env.preview.local > project/.env
 
             - name: Reveal folder structure
               run: ls -laR
 
             - name: Build Project Artifacts
               run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+              env:
+                  ACTIONS_STEP_DEBUG: ${{ secrets.ACTIONS_STEP_DEBUG || 'false' }}
 
             - name: Deploy Project Artifacts to Vercel
               id: deploy
