@@ -1,4 +1,6 @@
 ---
+export const prerender = true;
+
 const user = await Astro.locals.currentUser();
 
 const isAuthenticated = user?.privateMetadata?.role === 'owner';
