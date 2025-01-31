@@ -33,5 +33,4 @@ export default defineConfig({
     trailingSlash: 'never',
     adapter: vercel(),
     output: 'server',
-
 });
