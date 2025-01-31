@@ -9,9 +9,9 @@ type Props = {
 
 export default function Nav({ currentPath }: Props) {
     return (
-        <>
+        <nav>
             <DesktopNav currentPath={currentPath} navItems={NAV_ITEMS} />
             <MobileNav currentPath={currentPath} navItems={NAV_ITEMS} />
-        </>
+        </nav>
     );
 }

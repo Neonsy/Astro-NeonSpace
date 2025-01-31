@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 
-import { fadeInUpConfig } from '@/lib/animations/simple';
+import { fadeInConfig } from '@/lib/animations/simple';
 
 import { FaCode, FaCodeFork, FaCodePullRequest, FaEye, FaStar } from 'react-icons/fa6';
 import { VscIssues } from 'react-icons/vsc';
@@ -16,15 +16,24 @@ type RepoSectionProps = {
 };
 
 export default function RepoSection({ title, repos }: RepoSectionProps) {
+    const animationConfig = {
+        delay: {
+            title: 0.1,
+            content: 0.2,
+            stats: 0.3,
+        },
+    };
+
     return (
-        <motion.div {...fadeInUpConfig} className='flex flex-col gap-y-4'>
-            <h3 className='text-xl font-semibold text-text-primary'>{title}</h3>
+        <motion.div {...fadeInConfig} className='flex flex-col gap-y-4'>
+            <motion.h3 {...fadeInConfig({ delay: animationConfig.delay.title })} className='text-xl font-semibold text-text-primary'>
+                {title}
+            </motion.h3>
             <div className='grid grid-cols-1 gap-4 lg:grid-cols-3'>
                 {repos.map((repo) => (
                     <motion.div
                         key={repo.name}
-                        {...fadeInUpConfig}
-                        transition={{ ...fadeInUpConfig.transition, delay: 0.1 }}
+                        {...fadeInConfig({ delay: animationConfig.delay.content })}
                         className='group card-padded flex flex-col gap-y-6'>
                         <h4 className='flex items-center gap-2 font-medium text-text-primary ~text-base/3xl'>
                             <FaCode className='h-4 w-4 text-blue-400' />
@@ -33,14 +42,13 @@ export default function RepoSection({ title, repos }: RepoSectionProps) {
                             </Link>
                         </h4>
                         <motion.p
-                            {...fadeInUpConfig}
-                            transition={{ ...fadeInUpConfig.transition, delay: 0.2 }}
-                            className='line-clamp-2 text-text-secondary'>
+                            {...fadeInConfig({ delay: animationConfig.delay.content })}
+                            className='line-clamp-2 text-text-secondary'
+                            title={repo.description}>
                             {repo.description}
                         </motion.p>
                         <motion.div
-                            {...fadeInUpConfig}
-                            transition={{ ...fadeInUpConfig.transition, delay: 0.3 }}
+                            {...fadeInConfig({ delay: animationConfig.delay.stats })}
                             className='mt-auto flex items-center gap-4 text-sm text-text-secondary'>
                             <span className='flex items-center gap-1'>
                                 <FaStar className='h-4 w-4' />

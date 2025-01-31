@@ -6,13 +6,7 @@
         "verbatimModuleSyntax": true,
         "baseUrl": ".",
         "paths": {
-            "@/*": ["src/*"],
-            "@/components/*": ["src/components/*"],
-            "@/assets/*": ["src/assets/*"],
-            "@/layouts/*": ["src/layouts/*"],
-            "@/pages/*": ["src/pages/*"],
-            "@/lib/*": ["src/lib/*"],
-            "@/types/*": ["src/types/*"]
+            "@/*": ["src/*"]
         },
         "jsx": "react-jsx",
         "jsxImportSource": "react"

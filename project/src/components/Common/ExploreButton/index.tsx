@@ -9,6 +9,10 @@ type ExploreButtonProps = {
 };
 
 export default function ExploreButton({ href }: ExploreButtonProps) {
+    const animationConfig = {
+        y: { bounceDuration: 3 },
+    };
+
     return (
         <Link
             href={href}
@@ -16,8 +20,7 @@ export default function ExploreButton({ href }: ExploreButtonProps) {
             title='Scroll down to explore'
             hasMotion
             motionProps={{
-                ...fadeInThenBounceConfig,
-                transition: { ...fadeInThenBounceConfig.transition, y: { ...fadeInThenBounceConfig.transition.y, duration: 3 } },
+                ...fadeInThenBounceConfig({ bounceDuration: animationConfig.y.bounceDuration }),
             }}>
             <FaAngleDoubleDown className='rounded-full border border-white/15 text-white ~text-5xl/9xl ~p-1/3 lg:backdrop-blur-sm' />
         </Link>

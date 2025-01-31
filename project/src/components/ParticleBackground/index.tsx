@@ -29,7 +29,7 @@ export default function ParticleBackground({}) {
                 repeat: 'no-repeat',
             },
             fullScreen: {
-                zIndex: -1,
+                zIndex: -10,
             },
             particles: {
                 color: {
