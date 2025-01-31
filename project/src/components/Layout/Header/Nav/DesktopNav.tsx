@@ -19,15 +19,17 @@ type ItemProps = NavItem & {
 
 function DesktopNavItem({ href, label, currentPath, index }: ItemProps) {
     const animationConfig = {
-        delay: {
-            logo: 0.1,
-            links: [0.1, 0.2, 0.3, 0.4, 0.5],
-            github: 0.6,
-        },
+        links: [
+            fadeInConfig({ delay: 0.1 }),
+            fadeInConfig({ delay: 0.2 }),
+            fadeInConfig({ delay: 0.3 }),
+            fadeInConfig({ delay: 0.4 }),
+            fadeInConfig({ delay: 0.5 }),
+        ],
     };
 
     return (
-        <motion.li {...slideInLeftConfig({ delay: animationConfig.delay.links[index] })}>
+        <motion.li {...animationConfig.links[index]}>
             <Link href={href} className={`~text-lg/2xl hover:underline ${currentPath === href ? 'font-bold' : ''}`}>
                 {label}
             </Link>
@@ -37,21 +39,15 @@ function DesktopNavItem({ href, label, currentPath, index }: ItemProps) {
 
 export default function DesktopNav({ currentPath, navItems }: Props) {
     const animationConfig = {
-        delay: {
-            logo: 0.1,
-            github: 0.2,
-        },
+        logo: fadeInConfig({ delay: 0.1 }),
+        github: fadeInThenBounceConfig({ delay: 0.6 }),
     };
 
     return (
         <nav className='hidden items-center justify-between ~px-10/4 ~py-2/3 lg:flex'>
             {/* Logo */}
             <div>
-                <Link
-                    href='/'
-                    className='gradient-text w-fit font-bold ~text-3xl/5xl'
-                    hasMotion
-                    motionProps={fadeInConfig({ delay: animationConfig.delay.logo })}>
+                <Link href='/' className='gradient-text w-fit font-bold ~text-3xl/5xl' hasMotion motionProps={animationConfig.logo}>
                     NeonSpace
                 </Link>
             </div>
@@ -67,7 +63,7 @@ export default function DesktopNav({ currentPath, navItems }: Props) {
                 {/* GitHub Link */}
                 <Link
                     hasMotion
-                    motionProps={fadeInThenBounceConfig({ delay: animationConfig.delay.github })}
+                    motionProps={animationConfig.github}
                     href='https://github.com/neonsy/Astro-NeonSpace'
                     external
                     aria-label='Visit Astro-NeonSpace repository on GitHub'

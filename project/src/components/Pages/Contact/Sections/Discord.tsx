@@ -90,22 +90,21 @@ export default function Discord() {
     ] as const satisfies ReadonlyArray<FeatureCardProps>;
 
     const animationConfig = {
-        delay: {
-            heading: 0.1,
-            introduction: 0.18,
-            reasons: 0.27,
-        },
+        heading: fadeInConfig({ delay: 0.009 }),
+        introduction: fadeInConfig({ delay: 0.05 }),
+        reasons: fadeInConfig({ delay: 0.09 }),
+        features: fadeInConfig({ delay: 0.1 }),
     };
 
     return (
         <section className='flex flex-col items-center justify-center gap-y-6 py-24'>
             <div className='flex flex-col items-center justify-center gap-y-6'>
-                <motion.h1 {...fadeInConfig({ delay: animationConfig.delay.heading })} className='gradient-text font-bold ~text-4xl/9xl'>
+                <motion.h1 {...animationConfig.heading} className='gradient-text font-bold ~text-4xl/9xl'>
                     NeonTechSpace
                 </motion.h1>
             </div>
             <div className='flex flex-col justify-center gap-y-12 p-12 lg:flex-row'>
-                <motion.div {...fadeInConfig({ delay: animationConfig.delay.introduction })} className='flex flex-col items-center gap-y-12'>
+                <motion.div {...animationConfig.introduction} className='flex flex-col items-center gap-y-12'>
                     <div className='flex flex-col items-center gap-y-2.5 px-3'>
                         <h2 className='flex items-center justify-center gap-x-2 ~text-xl/5xl'>Discord Community</h2>
                         <p className='max-w-md px-1 text-center text-text-secondary ~text-sm/xl'>
@@ -114,9 +113,7 @@ export default function Discord() {
                     </div>
                     <JoinServerButton className='hidden lg:flex' />
                 </motion.div>
-                <motion.div
-                    {...fadeInConfig({ delay: animationConfig.delay.reasons })}
-                    className='flex flex-col items-center justify-center gap-y-9 px-3'>
+                <motion.div {...animationConfig.reasons} className='flex flex-col items-center justify-center gap-y-9 px-3'>
                     <h2 className='~text-xl/5xl'>Why Join Us</h2>
                     <ul className='flex flex-col gap-y-3'>
                         <li className='flex items-center gap-x-3 ~text-sm/xl'>
@@ -140,12 +137,12 @@ export default function Discord() {
                 </motion.div>
             </div>
             <div className='flex flex-col items-center justify-center gap-y-6'>
-                <motion.h2 {...fadeInConfig({ delay: animationConfig.delay.reasons })} className='~text-2xl/5xl'>
+                <motion.h2 {...animationConfig.features} className='~text-2xl/5xl'>
                     Server Features
                 </motion.h2>
                 <div className='grid grid-cols-1 gap-4 lg:grid-cols-3'>
-                    {features.map((feature, index) => (
-                        <FeatureCard key={feature.title} {...feature} index={index} />
+                    {features.map((feature) => (
+                        <FeatureCard key={feature.title} {...feature} />
                     ))}
                 </div>
             </div>
@@ -165,18 +162,17 @@ type FeatureCardProps = {
     icon: IconType;
     title: string;
     description: string;
-    index?: number;
 };
 
-function FeatureCard({ icon: Icon, title, description, index = 0 }: FeatureCardProps) {
+function FeatureCard({ icon: Icon, title, description }: FeatureCardProps) {
     const animationConfig = {
-        delay: {
-            container: 0.09 * index,
+        div: {
+            ...fadeInConfig({ delay: 0.12 }),
         },
     };
 
     return (
-        <motion.div {...fadeInConfig({ delay: animationConfig.delay.container })} className='card-padded flex flex-col gap-y-6'>
+        <motion.div {...animationConfig.div} className='card-padded flex flex-col gap-y-6'>
             <h3 className='flex items-center justify-center gap-2 font-medium text-text-primary ~text-base/3xl'>
                 <IconStyle icon={Icon} />
                 <p className='~text-base/3xl'>{title}</p>
@@ -191,7 +187,7 @@ function JoinServerButton({ className }: { className?: string }) {
         <div className={`flex flex-col items-center gap-y-3 px-3 ${className}`}>
             <Link
                 className='flex items-center justify-center gap-x-3 gap-y-3 rounded-xl bg-discord-primary font-bold ~text-sm/3xl ~px-2/5 ~py-2/3'
-                href='https://discord.gg/neonsy'
+                href='https://discord.com/invite/aK3B9QyGU4'
                 external>
                 <MdChatBubble /> Join Discord Server
             </Link>
