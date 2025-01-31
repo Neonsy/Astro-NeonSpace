@@ -1,9 +1,9 @@
 import { motion } from 'motion/react';
 
-import Link from '@/components/Common/Link';
-
+import { fadeInConfig, fadeInThenBounceConfig, slideInLeftConfig } from '@/lib/animations/simple';
 import { FaGithub } from 'react-icons/fa6';
-import { fadeInThenBounceConfig, fadeInUpConfig, slideInLeftConfig } from '@/lib/animations/simple';
+
+import Link from '@/components/Common/Link';
 
 import type { NavItem } from '@/types/navItems';
 
@@ -14,11 +14,20 @@ type Props = {
 
 type ItemProps = NavItem & {
     currentPath: string;
+    index: number;
 };
 
-function NavItem({ href, label, delay, currentPath }: ItemProps) {
+function DesktopNavItem({ href, label, currentPath, index }: ItemProps) {
+    const animationConfig = {
+        delay: {
+            logo: 0.1,
+            links: [0.1, 0.2, 0.3, 0.4, 0.5],
+            github: 0.6,
+        },
+    };
+
     return (
-        <motion.li {...slideInLeftConfig} transition={{ ...slideInLeftConfig.transition, delay }}>
+        <motion.li {...slideInLeftConfig({ delay: animationConfig.delay.links[index] })}>
             <Link href={href} className={`~text-lg/2xl hover:underline ${currentPath === href ? 'font-bold' : ''}`}>
                 {label}
             </Link>
@@ -27,6 +36,13 @@ function NavItem({ href, label, delay, currentPath }: ItemProps) {
 }
 
 export default function DesktopNav({ currentPath, navItems }: Props) {
+    const animationConfig = {
+        delay: {
+            logo: 0.1,
+            github: 0.2,
+        },
+    };
+
     return (
         <nav className='hidden items-center justify-between ~px-10/4 ~py-2/3 lg:flex'>
             {/* Logo */}
@@ -35,31 +51,30 @@ export default function DesktopNav({ currentPath, navItems }: Props) {
                     href='/'
                     className='gradient-text w-fit font-bold ~text-3xl/5xl'
                     hasMotion
-                    motionProps={{
-                        ...fadeInUpConfig,
-                        transition: { ...fadeInUpConfig.transition, delay: 0.1 },
-                    }}>
+                    motionProps={fadeInConfig({ delay: animationConfig.delay.logo })}>
                     NeonSpace
                 </Link>
             </div>
 
             {/* Navigation Items */}
             <ul className='flex items-center gap-x-10'>
-                {navItems.map((item) => (
-                    <NavItem key={item.href} {...item} currentPath={currentPath} />
+                {navItems.map((item, index) => (
+                    <DesktopNavItem key={item.href} {...item} currentPath={currentPath} index={index} />
                 ))}
             </ul>
 
-            {/* GitHub Link */}
-            <Link
-                hasMotion
-                motionProps={fadeInThenBounceConfig}
-                href='https://github.com/neonsy/Astro-NeonSpace'
-                external
-                aria-label='Visit Astro-NeonSpace repository on GitHub'
-                title='View source code on GitHub'>
-                <FaGithub className='~text-xl/3xl' />
-            </Link>
+            <div className='flex items-center gap-x-10'>
+                {/* GitHub Link */}
+                <Link
+                    hasMotion
+                    motionProps={fadeInThenBounceConfig({ delay: animationConfig.delay.github })}
+                    href='https://github.com/neonsy/Astro-NeonSpace'
+                    external
+                    aria-label='Visit Astro-NeonSpace repository on GitHub'
+                    title='View source code on GitHub'>
+                    <FaGithub className='~text-xl/3xl' />
+                </Link>
+            </div>
         </nav>
     );
 }

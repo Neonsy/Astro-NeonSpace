@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 
-import { fadeInUpConfig } from '@/lib/animations/simple';
+import { fadeInConfig } from '@/lib/animations/simple';
 
 import Container from '@/components/Layout/Container';
 import Nav from '@/components/Layout/Header/Nav';
@@ -12,7 +12,7 @@ type HeaderProps = {
 export default function Header({ currentPath }: HeaderProps) {
     return (
         <motion.header
-            {...fadeInUpConfig}
+            {...fadeInConfig}
             className='sticky top-0 z-50 border-b border-white/30 bg-header-primary py-6 shadow-lg lg:bg-header-primary/60 lg:backdrop-blur-lg'>
             <Container>
                 <Nav currentPath={currentPath} />

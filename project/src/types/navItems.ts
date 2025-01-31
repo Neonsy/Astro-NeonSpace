@@ -4,5 +4,4 @@ export type NavItem = {
     href: string;
     icon?: IconType;
     label: string;
-    delay: number;
 };

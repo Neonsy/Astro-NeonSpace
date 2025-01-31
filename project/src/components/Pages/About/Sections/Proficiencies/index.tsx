@@ -1,23 +1,29 @@
-import SectionTitle from '@/components/Common/SectionTitle';
 import ProgressBar from '@/components/Common/ProgressBar';
+import SectionTitle from '@/components/Common/SectionTitle';
 
 export default function Proficiency() {
+    const proficiencies = [
+        { skill: 'HTML', percentage: 100 },
+        { skill: 'CSS', percentage: 95 },
+        { skill: 'Tailwind', percentage: 85 },
+        { skill: 'JavaScript', percentage: 80 },
+        { skill: 'TypeScript', percentage: 55 },
+        { skill: 'React', percentage: 75 },
+        { skill: 'NextJS', percentage: 70 },
+        { skill: 'Docker', percentage: 65 },
+        { skill: 'PHP', percentage: 85 },
+        { skill: 'SQL', percentage: 75 },
+        { skill: 'Git', percentage: 90 },
+        { skill: 'C#', percentage: 50 },
+    ];
+
     return (
-        <section className='flex flex-col gap-y-9 py-36'>
+        <section className='mx-auto flex flex-col gap-y-9 py-36 lg:max-w-7xl'>
             <SectionTitle title='Proficiency' />
             <div className='grid grid-cols-1 flex-col gap-3 px-3 lg:grid-cols-2'>
-                <ProgressBar skill='HTML' percentage={100} />
-                <ProgressBar skill='CSS' percentage={95} />
-                <ProgressBar skill='Tailwind' percentage={85} />
-                <ProgressBar skill='JavaScript' percentage={80} />
-                <ProgressBar skill='TypeScript' percentage={55} />
-                <ProgressBar skill='React' percentage={75} />
-                <ProgressBar skill='NextJS' percentage={70} />
-                <ProgressBar skill='Docker' percentage={65} />
-                <ProgressBar skill='PHP' percentage={85} />
-                <ProgressBar skill='SQL' percentage={75} />
-                <ProgressBar skill='Git' percentage={90} />
-                <ProgressBar skill='C#' percentage={50} />
+                {proficiencies.map(({ skill, percentage }) => (
+                    <ProgressBar key={skill} skill={skill} percentage={percentage} />
+                ))}
             </div>
         </section>
     );

@@ -1,65 +1,43 @@
-export const fadeInConfig = {
+import type { BounceOptions, TransformOptions, TransitionOptions } from '@/types/animation';
+
+export const fadeInConfig = (options?: TransitionOptions) => ({
     initial: { opacity: 0 },
     whileInView: { opacity: 1 },
     viewport: { once: true },
     transition: {
-        duration: 0.3,
+        duration: options?.duration ?? 0.3,
+        delay: options?.delay ?? 0.12,
+        ease: options?.ease ?? 'easeOut',
     },
-};
+});
 
-export const fadeInUpConfig = {
-    initial: { opacity: 0, y: 9 },
-    whileInView: { opacity: 1, y: 0 },
+export const slideInLeftConfig = (options?: TransformOptions) => ({
+    initial: { opacity: 0, x: -(options?.distance ?? -5) },
+    whileInView: { opacity: 1, x: 0 },
     viewport: { once: true },
     transition: {
-        duration: 0.3,
+        duration: options?.duration ?? 0.3,
+        delay: options?.delay ?? 0,
+        ease: options?.ease ?? 'easeOut',
     },
-};
+});
 
-export const slideInLeftConfig = {
-    initial: { opacity: 0 },
-    whileInView: { opacity: 1 },
-    viewport: { once: true },
-    transition: {
-        duration: 0.3,
-    },
-};
-
-export const slideInRightConfig = {
-    initial: { opacity: 0 },
-    whileInView: { opacity: 1 },
-    viewport: { once: true },
-    transition: {
-        duration: 0.3,
-    },
-};
-
-export const fadeInThenBounceConfig = {
-    initial: { opacity: 0, x: -18 },
+export const fadeInThenBounceConfig = (options?: BounceOptions) => ({
+    initial: { opacity: 0, x: -(options?.initialX ?? 18) },
     animate: {
         opacity: 1,
         x: 0,
-        y: [5, -5, 5],
+        y: [options?.bounceHeight ?? 5, -(options?.bounceHeight ?? 5), options?.bounceHeight ?? 5],
     },
     transition: {
-        opacity: { delay: 0.2 },
-        x: { delay: 0.2 },
+        opacity: { delay: options?.delay ?? 0.2 },
+        x: { delay: options?.delay ?? 0.2 },
         y: {
-            delay: 0.6,
-            duration: 5,
-            repeat: Infinity,
-            ease: 'easeInOut',
+            delay: options?.bounceDelay ?? 0.6,
+            duration: options?.bounceDuration ?? 5,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: options?.ease ?? 'easeInOut',
             times: [0, 0.5, 1],
         },
-    },
-};
-
-export const fadeInUpDelayedConfig = (delay: number) => ({
-    initial: { opacity: 0, y: -12 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: {
-        duration: 0.3,
-        delay,
     },
 });

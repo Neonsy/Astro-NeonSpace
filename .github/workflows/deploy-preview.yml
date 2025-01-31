@@ -2,7 +2,7 @@ name: Deploy Preview
 on:
     pull_request:
         branches: Preview
-        types: [opened, reopened, synchronize]
+        types: [opened, synchronize]
 
 concurrency:
     group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
@@ -19,12 +19,11 @@ jobs:
 
         steps:
             - name: Wait for Main CI/CD
-              id: wait-for-ci-cd
               uses: fountainhead/action-wait-for-check@v1.2.0
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
-                  checkName: start-prod-build
-                  intervalSeconds: 30
+                  checkName: signal-build-can-start
+                  intervalSeconds: 60
                   timeoutSeconds: 600
                   ref: ${{ github.event.pull_request.head.sha }}
 

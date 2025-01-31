@@ -1,0 +1,15 @@
+---
+import { SignOutButton } from '@clerk/astro/components';
+
+const user = await Astro.locals.currentUser();
+
+const isAuthenticated = user?.privateMetadata.role === 'owner';
+
+if (!isAuthenticated) {
+    return Astro.redirect('/');
+}
+---
+
+<h1>Create Blog</h1>
+
+<SignOutButton />
