@@ -51,6 +51,9 @@ jobs:
             - name: Load Preview Env Vars
               run: cp .vercel/.env.preview.local project/.env
 
+            - name: Reveal folder structure
+              run: ls -laR
+
             - name: Build Project Artifacts
               run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
