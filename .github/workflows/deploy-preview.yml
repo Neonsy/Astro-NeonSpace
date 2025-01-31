@@ -51,19 +51,16 @@ jobs:
             - name: Load Preview Env Vars
               run: sed -e 's/^export //' -e 's/"//g' .vercel/.env.preview.local > project/.env
 
-            - name: Reveal folder structure
-              run: ls -laR
-
-            - name: Build Project Artifacts
-              run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
-              env:
-                  ACTIONS_STEP_DEBUG: ${{ secrets.ACTIONS_STEP_DEBUG || 'false' }}
-
             - name: Verify Build Env
               run: |
                   echo "Build Environment:"
                   echo "PUBLIC_CLERK_PUBLISHABLE_KEY=${PUBLIC_CLERK_PUBLISHABLE_KEY:0:4}..."
                   echo "TURSO_DATABASE_URL=${TURSO_DATABASE_URL:0:8}..."
+
+            - name: Build Project Artifacts
+              run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
+              env:
+                  ACTIONS_STEP_DEBUG: ${{ secrets.ACTIONS_STEP_DEBUG || 'false' }}
 
             - name: Deploy Project Artifacts to Vercel
               id: deploy
