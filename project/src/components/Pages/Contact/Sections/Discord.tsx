@@ -93,7 +93,7 @@ export default function Discord() {
         heading: fadeInConfig({ delay: 0.009 }),
         introduction: fadeInConfig({ delay: 0.05 }),
         reasons: fadeInConfig({ delay: 0.09 }),
-        features: fadeInConfig({ delay: 0.10 }),
+        features: fadeInConfig({ delay: 0.1 }),
     };
 
     return (

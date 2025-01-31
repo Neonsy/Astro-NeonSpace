@@ -24,13 +24,7 @@ export default function Greeting() {
                 </motion.div>
 
                 <div className='flex gap-8'>
-                    <Link
-                        aria-label='Github'
-                        title='Github'
-                        hasMotion
-                        motionProps={animationConfig.github}
-                        href='https://github.com/neonsy'
-                        external>
+                    <Link aria-label='Github' title='Github' hasMotion motionProps={animationConfig.github} href='https://github.com/neonsy' external>
                         <FaGithub className='text-text-primary transition-colors ~h-8/10 ~w-8/10 hover:text-cyan-400' />
                     </Link>
                     <Link
