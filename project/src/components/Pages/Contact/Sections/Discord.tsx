@@ -187,7 +187,7 @@ function JoinServerButton({ className }: { className?: string }) {
         <div className={`flex flex-col items-center gap-y-3 px-3 ${className}`}>
             <Link
                 className='flex items-center justify-center gap-x-3 gap-y-3 rounded-xl bg-discord-primary font-bold ~text-sm/3xl ~px-2/5 ~py-2/3'
-                href='https://discord.gg/neonsy'
+                href='https://discord.com/invite/aK3B9QyGU4'
                 external>
                 <MdChatBubble /> Join Discord Server
             </Link>
