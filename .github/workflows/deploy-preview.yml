@@ -23,7 +23,7 @@ jobs:
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
                   checkName: signal-build-can-start
-                  intervalSeconds: 25
+                  intervalSeconds: 60
                   timeoutSeconds: 600
                   ref: ${{ github.event.pull_request.head.sha }}
 
@@ -48,19 +48,8 @@ jobs:
             - name: Pull Vercel Environment Information
               run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
-            - name: Load Preview Env Vars
-              run: sed -e 's/^export //' -e 's/"//g' .vercel/.env.preview.local > project/.env
-
-            - name: Verify Build Env
-              run: |
-                  echo "Build Environment:"
-                  echo "PUBLIC_CLERK_PUBLISHABLE_KEY=${PUBLIC_CLERK_PUBLISHABLE_KEY:0:4}..."
-                  echo "TURSO_DATABASE_URL=${TURSO_DATABASE_URL:0:8}..."
-
             - name: Build Project Artifacts
               run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
-              env:
-                  ACTIONS_STEP_DEBUG: ${{ secrets.ACTIONS_STEP_DEBUG || 'false' }}
 
             - name: Deploy Project Artifacts to Vercel
               id: deploy
