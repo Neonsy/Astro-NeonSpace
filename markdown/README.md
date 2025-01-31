@@ -2,7 +2,7 @@
 
 [![Main CI/CD](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/main-ci-cd.yml/badge.svg)](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/main-ci-cd.yml)
 [![Deploy Preview](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/deploy-preview.yml/badge.svg?branch=Dev)](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/deploy-preview.yml)
-[![Deploy Production](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/deploy-prod.yml/badge.svg)](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/deploy-prod.yml)
+[![Deploy Production](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/deploy-prod.yml/badge.svg?branch=Preview)](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/deploy-prod.yml)
 
 > [!NOTE]
 > This project is currently in the **early stages of development**. Progress can be tracked [here](https://github.com/Neonsy/Astro-NeonSpace/tree/Dev).
