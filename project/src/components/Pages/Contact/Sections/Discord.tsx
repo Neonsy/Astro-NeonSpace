@@ -171,7 +171,7 @@ type FeatureCardProps = {
 function FeatureCard({ icon: Icon, title, description, index = 0 }: FeatureCardProps) {
     const animationConfig = {
         delay: {
-            container: 0.01 * index,
+            container: 0.09 * index,
         },
     };
 
