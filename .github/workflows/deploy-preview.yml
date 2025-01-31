@@ -59,6 +59,12 @@ jobs:
               env:
                   ACTIONS_STEP_DEBUG: ${{ secrets.ACTIONS_STEP_DEBUG || 'false' }}
 
+            - name: Verify Build Env
+              run: |
+                  echo "Build Environment:"
+                  echo "PUBLIC_CLERK_PUBLISHABLE_KEY=${PUBLIC_CLERK_PUBLISHABLE_KEY:0:4}..."
+                  echo "TURSO_DATABASE_URL=${TURSO_DATABASE_URL:0:8}..."
+
             - name: Deploy Project Artifacts to Vercel
               id: deploy
               run: |
