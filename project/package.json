@@ -19,7 +19,7 @@
         "@astrojs/react": "^4.2.0",
         "@astrojs/tailwind": "^6.0.0",
         "@astrojs/vercel": "^8.0.5",
-        "@clerk/astro": "^2.1.17",
+        "@clerk/astro": "^2.1.19",
         "@libsql/client": "^0.14.0",
         "@octokit/rest": "^21.1.0",
         "@tsparticles/engine": "^3.8.1",
