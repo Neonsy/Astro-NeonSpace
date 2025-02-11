@@ -22,7 +22,7 @@ export default function Footer() {
                     </motion.div>
                     <motion.div {...animationConfig.copyright}>
                         <Link
-                            href='https://astro-neonspace.vercel.app/'
+                            href='https://neonsy.space/'
                             external
                             aria-label='Github'
                             title='Github'
