@@ -1,10 +1,9 @@
 import { motion } from 'motion/react';
 
 import { fadeInConfig } from '@/lib/animations/simple';
-import { FaGithub, FaDiscord, FaInstagram } from 'react-icons/fa6';
 
-import Link from '@/components/Common/Link';
 import ExploreButton from '@/components/Common/ExploreButton';
+import SocialNav from '@/components/Common/SocialNav';
 
 export default function Greeting() {
     const animationConfig = {
@@ -24,27 +23,7 @@ export default function Greeting() {
                 </motion.div>
 
                 <div className='flex gap-8'>
-                    <Link aria-label='Github' title='Github' hasMotion motionProps={animationConfig.github} href='https://github.com/neonsy' external>
-                        <FaGithub className='text-text-primary transition-colors ~h-8/10 ~w-8/10 hover:text-cyan-400' />
-                    </Link>
-                    <Link
-                        aria-label='Discord '
-                        title='Discord'
-                        hasMotion
-                        motionProps={animationConfig.discord}
-                        href='https://discord.gg/aK3B9QyGU4'
-                        external>
-                        <FaDiscord className='text-text-primary transition-colors ~h-8/10 ~w-8/10 hover:text-cyan-400' />
-                    </Link>
-                    <Link
-                        aria-label='Instagram'
-                        title='Instagram'
-                        hasMotion
-                        motionProps={animationConfig.instagram}
-                        href='https://www.instagram.com/neonsy01/'
-                        external>
-                        <FaInstagram className='text-text-primary transition-colors ~h-8/10 ~w-8/10 hover:text-cyan-400' />
-                    </Link>
+                    <SocialNav containerClassName='flex flex-row items-center justify-center gap-x-4' linkClassName='~text-lg/5xl' />
                 </div>
 
                 <motion.div
