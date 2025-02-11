@@ -2,13 +2,13 @@ import type { MotionProps } from 'motion/react';
 import { motion } from 'motion/react';
 import type { IconType } from 'react-icons';
 
-interface LinkProps extends React.ComponentProps<'a'> {
+type LinkProps = React.ComponentProps<'a'> & {
     external?: boolean;
     hasMotion?: boolean;
     motionProps?: MotionProps;
     iconOnly?: boolean;
     icon?: IconType;
-}
+};
 
 export default function Link({
     children,

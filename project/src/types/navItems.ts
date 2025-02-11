@@ -5,3 +5,7 @@ export type NavItem = {
     icon?: IconType;
     label: string;
 };
+
+export type SocialNavItem = Omit<NavItem, 'icon'> & {
+    icon: IconType;
+};

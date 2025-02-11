@@ -18,7 +18,7 @@ export default function Proficiency() {
     ];
 
     return (
-        <section className='mx-auto flex flex-col gap-y-9 py-36 lg:max-w-7xl'>
+        <section className='mx-auto flex flex-col gap-y-9 pb-36 lg:max-w-7xl'>
             <SectionTitle title='Proficiency' />
             <div className='grid grid-cols-1 flex-col gap-3 px-3 lg:grid-cols-2'>
                 {proficiencies.map(({ skill, percentage }) => (

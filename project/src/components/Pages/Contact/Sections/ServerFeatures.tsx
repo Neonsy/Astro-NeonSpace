@@ -92,7 +92,7 @@ export default function ServerFeatures() {
     };
 
     return (
-        <section className='flex flex-col items-center justify-center gap-y-6 py-36'>
+        <section className='flex flex-col items-center justify-center gap-y-6 pb-36'>
             <motion.h2 {...animationConfig.heading} className='~text-2xl/5xl'>
                 Server Features
             </motion.h2>

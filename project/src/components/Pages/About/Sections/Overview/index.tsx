@@ -13,7 +13,7 @@ export default function Overview() {
     };
 
     return (
-        <section id='overview' className='relative py-36'>
+        <section id='overview' className='relative pb-36'>
             <div className='flex flex-col items-center gap-y-16 px-4'>
                 <SectionTitle title='Introduction' />
                 {/* Main introduction */}
