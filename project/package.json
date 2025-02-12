@@ -16,9 +16,9 @@
         "db:seed": "tsx src/db/seed.ts"
     },
     "dependencies": {
+        "@astrojs/netlify": "^6.1.0",
         "@astrojs/react": "^4.2.0",
         "@astrojs/tailwind": "^6.0.0",
-        "@astrojs/vercel": "^8.0.6",
         "@clerk/astro": "^2.1.19",
         "@libsql/client": "^0.14.0",
         "@octokit/rest": "^21.1.0",
@@ -52,6 +52,7 @@
         "eslint-plugin-react-hooks": "^5.1.0",
         "eslint-plugin-react-refresh": "^0.4.19",
         "fluid-tailwind": "^1.0.4",
+        "netlify-cli": "^18.0.4",
         "prettier": "^3.5.0",
         "prettier-plugin-astro": "^0.14.1",
         "prettier-plugin-tailwindcss": "^0.6.11",

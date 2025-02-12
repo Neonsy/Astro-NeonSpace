@@ -9,9 +9,8 @@ concurrency:
     cancel-in-progress: true
 
 env:
-    VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-    VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-    VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+    NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+    NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
 jobs:
     deploy:
@@ -29,6 +28,18 @@ jobs:
 
             - name: Checkout
               uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
+
+            - name: Get Commit Name
+              id: get-commit-name
+              run: |
+                  # Get the second-to-last commit name
+                  commit_name=$(git log -2 --pretty=format:'%s' | tail -n 1)
+                  echo "Raw commit name (no sed): $commit_name"
+
+                  # Set the commit name as an output (using the raw commit name)
+                  echo "commit_name=$commit_name" >> $GITHUB_OUTPUT
 
             - name: Install pnpm
               uses: pnpm/action-setup@v4
@@ -42,47 +53,56 @@ jobs:
                   cache: 'pnpm'
                   cache-dependency-path: 'project/pnpm-lock.yaml'
 
-            - name: Install Vercel CLI
-              run: pnpm add -g vercel@latest
+            - name: Install Netlify CLI from project dependencies
+              run: pnpm install
 
-            - name: Pull Vercel Environment Information
-              run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+            - name: Build the project
+              run: pnpm netlify build --context deploy-preview
 
-            - name: Build Project Artifacts
-              run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
-
-            - name: Deploy Project Artifacts to Vercel
-              id: deploy
+            - name: Deploy to Netlify
+              id: netlify-deploy
               run: |
-                  echo "DEPLOY_URL=$(vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }})" >> $GITHUB_OUTPUT
+                  # Deploy to Netlify and capture the output
+                  output=$(pnpm netlify deploy --message "${{ steps.get-commit-name.outputs.commit_name }}")
+                  echo "$output"
 
-            - name: Create Comment
-              uses: actions/github-script@v7
+                  # Extract the preview URL from the output
+                  preview_url=$(echo "$output" | grep -oP 'https://.*\.netlify\.app')
+                  echo "Preview URL: $preview_url"
+
+                  # Set the preview URL as an output
+                  echo "preview_url=$preview_url" >> $GITHUB_OUTPUT
+
+            - name: Comment on Pull Request
+              uses: actions/github-script@v6
               with:
                   script: |
-                      const deployUrl = process.env.DEPLOY_URL;
-                      const inspectUrl = `https://vercel.com/${process.env.VERCEL_ORG_ID}/${process.env.VERCEL_PROJECT_ID}/deployments`;
+                      const previewUrl = '${{ steps.netlify-deploy.outputs.preview_url }}';
+                      const commitSha = context.payload.pull_request.head.sha.substring(0, 7);
+                      const inspectUrl = `https://app.netlify.com/sites/${process.env.NETLIFY_SITE_ID}/deploys`;
 
-                      const body = `## 🚀 Vercel Preview Deployment
+                      if (!previewUrl) {
+                          throw new Error('Preview URL not found.');
+                      }
+
+                      const body = `## 🚀 Netlify Preview Deployment
 
                       ### Build Information
-                      > **Status:** ✅ Success
-                      > **Commit:** \`${context.payload.pull_request.head.sha.substring(0, 7)}\`
+                      > **Status:** ✅ Success  
+                      > **Commit:** \`${commitSha}\`
 
                       ### Deployment Links
                       | Type | Link |
                       |:--|:--|
-                      | ✨ **Preview** | [See your changes in action!](${deployUrl}) |
+                      | ✨ **Preview** | [See your changes in action!](${previewUrl}) |
                       | 🔍 **Inspect** | [Peek under the hood](${inspectUrl}) |
 
                       ---
                       ### 💫 Deployed through GitHub Actions 😎`;
 
                       await github.rest.issues.createComment({
-                        owner: context.repo.owner,
-                        repo: context.repo.repo,
-                        issue_number: context.issue.number,
-                        body: body
+                          owner: context.repo.owner,
+                          repo: context.repo.repo,
+                          issue_number: context.payload.pull_request.number,
+                          body: body
                       });
-              env:
-                  DEPLOY_URL: ${{ steps.deploy.outputs.DEPLOY_URL }}
