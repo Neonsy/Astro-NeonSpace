@@ -126,7 +126,7 @@ jobs:
 
             - name: Install Dependencies
               working-directory: ./project
-              run: pnpm install --frozen-lockfile && pnpm approve-builds
+              run: pnpm install --frozen-lockfile
 
             - name: Run ESLint
               id: eslint
@@ -226,6 +226,8 @@ jobs:
 
     signal-build-can-start:
         runs-on: ubuntu-latest
+        needs: integrity-check
+        if: always() && needs.integrity-check.result == 'success' && needs.integrity-check.outputs.has_formatting_changes == 'false'
         steps:
             - name: Check conditions
               run: |

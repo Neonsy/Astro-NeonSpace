@@ -53,8 +53,8 @@ jobs:
                   cache: 'pnpm'
                   cache-dependency-path: 'project/pnpm-lock.yaml'
 
-            - name: Install Netlify CLI from project dependencies
-              run: pnpm install
+            - name: Install Netlify CLI
+              run: pnpm i -g netlify-cli
 
             - name: Build the project
               run: pnpm netlify build
