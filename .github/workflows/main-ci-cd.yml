@@ -227,7 +227,7 @@ jobs:
     signal-build-can-start:
         runs-on: ubuntu-latest
         needs: integrity-check
-        if: always() && needs.integrity-check.result == 'success' && needs.integrity-check.outputs.has_formatting_changes == 'false'
+        if: ${{ always()}}
         steps:
             - name: Check conditions
               run: |
