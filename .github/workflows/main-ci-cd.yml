@@ -126,7 +126,7 @@ jobs:
 
             - name: Install Dependencies
               working-directory: ./project
-              run: pnpm install --frozen-lockfile
+              run: pnpm approve-builds --yes && pnpm install --frozen-lockfile
 
             - name: Run ESLint
               id: eslint
@@ -227,9 +227,18 @@ jobs:
     signal-build-can-start:
         runs-on: ubuntu-latest
         needs: integrity-check
-        if: always() && needs.integrity-check.result == 'success' && needs.integrity-check.outputs.has_formatting_changes == 'false'
         steps:
-            - name: Start production build
+            - name: Check conditions
               run: |
-                  echo "This job exists as a signal to trigger the production deployment workflow."
-                  echo "It is part of the orchestration flow between different GitHub workflows."
+                if [ "${{ needs.integrity-check.result }}" != "success" ]; then
+                    echo "The integrity-check job did not succeed."
+                    exit 1
+                fi
+                if [ "${{ needs.integrity-check.outputs.has_formatting_changes }}" == "true" ]; then
+                    echo "The integrity-check job detected formatting changes."
+                    exit 1
+                fi
+                echo "Conditions met, starting production build."
+                echo "This job exists as a signal to trigger the production deployment workflow."
+                echo "It is part of the orchestration flow between different GitHub workflows."
+        
