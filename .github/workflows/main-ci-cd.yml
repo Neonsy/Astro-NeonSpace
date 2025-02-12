@@ -126,7 +126,7 @@ jobs:
 
             - name: Install Dependencies
               working-directory: ./project
-              run: pnpm approve-builds --yes && pnpm install --frozen-lockfile
+              run: pnpm install --frozen-lockfile
 
             - name: Run ESLint
               id: eslint
