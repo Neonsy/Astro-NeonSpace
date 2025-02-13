@@ -15,6 +15,10 @@ env:
 jobs:
     deploy:
         runs-on: ubuntu-latest
+        defaults:
+          run:
+            working-directory: ./project
+
 
         steps:
             - name: Wait for Main CI/CD
@@ -54,7 +58,6 @@ jobs:
                   cache-dependency-path: 'project/pnpm-lock.yaml'
 
             - name: Install Netlify CLI via project dependencies
-              working-directory: ./project
               run: pnpm i
 
             - name: Build the project
