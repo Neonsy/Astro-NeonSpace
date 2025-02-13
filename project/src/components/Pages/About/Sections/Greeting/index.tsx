@@ -24,9 +24,7 @@ export default function Greeting() {
                     <SocialNav containerClassName='flex flex-row items-center justify-center gap-x-4' linkClassName='~text-lg/5xl' />
                 </motion.div>
 
-                <motion.div
-                    className='bg-background-secondary/50 rounded-full border border-cyan-400/20 px-6 py-2'
-                    {...animationConfig.status}>
+                <motion.div className='bg-background-secondary/50 rounded-full border border-cyan-400/20 px-6 py-2' {...animationConfig.status}>
                     <span className='text-cyan-400 ~text-sm/base'>Looking for a Frontend || Full-Stack Developer Opportunity</span>
                 </motion.div>
             </div>
