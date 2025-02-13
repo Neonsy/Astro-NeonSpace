@@ -96,7 +96,7 @@ export default function ServerFeatures() {
             <motion.h2 {...animationConfig.heading} className='~text-2xl/5xl'>
                 Server Features
             </motion.h2>
-            <div className='grid grid-cols-1 gap-4 lg:grid-cols-3 xs:px-3 md:px-0'>
+            <div className='grid grid-cols-1 gap-4 xs:px-3 md:px-0 lg:grid-cols-3'>
                 {features.map((feature) => (
                     <FeatureCard key={feature.title} {...feature} />
                 ))}
