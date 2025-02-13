@@ -126,6 +126,8 @@ jobs:
 
             - name: Install Dependencies
               working-directory: ./project
+              env:
+                PNPM_AUTO_APPROVE: true
               run: pnpm install --frozen-lockfile
 
             - name: Run ESLint
