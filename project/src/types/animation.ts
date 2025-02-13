@@ -1,17 +1,16 @@
-// Define a common interface for transition options
-export interface TransitionOptions {
+export type TransitionOptions = {
     duration?: number;
     delay?: number;
     ease?: string;
-}
+};
 
-export interface TransformOptions extends TransitionOptions {
+export type TransformOptions = TransitionOptions & {
     distance?: number;
-}
+};
 
-export interface BounceOptions extends TransitionOptions {
+export type BounceOptions = TransitionOptions & {
     initialX?: number;
     bounceHeight?: number;
     bounceDuration?: number;
     bounceDelay?: number;
-}
+};

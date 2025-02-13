@@ -4,17 +4,17 @@ import { fadeInConfig } from '@/lib/animations/simple';
 
 import SectionTitle from '@/components/Common/SectionTitle';
 
-interface JourneyCardProps {
+type JourneyCardProps = {
     startDate: string;
     endDate: string;
     title: string;
     place: string;
     description: string;
-}
+};
 
 export default function Journey() {
     return (
-        <section className='mx-auto flex flex-col gap-y-9 py-36 lg:max-w-7xl'>
+        <section className='mx-auto flex flex-col gap-y-9 pb-36 lg:max-w-7xl'>
             <SectionTitle title='Journey' />
             <div className='flex flex-col gap-y-12 px-3'>
                 <JourneyCard

@@ -3,7 +3,7 @@ import { SignOutButton } from '@clerk/astro/components';
 
 const user = await Astro.locals.currentUser();
 
-const isAuthenticated = user?.privateMetadata.role === 'owner';
+const isAuthenticated = user?.publicMetadata.isPrivileged;
 
 if (!isAuthenticated) {
     return Astro.redirect('/');

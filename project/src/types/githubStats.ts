@@ -1,4 +1,4 @@
-export interface Repository {
+export type Repository = {
     name: string;
     url: string;
     description: string;
@@ -7,9 +7,9 @@ export interface Repository {
     watchers: number;
     totalPRs: number;
     totalIssues: number;
-}
+};
 
-export interface GithubStats {
+export type GithubStats = {
     userInfo: {
         username: string;
         joinedAt: string;
@@ -24,9 +24,9 @@ export interface GithubStats {
     popularRepos: Repository[];
     activeRepos: Repository[];
     languages: Record<string, number>;
-}
+};
 
-export interface GithubStatsProps {
+export type GithubStatsProps = {
     username: string;
     authToken: string;
-}
+};

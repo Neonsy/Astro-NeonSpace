@@ -1,10 +1,11 @@
 // @ts-check
-import { defineConfig, envField } from 'astro/config';
+import { defineConfig } from 'astro/config';
 
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
-import vercel from '@astrojs/vercel';
 import clerk from '@clerk/astro';
+
+import netlify from '@astrojs/netlify';
 
 const ReactCompilerConfig = {
     // Optional: configure specific directories
@@ -30,7 +31,7 @@ export default defineConfig({
         clerk(),
     ],
     site: 'https://neonsy.space',
-    trailingSlash: 'never',
-    adapter: vercel(),
+    // trailingSlash: 'never',
+    adapter: netlify(),
     output: 'server',
 });

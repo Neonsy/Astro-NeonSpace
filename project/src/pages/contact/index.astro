@@ -4,8 +4,10 @@ export const prerender = true;
 import Layout from '@/layouts/global/RootLayout.astro';
 
 import Discord from '@/components/Pages/Contact/Sections/Discord.tsx';
+import ServerFeatures from '@/components/Pages/Contact/Sections/ServerFeatures.tsx';
 ---
 
 <Layout title='Contact'>
     <Discord client:load />
+    <ServerFeatures client:visible />
 </Layout>
