@@ -1,7 +1,7 @@
 export default function LoadingSkeleton() {
     return (
-        <section id='stats' className='flex items-center justify-center py-36' aria-busy role='status'>
-            <div className='flex flex-col gap-y-12 px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
+        <section id='stats' className='flex items-center justify-center pb-36' aria-busy role='status'>
+            <div className='flex w-full flex-col gap-y-12 px-4 sm:px-6 lg:max-w-7xl lg:px-8'>
                 <h2 className='bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-center text-3xl font-bold text-transparent'>
                     Developer Profile
                 </h2>
@@ -26,12 +26,7 @@ export default function LoadingSkeleton() {
                                 </div>
                             </div>
                             <div className='mt-2 h-4 w-32 animate-pulse rounded bg-white/10' />
-                            <div className='mt-2 h-16 w-full animate-pulse rounded bg-white/10' aria-hidden>
-                                <span className='invisible'>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla aperiam doloribus enim ipsa aliquam, obcaecati sed
-                                    similique, fuga exercitationem esse atque alias qui consequuntur molestias ab culpa numquam adipisci beatae.
-                                </span>
-                            </div>
+                            <div className='mt-2 h-16 w-full animate-pulse rounded bg-white/10' />
                         </div>
                     </div>
                 </div>
