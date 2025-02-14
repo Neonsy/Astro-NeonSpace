@@ -1,4 +1,4 @@
-# [Welcome to the NeonSpace](https://astro-neonspace.vercel.app/)
+# [Welcome to the NeonSpace](https://neonsy.space)
 
 [![Main CI/CD](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/main-ci-cd.yml/badge.svg)](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/main-ci-cd.yml)
 [![Deploy Preview](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/deploy-preview.yml/badge.svg?branch=Dev)](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/deploy-preview.yml)
