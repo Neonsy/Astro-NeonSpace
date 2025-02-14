@@ -13,13 +13,11 @@ type Props = {
     children: any;
     title: string;
     description?: string;
-    smallContent?: boolean;
 };
 
 const {
     title,
     description = 'Enter NeonSpace - A digital portfolio where Timothy Enderson weaves code into art, shares tech insights through blogging, and showcases innovative projects that push creative boundaries',
-    smallContent = false,
 } = Astro.props as Props;
 ---
 
@@ -28,7 +26,7 @@ const {
     <Head title={title} description={description} />
     <body class='body-bg'>
         <ParticleBackground client:media='(min-width: 1024px)' transition:persist />
-        <div class={smallContent ? 'flex min-h-lvh flex-col' : 'flex min-h-svh flex-col'}>
+        <div class='flex min-h-svh flex-col'>
             <Header client:load transition:persist currentPath={pathname} />
             <main class='flex-grow'>
                 <slot />
