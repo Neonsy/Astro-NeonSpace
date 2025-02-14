@@ -3,11 +3,12 @@ import { fetchGithubStats } from '@/lib/services/github';
 
 import Stats from '@/components/Pages/Home/Sections/Stats';
 
-// The browser should always check freshness
-Astro.response.headers.set('cache-control', 'public, max-age=0, must-revalidate');
-
-// The CDN should cache the file for 1 day
-Astro.response.headers.set('netlify-cdn-cache-control', 'public, s-maxage=86400, stale-while-revalidate=604800');
+Astro.response.headers.set('cache-control', 'no-cache');
+Astro.response.headers.set(
+  'netlify-cdn-cache-control',
+  'public, s-maxage=86400, stale-while-revalidate=604800, immutable'
+);
+Astro.response.headers.delete('netlify-vary');
 
 const stats = await fetchGithubStats('neonsy', import.meta.env.GITHUB_TOKEN);
 ---
