@@ -7,6 +7,8 @@ import clerk from '@clerk/astro';
 
 import netlify from '@astrojs/netlify';
 
+import db from '@astrojs/db';
+
 const ReactCompilerConfig = {
     // Optional: configure specific directories
     // sources: (filename) => {
@@ -21,15 +23,11 @@ export default defineConfig({
     devToolbar: {
         enabled: false,
     },
-    integrations: [
-        tailwind({ applyBaseStyles: false }),
-        react({
-            babel: {
-                plugins: [['babel-plugin-react-compiler', ReactCompilerConfig]],
-            },
-        }),
-        clerk(),
-    ],
+    integrations: [tailwind({ applyBaseStyles: false }), react({
+        babel: {
+            plugins: [['babel-plugin-react-compiler', ReactCompilerConfig]],
+        },
+    }), clerk(), db()],
     site: 'https://neonsy.space',
     trailingSlash: 'always',
     adapter: netlify(),
