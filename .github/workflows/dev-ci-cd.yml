@@ -17,9 +17,13 @@ permissions:
 jobs:
     build:
         env:
-          ASTRO_DATABASE_FILE: ${{ secrets.ASTRO_DATABASE_FILE }}
-          CLERK_PUBLISHABLE_KEY: ${{ vars.CLERK_PUBLISHABLE_KEY }}
+            ASTRO_DATABASE_FILE: ${{ secrets.ASTRO_DATABASE_FILE }}
+            CLERK_PUBLISHABLE_KEY: ${{ vars.CLERK_PUBLISHABLE_KEY }}
         runs-on: ubuntu-latest
+        defaults:
+          run:
+            working-directory: ./project
+
         steps:
             - uses: actions/checkout@v3
 
@@ -36,12 +40,14 @@ jobs:
                   cache-dependency-path: 'project/pnpm-lock.yaml'
 
             - name: Install dependencies
-              working-directory: ./project
               run: pnpm install
 
+            # - name: Create .env file
+            #   run: |
+            #     echo "CLERK_PUBLISHABLE_KEY=${CLERK_PUBLISHABLE_KEY}" >> .env
+
             - name: Build
-              working-directory: ./project
-              run: pnpm build:check
+              run: pnpm build:cli:check
 
     dependabot:
         name: 'Dependabot'
@@ -56,7 +62,7 @@ jobs:
               run: |
                   # First approve the PR (required for auto-merge)
                   gh pr review --approve "$PR_URL"
-                  
+
                   # Try merge strategies in order
                   if ! gh pr merge --merge "$PR_URL" --delete-branch; then
                     echo "Regular merge failed, attempting rebase..."

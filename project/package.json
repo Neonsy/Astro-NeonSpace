@@ -5,7 +5,7 @@
     "scripts": {
         "dev": "astro dev",
         "build": "astro build --remote",
-        "build:check": "astro build",
+        "build:cli:check": "astro build",
         "preview": "astro preview",
         "astro": "astro",
         "lint": "eslint \"src/**/*.{js,ts,jsx,tsx,astro}\" --fix",

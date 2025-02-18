@@ -32,4 +32,7 @@ export default defineConfig({
     trailingSlash: 'never',
     adapter: netlify(),
     output: 'server',
+    env: {
+        validateSecrets: false,
+    },
 });
