@@ -2,45 +2,35 @@ import { defineDb, defineTable, column, NOW } from 'astro:db';
 
 const Posts = defineTable({
     columns: {
-        id: column.number({ primaryKey: true, unique: true, optional: false, index: true }),
+        id: column.number({ primaryKey: true, unique: true, optional: false }),
         title: column.text({ optional: false }),
-        slug: column.text({ unique: true, optional: false }),
+        slug: column.text({ unique: true, optional: false, index: true }),
         description: column.text({ optional: false }),
         content: column.text({ optional: false }),
         createdAt: column.number({ optional: false, default: NOW }),
         updatedAt: column.number({ optional: false, default: NOW }),
     },
-    indexes: [
-        { on: ['id'], unique: true },
-        { on: ['slug'], unique: true },
-    ],
+    indexes: [{ on: ['createdAt', 'id'] }],
 });
 
 const Tags = defineTable({
     columns: {
         id: column.number({ primaryKey: true, unique: true, optional: false, index: true }),
-        name: column.text({ optional: false, unique: true }),
+        name: column.text({ optional: false, unique: true, index: true }),
     },
-    indexes: [
-        { on: ['id'], unique: true },
-        { on: ['name'], unique: true },
-    ],
 });
 
 const Projects = defineTable({
     columns: {
-        id: column.number({ primaryKey: true, unique: true, optional: false, index: true }),
+        id: column.number({ primaryKey: true, unique: true, optional: false }),
         title: column.text({ optional: false }),
-        slug: column.text({ unique: true, optional: false }),
+        slug: column.text({ unique: true, optional: false, index: true }),
         description: column.text({ optional: false }),
         createdAt: column.number({ optional: false, default: NOW }),
         updatedAt: column.number({ optional: false, default: NOW }),
         link: column.text({ optional: true }),
     },
-    indexes: [
-        { on: ['id'], unique: true },
-        { on: ['slug'], unique: true },
-    ],
+    indexes: [{ on: ['createdAt', 'id'] }],
 });
 
 const PostsTags = defineTable({
