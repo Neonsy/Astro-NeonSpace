@@ -56,7 +56,7 @@ jobs:
 
             - name: Build
               working-directory: ./project
-              run: pnpm run build
+              run: pnpm run build:check
 
             - name: Perform CodeQL Analysis
               uses: github/codeql-action/analyze@v3
