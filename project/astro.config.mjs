@@ -23,16 +23,18 @@ export default defineConfig({
     devToolbar: {
         enabled: false,
     },
-    integrations: [tailwind({ applyBaseStyles: false }), react({
-        babel: {
-            plugins: [['babel-plugin-react-compiler', ReactCompilerConfig]],
-        },
-    }), clerk(), db()],
+    integrations: [
+        tailwind({ applyBaseStyles: false }),
+        react({
+            babel: {
+                plugins: [['babel-plugin-react-compiler', ReactCompilerConfig]],
+            },
+        }),
+        clerk(),
+        db(),
+    ],
     site: 'https://neonsy.space',
     trailingSlash: 'never',
     adapter: netlify(),
     output: 'server',
-    env: {
-        validateSecrets: false,
-    },
 });
