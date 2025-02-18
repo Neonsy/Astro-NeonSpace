@@ -18,6 +18,7 @@ jobs:
     build:
         env:
           ASTRO_DATABASE_FILE: ${{ secrets.ASTRO_DATABASE_FILE }}
+          CLERK_PUBLISHABLE_KEY: ${{ CLERK_PUBLISHABLE_KEY }}
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v3
