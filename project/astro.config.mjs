@@ -29,7 +29,7 @@ export default defineConfig({
         },
     }), clerk(), db()],
     site: 'https://neonsy.space',
-    trailingSlash: 'always',
+    trailingSlash: 'never',
     adapter: netlify(),
     output: 'server',
 });
