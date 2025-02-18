@@ -11,7 +11,7 @@ type GithubStatsProps = {
 
 export default function Stats({ stats }: GithubStatsProps) {
     return (
-        <section id='stats' className='flex items-center justify-center pb-36'>
+        <section id='stats' className='flex items-center justify-center py-36'>
             <div className='flex flex-col gap-y-12 ~px-4/8 lg:max-w-7xl'>
                 <SectionTitle title='Developer Profile' />
 

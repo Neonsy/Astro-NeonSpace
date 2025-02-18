@@ -13,7 +13,7 @@ export default function Hero() {
 
     return (
         <section id='top' className='flex min-h-[93svh] flex-col items-center justify-around ~sm/md:~px-10/4'>
-            <div className='flex flex-col items-center justify-center gap-y-6 ~pt-0/36'>
+            <div className='flex flex-col items-center justify-center gap-y-6'>
                 <div className='flex flex-col items-center justify-center gap-y-6'>
                     <motion.h1 {...animationConfig.text} className='gradient-text font-bold ~text-5xl/12xl'>
                         NeonSpace
