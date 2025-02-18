@@ -38,7 +38,7 @@ jobs:
 
             - name: Build
               working-directory: ./project
-              run: pnpm build
+              run: pnpm build:check
 
     dependabot:
         name: 'Dependabot'
