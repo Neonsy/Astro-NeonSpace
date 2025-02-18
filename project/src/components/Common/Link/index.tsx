@@ -22,6 +22,10 @@ export default function Link({
     ...rest
 }: LinkProps) {
     const externalProps = external ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+    
+    if (!external && href && !href.endsWith('/')) {
+        href = href + '/';
+    }
 
     if (iconOnly) {
         return (

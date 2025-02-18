@@ -4,6 +4,6 @@ const user = await Astro.locals.currentUser();
 const isAuthenticated = user?.privateMetadata.role === 'owner';
 
 if (!isAuthenticated) {
-    return Astro.redirect('/wip');
+    return Astro.redirect('/wip/');
 }
 ---
