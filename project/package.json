@@ -4,7 +4,8 @@
     "version": "0.0.1",
     "scripts": {
         "dev": "astro dev",
-        "build": "astro build --remote",
+        "build": "astro build --remote && astro db push --remote",
+        "build:workflow": "astro build --remote",
         "preview": "astro preview",
         "astro": "astro",
         "lint": "eslint \"src/**/*.{js,ts,jsx,tsx,astro}\" --fix",

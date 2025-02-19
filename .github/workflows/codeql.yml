@@ -63,7 +63,7 @@ jobs:
               run: pnpm install --frozen-lockfile
 
             - name: Build
-              run: pnpm netlify build --context deploy-preview
+              run: pnpm netlify check --context deploy-preview
 
             - name: Perform CodeQL Analysis
               uses: github/codeql-action/analyze@v3
