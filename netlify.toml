@@ -1,5 +1,5 @@
 [build]
   directory = "./project"
-  command = "pnpm run build"
+  command = "pnpm build && pnpm db:push"
   functions = "netlify/functions"
   publish = "dist"
