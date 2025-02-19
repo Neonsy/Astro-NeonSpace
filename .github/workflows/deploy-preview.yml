@@ -26,7 +26,7 @@ jobs:
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
                   checkName: signal-build-can-start
-                  intervalSeconds: 60
+                  intervalSeconds: 30
                   timeoutSeconds: 600
                   ref: ${{ github.event.pull_request.head.sha }}
 
@@ -63,13 +63,7 @@ jobs:
             - name: Fetch Netlify env vars
               run: |
                 echo "ASTRO_DB_REMOTE_URL=$(pnpm netlify env:get ASTRO_DB_REMOTE_URL)" >> $GITHUB_ENV
-
-            - name: Debug env var
-              run: |
-                # Will show as "libsql://***" for security
-                echo "DB URL prefix: $(echo $ASTRO_DB_REMOTE_URL | cut -d'@' -f1)"
-                echo "Variable is set: ${ASTRO_DB_REMOTE_URL:+yes}"
-                echo "Variable length: ${#ASTRO_DB_REMOTE_URL}"
+                echo "ASTRO_DB_APP_TOKEN=$(pnpm netlify env:get ASTRO_DB_APP_TOKEN)" >> $GITHUB_ENV
 
             - name: Build the project
               run: pnpm netlify build --context deploy-preview
