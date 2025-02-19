@@ -60,6 +60,10 @@ jobs:
             - name: Install Netlify CLI via project dependencies
               run: pnpm install --frozen-lockfile
 
+            - name: Get DB variables
+              run: \
+                    netlify env:get ASTRO_DB_REMOTE_URL >> $GITHUB_ENV
+
             - name: Build the project
               run: pnpm netlify build --context deploy-preview
 
