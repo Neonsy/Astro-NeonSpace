@@ -16,9 +16,16 @@ permissions:
 
 jobs:
     build:
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         runs-on: ubuntu-latest
+        defaults:
+          run:
+            working-directory: ./project
+
         steps:
-            - uses: actions/checkout@v3
+            - uses: actions/checkout@v4
 
             - name: Setup pnpm
               uses: pnpm/action-setup@v4
@@ -33,12 +40,10 @@ jobs:
                   cache-dependency-path: 'project/pnpm-lock.yaml'
 
             - name: Install dependencies
-              working-directory: ./project
-              run: pnpm install
+              run: pnpm install --frozen-lockfile
 
             - name: Build
-              working-directory: ./project
-              run: pnpm build
+              run: pnpm netlify build --context deploy-preview
 
     dependabot:
         name: 'Dependabot'
@@ -53,7 +58,7 @@ jobs:
               run: |
                   # First approve the PR (required for auto-merge)
                   gh pr review --approve "$PR_URL"
-                  
+
                   # Try merge strategies in order
                   if ! gh pr merge --merge "$PR_URL" --delete-branch; then
                     echo "Regular merge failed, attempting rebase..."

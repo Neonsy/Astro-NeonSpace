@@ -3,7 +3,7 @@ export const prerender = true;
 
 import Layout from '@/layouts/global/RootLayout.astro';
 import Container from '@/components/Layout/Container';
-import Greeting from '@/components/Pages/About/Sections/Greeting';
+import Hero from '@/components/Pages/About/Sections/Hero';
 import Overview from '@/components/Pages/About/Sections/Overview';
 import Proficiency from '@/components/Pages/About/Sections/Proficiencies';
 import Journey from '@/components/Pages/About/Sections/Journey';
@@ -11,9 +11,9 @@ import Journey from '@/components/Pages/About/Sections/Journey';
 
 <Layout title='About Me' description='Learn more about Timothy Enderson, his journey, and his skills'>
     <Container>
-        <Greeting client:load />
-        <Overview client:visible />
-        <Proficiency client:visible />
-        <Journey client:visible />
+        <Hero client:load />
+        <Overview client:load />
+        <Proficiency client:load />
+        <Journey client:load />
     </Container>
 </Layout>
