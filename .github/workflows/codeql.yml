@@ -11,15 +11,15 @@ concurrency:
     group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
     cancel-in-progress: true
 
+env:
+    NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+    NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+
 jobs:
     analyze:
         name: Analyze
         runs-on: ubuntu-latest
         timeout-minutes: 360
-
-        env:
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
 
         defaults:
           run:
