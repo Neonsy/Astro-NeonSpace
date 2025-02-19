@@ -57,7 +57,7 @@ jobs:
                   cache-dependency-path: 'project/pnpm-lock.yaml'
 
             - name: Install Netlify CLI via project dependencies
-              run: pnpm i
+              run: pnpm install --frozen-lockfile
 
             - name: Push Astro DB
               run: pnpm db:push

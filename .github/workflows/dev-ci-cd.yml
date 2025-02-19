@@ -17,8 +17,8 @@ permissions:
 jobs:
     build:
         env:
-            ASTRO_DATABASE_FILE: ${{ secrets.ASTRO_DATABASE_FILE }}
-            CLERK_PUBLISHABLE_KEY: ${{ vars.CLERK_PUBLISHABLE_KEY }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
         runs-on: ubuntu-latest
         defaults:
           run:
@@ -40,14 +40,10 @@ jobs:
                   cache-dependency-path: 'project/pnpm-lock.yaml'
 
             - name: Install dependencies
-              run: pnpm install
-
-            - name: Create .env file
-              run: |
-                echo "CLERK_PUBLISHABLE_KEY=${CLERK_PUBLISHABLE_KEY}" >> .env
+              run: pnpm install --frozen-lockfile
 
             - name: Build
-              run: pnpm build:cli:check
+              run: pnpm netlify build --context deploy-preview
 
     dependabot:
         name: 'Dependabot'

@@ -16,6 +16,15 @@ jobs:
         name: Analyze
         runs-on: ubuntu-latest
         timeout-minutes: 360
+
+        env:
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+
+        defaults:
+          run:
+            working-directory: ./project
+
         permissions:
             actions: read
             contents: read
@@ -51,12 +60,10 @@ jobs:
                   config-file: ./.github/codeql/codeql-config.yml
 
             - name: Install Dependencies
-              working-directory: ./project
               run: pnpm install --frozen-lockfile
 
             - name: Build
-              working-directory: ./project
-              run: pnpm run build:cli:check
+              run: pnpm netlify build --context deploy-preview
 
             - name: Perform CodeQL Analysis
               uses: github/codeql-action/analyze@v3
