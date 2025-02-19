@@ -62,7 +62,7 @@ jobs:
 
             - name: Fetch Netlify env vars
               run: |
-                echo "ASTRO_DB_REMOTE_URL=$(netlify env:get ASTRO_DB_REMOTE_URL)" >> $GITHUB_ENV
+                echo "ASTRO_DB_REMOTE_URL=$(pnpm netlify env:get ASTRO_DB_REMOTE_URL)" >> $GITHUB_ENV
 
             - name: Debug env var
               run: |
