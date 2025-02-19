@@ -60,10 +60,16 @@ jobs:
             - name: Install Netlify CLI via project dependencies
               run: pnpm install --frozen-lockfile
 
-            - name: Fetch Netlify env vars
-              run: |
-                # Fetch and properly quote the value
-                echo "ASTRO_DB_REMOTE_URL=$(netlify env:get ASTRO_DB_REMOTE_URL)" >> $GITHUB_ENV
+           - name: Fetch Netlify env vars
+             run: |
+               echo "ASTRO_DB_REMOTE_URL=$(netlify env:get ASTRO_DB_REMOTE_URL)" >> $GITHUB_ENV
+
+           - name: Debug env var
+             run: |
+               # Will show as "libsql://***" for security
+               echo "DB URL prefix: $(echo $ASTRO_DB_REMOTE_URL | cut -d'@' -f1)"
+               echo "Variable is set: ${ASTRO_DB_REMOTE_URL:+yes}"
+               echo "Variable length: ${#ASTRO_DB_REMOTE_URL}"
 
             - name: Build the project
               run: pnpm netlify build --context deploy-preview
