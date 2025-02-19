@@ -43,7 +43,7 @@ jobs:
               run: pnpm install --frozen-lockfile
 
             - name: Build
-              run: pnpm netlify check --context deploy-preview
+              run: pnpm netlify build --context deploy-preview
 
     dependabot:
         name: 'Dependabot'

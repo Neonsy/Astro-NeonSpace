@@ -26,7 +26,7 @@ jobs:
               with:
                   token: ${{ secrets.GITHUB_TOKEN }}
                   checkName: signal-build-can-start
-                  intervalSeconds: 30
+                  intervalSeconds: 45
                   timeoutSeconds: 600
                   ref: ${{ github.event.pull_request.head.sha }}
 
@@ -59,11 +59,6 @@ jobs:
 
             - name: Install Netlify CLI via project dependencies
               run: pnpm install --frozen-lockfile
-
-            - name: Fetch Netlify env vars
-              run: |
-                echo "ASTRO_DB_REMOTE_URL=$(pnpm netlify env:get ASTRO_DB_REMOTE_URL)" >> $GITHUB_ENV
-                echo "ASTRO_DB_APP_TOKEN=$(pnpm netlify env:get ASTRO_DB_APP_TOKEN)" >> $GITHUB_ENV
 
             - name: Build the project
               run: pnpm netlify build --context deploy-preview

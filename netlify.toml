@@ -1,11 +1,5 @@
 [build]
   directory = "./project"
-  command = "pnpm db:push"
-  functions = "netlify/functions"
-  publish = "dist"
-
-[check]
-  directory = "./project"
-  command = "pnpm build:workflow"
+  command = "pnpm build"
   functions = "netlify/functions"
   publish = "dist"
