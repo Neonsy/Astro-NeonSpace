@@ -16,7 +16,7 @@ export default function Discord() {
     };
 
     return (
-        <section className='flex flex-col items-center justify-center gap-y-6 py-24'>
+        <section className='flex flex-col items-center justify-center gap-y-6 py-36'>
             <div className='flex flex-col items-center justify-center gap-y-6'>
                 <motion.h1 {...animationConfig.heading} className='gradient-text font-bold ~text-4xl/9xl'>
                     NeonTechSpace

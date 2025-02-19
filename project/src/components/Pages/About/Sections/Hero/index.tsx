@@ -14,7 +14,7 @@ export default function Greeting() {
 
     return (
         <section id='top' className='flex min-h-[93svh] flex-col items-center justify-around gap-y-8 text-center ~sm/md:~px-10/4'>
-            <div className='flex flex-col items-center justify-center gap-y-6 ~pt-0/36'>
+            <div className='flex flex-col items-center justify-center gap-y-6'>
                 <motion.div {...animationConfig.heading} className='flex flex-col gap-y-6'>
                     <h1 className='gradient-text font-bold ~text-5xl/9xl'>Timothy Enderson</h1>
                     <p className='text-text-secondary ~text-xl/2xl'>Full-Stack Web Developer with a passion for creating digital experiences</p>
