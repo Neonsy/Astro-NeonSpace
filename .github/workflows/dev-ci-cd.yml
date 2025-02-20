@@ -45,7 +45,7 @@ jobs:
 
             - name: Build
               # run: pnpm netlify build --context deploy-preview
-              run: pnpm build
+              run: pnpm astro build
 
     dependabot:
         name: 'Dependabot'
