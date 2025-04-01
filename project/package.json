@@ -16,7 +16,7 @@
         "@astrojs/db": "^0.14.6",
         "@astrojs/netlify": "^6.2.0",
         "@astrojs/react": "^4.2.0",
-        "@astrojs/tailwind": "^6.0.0",
+        "@astrojs/tailwind": "^6.0.2",
         "@clerk/astro": "^2.1.19",
         "@octokit/rest": "^21.1.1",
         "@tsparticles/engine": "^3.8.1",
