@@ -4,6 +4,10 @@
 [![Deploy Preview](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/deploy-preview.yml/badge.svg?branch=Dev)](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/deploy-preview.yml)
 [![Deploy Production](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/deploy-prod.yml/badge.svg?branch=Preview)](https://github.com/Neonsy/Astro-NeonSpace/actions/workflows/deploy-prod.yml)
 
+> [!IMPORTANT]
+> This project is paused in favor of [ScheduleOneInsights](https://github.com/Neonsy/ScheduleOneInsights).
+> I will also make a rewrite in NextJS, as I've found focusing on that framework, will probably be less painful when trying to improve performance.
+
 > [!NOTE]
 > This project is currently in the **early stages of development**. Progress can be tracked [here](https://github.com/Neonsy/Astro-NeonSpace/tree/Dev).
 
